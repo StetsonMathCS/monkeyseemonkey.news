@@ -1,0 +1,3 @@
+Links we might want to use:
+
+https://github.com/thomasschmied/Text_Summarization_with_Tensorflow

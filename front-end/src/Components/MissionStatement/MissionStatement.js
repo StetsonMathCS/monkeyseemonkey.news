@@ -1,5 +1,5 @@
 import React from 'react';
-const Mission = () => {
+const MissionStatement = () => {
     return (
         
         <div>
@@ -9,4 +9,4 @@ const Mission = () => {
     );
 }
 
-export default Mission;
+export default MissionStatement;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import  Mission from './Components/Mission-Statement/mission-statement.js';
-
+  
 class App extends Component {
   render() {
     return (

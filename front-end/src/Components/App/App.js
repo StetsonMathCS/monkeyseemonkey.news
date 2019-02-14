@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import HomePage from '../HomePage/HomePage';
+import Search from '../Search/Search';
 import DocumentPage from'../DocumentPage/DocumentPage.js';
 import MissionStatement from '../MissionStatement/MissionStatement.js';
 class App extends Component {
   render() {
     return (
       <div>
-        <HomePage />
+        <Search />
         <DocumentPage />
         <MissionStatement/>
       </div>

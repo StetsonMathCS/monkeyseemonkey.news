@@ -1,4 +1,4 @@
-package pub.smartcode.sentiment;
+package news.monkeyseemonkey;
 
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
@@ -17,8 +17,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+
 
 public class SentimentDetector {
 
@@ -32,7 +36,8 @@ public class SentimentDetector {
         Properties props = new Properties();
         props.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");
         pipeline = new StanfordCoreNLP(props);
-        logger = Logger.getLogger("SentimentDetector");
+//        logger = Logger.getLogger("SentimentDetector");
+        logger = LogManager.getLogger("SentimentDetector");
         adjectives = new HashMap<String, Double>();
         try {
             BufferedReader adjfile = new BufferedReader(
@@ -48,13 +53,14 @@ public class SentimentDetector {
             }
             adjfile.close();
         } catch(IOException e) {
-            logger.log(Level.SEVERE, e.toString());
+            //logger.log(Level.SEVERE, e.toString());
+        	logger.log(Level.ERROR, e.getMessage());
         }
     }
 
     public boolean alreadyProcessed(String msgId) {
         try {
-            String sql = "SELECT 1 FROM sentiment WHERE id like ?";
+            String sql = "SELECT 1 FROM testing WHERE id like ?";
             PreparedStatement pstmt = db.prepareStatement(sql);
             // append -% to like query arg because id's actually
             // have a sentencie # attached at the end
@@ -62,12 +68,12 @@ public class SentimentDetector {
             pstmt.execute();
             return pstmt.getResultSet().next();
         } catch(SQLException e) {
-            logger.log(Level.SEVERE, e.getMessage());
+            logger.log(Level.ERROR, e.getMessage());
             return false;
         }
     }
 
-    public void detectSentiment(String msgId, String txt, String source,
+    public void detectSentiment(String msgId, String txt, List imgs,
                                 boolean useCoreNLP, boolean saveDb) {
         Annotation annotation = new Annotation(txt);
         pipeline.annotate(annotation);
@@ -123,31 +129,38 @@ public class SentimentDetector {
                         score = 0.0;
                 }
 
-                logger.log(Level.INFO, source + " "
-                        + msgId + " - "
-                        + sentiment + " (" + score + ") "
-                        + sentence.toString());
+                //logger.log(Level.INFO, source + " "
+                //        + msgId + " - "
+                //        + sentiment + " (" + score + ") "
+                //        + sentence.toString());
+                
 
                 // Only save somewhat confident, non-neutral results
-                if(score > 0.3 && sentiment_num != 2 && saveDb) {
+//                if(score > 0.3 && sentiment_num != 2 && saveDb) {
                     try {
                         // check if
-                        String sql = "INSERT INTO sentiment"
-                                + "(id,source,msg,sentiment,sentiment_num,score)"
-                                + " VALUES(?,?,?,?,?,?)";
+                        String sql = "INSERT INTO testing"
+                                + "(id,msg,image)"
+                                + " VALUES(?,?,?)";
                         PreparedStatement pstmt = db.prepareStatement(sql);
                         pstmt.setString(1, msgId + "-" + sentNum);
-                        pstmt.setString(2, source);
-                        pstmt.setString(3, sentStr);
-                        pstmt.setString(4, sentiment);
-                        pstmt.setInt(5, sentiment_num);
-                        pstmt.setDouble(6, score);
+                        pstmt.setString(2, sentStr);
+                        pstmt.setString(3, imgs.toString());
                         pstmt.executeUpdate();
                     } catch (SQLException e) {
-                        logger.log(Level.SEVERE, e.getMessage());
+                        logger.log(Level.ERROR, e.getMessage());
                     }
+                    logger.log(Level.ERROR, msgId + "-" + sentNum + ", " + imgs);
+                    logger.log(Level.DEBUG, msgId + "-" + sentNum + ", " + imgs);
+                    logger.log(Level.INFO, msgId + "-" + sentNum + ", " + imgs);
+                    
                 }
             }
         }
+//    }
+    
+    public void data(String article)
+    {
+    	System.out.println(article);
     }
 }

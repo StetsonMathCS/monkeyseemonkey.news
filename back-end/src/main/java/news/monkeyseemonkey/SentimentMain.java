@@ -1,4 +1,4 @@
-package pub.smartcode.sentiment;
+package news.monkeyseemonkey;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -22,14 +22,15 @@ public class SentimentMain
         }
 
         Connection db = DriverManager.getConnection("jdbc:sqlite:" + props.getProperty("sqlitedb"));
-        String tableSql = "CREATE TABLE IF NOT EXISTS sentiment (\n"
+        String tableSql = "CREATE TABLE IF NOT EXISTS testing (\n"
                 + "	id text PRIMARY KEY,\n"
                 + " datefound DATE DEFAULT CURRENT_DATE,\n"
-                + "	source text NOT NULL,\n"
+//                + "	source text NOT NULL,\n"
                 + " msg text NOT NULL,\n"
-                + "	sentiment text NOT NULL,\n"
-                + " sentiment_num int NOT NULL,\n"
-                + " score double NOT NULL\n"
+//                + "	sentiment text NOT NULL,\n"
+//                + " sentiment_num int NOT NULL,\n"
+//                + " score double NOT NULL\n"
+                + " image text NOT NULL\n"
                 + ");";
         Statement stmt = db.createStatement();
         stmt.execute(tableSql);
@@ -37,22 +38,11 @@ public class SentimentMain
         Gson gson = new Gson();
 
         SentimentDetector sentimentDetector = new SentimentDetector(db);
-
-        TwitterStream twitterStream = new TwitterStream(
-                sentimentDetector, gson, props);
-        Thread twitterStreamThread = new Thread(twitterStream);
-        twitterStreamThread.start();
-
-        RedditStream redditStream = new RedditStream(sentimentDetector, props);
-        Thread redditStreamThread = new Thread(redditStream);
-        redditStreamThread.start();
-
+        
         NewsStream newsStream = new NewsStream(sentimentDetector, gson, props);
         Thread newsStreamThread = new Thread(newsStream);
+        
         newsStreamThread.start();
-
-        twitterStreamThread.join();
-        redditStreamThread.join();
         newsStreamThread.join();
     }
 }

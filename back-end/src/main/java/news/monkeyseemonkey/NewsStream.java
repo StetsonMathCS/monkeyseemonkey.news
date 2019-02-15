@@ -1,4 +1,4 @@
-package pub.smartcode.sentiment;
+package news.monkeyseemonkey;
 
 import com.chimbori.crux.articles.Article;
 import com.chimbori.crux.articles.ArticleExtractor;
@@ -8,8 +8,11 @@ import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.Logger;
+
 
 public class NewsStream implements Runnable {
 
@@ -17,8 +20,9 @@ public class NewsStream implements Runnable {
     private Gson gson;
     private String apiKey;
     private ArrayList<String> searchTerms;
-    private Logger logger;
     private SimpleDateFormat dateFormat;
+    
+    private static final Logger log = LogManager.getLogger(NewsStream.class);
 
     public NewsStream(SentimentDetector sentimentDetector,
                       Gson gson,
@@ -29,7 +33,7 @@ public class NewsStream implements Runnable {
         searchTerms = Lists.newArrayList(
                 props.getProperty("news_api_terms")
                         .split("\\s*,\\s*"));
-        this.logger = Logger.getLogger("NewsStream");
+//        this.logger = Logger.getLogger("NewsStream");
         this.dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     }
 
@@ -55,7 +59,9 @@ public class NewsStream implements Runnable {
                             String url = (String) article.get("url");
                             if(!sentimentDetector.alreadyProcessed(url)) {
                                 // fetch the page and extract the main text
-                                logger.log(Level.INFO, "Fetching " + url);
+//                                logger.log(Level.INFO, "Fetching " + url);
+                            	System.out.println("Fetching " + url);
+//                            	logger = LoggerFactory.getLogger(NewsStream.class);
                                 HttpRequest artRequest = HttpRequest.get(url)
                                         .userAgent("SmartCode");
                                 if (artRequest.code() == 200) {
@@ -64,8 +70,9 @@ public class NewsStream implements Runnable {
                                             .extractContent()
                                             .article();
                                     String body = crux.document.text();
+                                    List images = crux.images;
                                     sentimentDetector.detectSentiment(
-                                            url, body, "newsapi",
+                                            url, body, images, 
                                             false, true);
                                 }
                             }

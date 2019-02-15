@@ -6,8 +6,13 @@ console.log(Logo);
 const MissionStatement = () => {
     return (
         
-        <div className = "container mx-auto bg-black" >
-           <center><img src={Logo} alt="Temp Logo"></img></center> 
+       <div className = "container mx-auto bg-black" >
+            
+           <center>
+            <img src={Logo} alt="Temp Logo"></img>
+           <h1 className = "text-5xl font-bold text-indigo-dark">About US</h1>
+           <br />
+           </center> 
            <p className = "text-white"><center>(The logo will be a link to the home page in the final product)</center></p>
            <h1 className = "text-green-lighter font-bold"><center>Our Mission Statement</center></h1>
            <br />
@@ -38,7 +43,6 @@ const MissionStatement = () => {
             <br />
             <p className = "text-white font-mono">All objective content is compiled into an easy to read, user friendly news report</p>
             </center>
-           
         </div>
     );
 }

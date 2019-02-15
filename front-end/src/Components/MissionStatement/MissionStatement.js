@@ -10,10 +10,11 @@ const MissionStatement = () => {
             
            <center>
             <img src={Logo} alt="Temp Logo"></img>
+            <p className = "text-white"><center>(The logo will be a link to the home page in the final product)</center></p>
            <h1 className = "text-5xl font-bold text-indigo-dark">About US</h1>
            <br />
+           <br />
            </center> 
-           <p className = "text-white"><center>(The logo will be a link to the home page in the final product)</center></p>
            <h1 className = "text-green-lighter font-bold"><center>Our Mission Statement</center></h1>
            <br />
            <center>
@@ -42,7 +43,22 @@ const MissionStatement = () => {
             <img src = {map} height = "42" width = "30" alt = "arrow"></img>
             <br />
             <p className = "text-white font-mono">All objective content is compiled into an easy to read, user friendly news report</p>
+            <br />
+            <h1 className = "text-green-lighter font-bold"><center>What will the Compiled Report Include?</center></h1>
+            <br />
+            <p className = "text-white font-mono">In order to remain as objective as possible, MSM will retain the following
+            in it's compiled report:</p>
+            <br />
+            <ul className = "text-white font-mono">
+                <li>Dates and Times</li>
+                <li>Names of pertinent individuals</li>
+                <li>Direct quotations from reliable and unbiased sources</li>
+                <li>Pictures and Videos will be kept for asthetic purposes</li>
+                <li>Unbiased and reliable facts and statistics</li>
+            </ul>
             </center>
+            <br />
+           
         </div>
     );
 }

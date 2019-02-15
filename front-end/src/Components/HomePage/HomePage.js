@@ -3,6 +3,7 @@ import Logo from '../Logo/Logo.png'
 console.log(Logo);
 const HomePage = () => {
     return (
+        <div className = "container mx-auto bg-black" >
         <center className="center">
            <img src={Logo} alt="Temp Logo"></img>
            <form className="w-full max-w-sm">
@@ -13,6 +14,7 @@ const HomePage = () => {
                 </div>
             </form>
         </center>
+        </div>
     );
 }
 

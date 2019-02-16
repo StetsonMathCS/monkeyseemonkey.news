@@ -53,7 +53,7 @@ As for Aniston’ relationship with Pitt today, a source told People the actress
 
 select * from articles;
 
-\
+-- test
 
 
 select web_address, fetch_date, summary.title from articles join artsum on ID_article = articles.ID join summary on ID_summary = summary.ID;

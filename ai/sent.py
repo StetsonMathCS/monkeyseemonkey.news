@@ -3,8 +3,8 @@ import spacy
 # Simple mockup program intended to provide a foundation for rating sentences
 # according to a sentiment value.
 nlp = spacy.load('en_core_web_sm')
-doc = nlp(u"""There are 500 bottles in that container. You are ugly. My name is
-        Jeff.""")
+text = open('file.txt', 'r').read()
+doc = nlp(text)
 
 class Sentence:
     sentencenum = 1

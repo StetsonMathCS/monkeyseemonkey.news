@@ -14,23 +14,34 @@ public class SentimentMain
     public static void main( String[] args ) throws Exception
     {
         Properties props = new Properties();
-        try {
-            props.load(new FileInputStream("config.properties"));
-        } catch(IOException e) {
+        try
+        {
+            props.load(new FileInputStream("properties.config"));
+        }
+        catch(IOException e)
+        {
             System.out.println(e);
             System.exit(-1);
         }
+        
+        /*
+         * article url as varchar(1000)
+         * publisher as varchar(1000)
+         * fetch_date as datetime
+         * body as longtext
+         * title as varchar(1000)
+         * image_address as varchar(1000)
+         */
 
         Connection db = DriverManager.getConnection("jdbc:sqlite:" + props.getProperty("sqlitedb"));
         String tableSql = "CREATE TABLE IF NOT EXISTS testing (\n"
-                + "	id text PRIMARY KEY,\n"
+                + "	id int PRIMARY KEY NOT NULL auto_increment,\n"
+        		+ " url VARCHAR(1000) NOT NULL,\n"
+                + " publisher VARCHAR(1000),\n"
                 + " datefound DATE DEFAULT CURRENT_DATE,\n"
-//                + "	source text NOT NULL,\n"
-                + " msg text NOT NULL,\n"
-//                + "	sentiment text NOT NULL,\n"
-//                + " sentiment_num int NOT NULL,\n"
-//                + " score double NOT NULL\n"
-                + " image text NOT NULL\n"
+                + " body LONGTEXT NOT NULL,\n"
+                + " title VARCHAR(1000),\n"
+                + " image VARCHAR(1000) NOT NULL\n"
                 + ");";
         Statement stmt = db.createStatement();
         stmt.execute(tableSql);

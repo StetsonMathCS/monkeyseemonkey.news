@@ -11,10 +11,10 @@ import java.util.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-//import org.apache.logging.log4j.Logger;
 
 
-public class NewsStream implements Runnable {
+public class NewsStream implements Runnable
+{
 
     private SentimentDetector sentimentDetector;
     private Gson gson;
@@ -26,21 +26,25 @@ public class NewsStream implements Runnable {
 
     public NewsStream(SentimentDetector sentimentDetector,
                       Gson gson,
-                      Properties props) {
+                      Properties props)
+    {
         this.sentimentDetector = sentimentDetector;
         this.gson = gson;
         apiKey = props.getProperty("news_api_key");
         searchTerms = Lists.newArrayList(
                 props.getProperty("news_api_terms")
                         .split("\\s*,\\s*"));
-//        this.logger = Logger.getLogger("NewsStream");
         this.dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     }
 
-    public void run() {
-        try {
-            while (true) {
-                for (String searchTerm : searchTerms) {
+    public void run()
+    {
+        try
+        {
+            while (true)
+            {
+                for (String searchTerm : searchTerms)
+                {
                     Date todayDate = new Date();
                     String today = dateFormat.format(todayDate);
                     HttpRequest request = HttpRequest.get(
@@ -71,9 +75,9 @@ public class NewsStream implements Runnable {
                                             .article();
                                     String body = crux.document.text();
                                     List images = crux.images;
-                                    sentimentDetector.detectSentiment(
-                                            url, body, images, 
-                                            false, true);
+                                    String publisher = crux.siteName;
+                                    String title = crux.title;
+                                    sentimentDetector.intoDB(url, publisher, body, title, images);
                                 }
                             }
                         }
@@ -82,7 +86,10 @@ public class NewsStream implements Runnable {
                 // sleep 1 day
                 Thread.sleep(1000 * 60 * 60 * 24);
             }
-        } catch(InterruptedException e) {
+        }
+        catch(InterruptedException e)
+        {
+        	
         }
     }
 }

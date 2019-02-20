@@ -35,7 +35,7 @@ public class SentimentMain
 
         Connection db = DriverManager.getConnection("jdbc:sqlite:" + props.getProperty("sqlitedb"));
         String tableSql = "CREATE TABLE IF NOT EXISTS testing (\n"
-                + "	id int PRIMARY KEY NOT NULL auto_increment,\n"
+                + "	id int PRIMARY KEY NOT NULL,\n"
         		+ " url VARCHAR(1000) NOT NULL,\n"
                 + " publisher VARCHAR(1000),\n"
                 + " datefound DATE DEFAULT CURRENT_DATE,\n"

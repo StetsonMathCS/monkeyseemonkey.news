@@ -1,4 +1,7 @@
 /target/
-/bin//.settings/
+/bin/
+/.settings/
 /properties.config
-/.classpath/.project/testing.db
+/.classpath
+/.project
+/testing.db

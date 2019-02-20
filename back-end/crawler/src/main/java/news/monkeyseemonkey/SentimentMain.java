@@ -31,6 +31,7 @@ public class SentimentMain
          * body as longtext
          * title as varchar(1000)
          * image_address as varchar(1000)
+         * 
          */
 
         Connection db = DriverManager.getConnection("jdbc:sqlite:" + props.getProperty("sqlitedb"));

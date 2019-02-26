@@ -52,6 +52,30 @@ As for Aniston’ relationship with Pitt today, a source told People the actress
 "Brad Pitt attended ex-wife Jennifer Aniston's 50th birthday bash");
 
 
+insert into articles (ID,web_address,publisher,fetch_date,body,title)
+values (2
+
+"https://www.foxnews.com/us/florida-man-arrested-for-allegedly-throwing-cookie-at-girlfriend",
+"Nicole Darrah",
+'2019-02-25 19:00:00',,
+"
+A Florida man was arrested for domestic battery after he reportedly threw a cookie at his girlfriend.
+
+Wade Smith, 41, of Zephyrhills, was taken into custody on Sunday after deputies with the Pasco County Sheriff's Office were called to the home he shares with his girlfriend, WFLA reported.
+
+SAN ANTONIO MAN ALLEGEDLY PISTOL-WHIPPED EX FOR REVEALING HIS CRIMINAL PAST TO NEW GIRLFRIEND
+
+Smith's girlfriend reportedly told investigators that he "threw a hard piece of cookie and hit her in the forehead," which deputies noted was red when they responded to the scene.
+
+The 41-year-old, according to the news station, confessed to authorities that he threw the cookie at her.
+
+CLICK HERE TO GET THE FOX NEWS APP
+
+Online records from the sheriff's office indicate Smith was booked at the Pasco County Jail in Land O' Lakes on $500 bond.",
+
+"Florida man arrested for allegedly throwing cookie at girlfriend");
+
+
 select * from articles;
 
 

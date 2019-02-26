@@ -76,6 +76,24 @@ Online records from the sheriff's office indicate Smith was booked at the Pasco 
 "Florida man arrested for allegedly throwing cookie at girlfriend");
 
 
+
+insert into articles (ID,web_address,publisher,fetch_date,body,title)
+values (3
+
+"https://www.foxnews.com/auto/circus-performers-crash-during-globe-of-death-motorcycle-stunt",
+"Gary Gastelu",
+'2019-02-25 15:00:00',,
+"
+They don’t call it the “globe of death” because it’s safe.
+Three circus performers riding motorcycles around the inside of a spherical cage were lucky to escape major injury when they crashed during a performance in Liverpool, England, on Sunday.
+Video shot by spectator Vicky Ferry captured the moment when two of the bikes tangled as a third was performing a loop and smashed into them, sending its rider for a spill from the top of the 23-foot-tall cage.
+STREET RACING FARM TRACTOR IMPOUNDED BY POLICE
+"Everyone in the crowd was dumbstruck, people were screaming and lots of kids started crying,” Ferry told SWNS.
+Staff from the Gandeys Circus and a paramedic in the crowd rushed to the aid of the daredevils and the rest of the show was immediately cancelled.
+It was later reported that the riders were using replacement motorcycles because their custom bikes had recently been stolen, and that one of the riders had her ankle broken in the accident.",
+
+"Circus performers crash during 'globe of death' motorcycle stunt");
+
 select * from articles;
 
 

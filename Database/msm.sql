@@ -51,11 +51,14 @@ As for Aniston’ relationship with Pitt today, a source told People the actress
 
 "Brad Pitt attended ex-wife Jennifer Aniston's 50th birthday bash");
 
+
 select * from articles;
 
 
 
 
+select web_address, title, summary, score 
+from articles 
+join artsum on ID = ID_articlep
+join summary on ID = ID_summary
 
-
-select web_address, fetch_date, summary.title from articles join artsum on ID_article = articles.ID join summary on ID_summary = summary.ID;

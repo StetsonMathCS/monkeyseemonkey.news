@@ -1,3 +1,4 @@
+-- Tables
 
 drop table if exists articles;
 
@@ -27,6 +28,8 @@ relevant double null
 );
 
 
+-- Insert
+
 insert into articles (ID,web_address,publisher,fetch_date,body,title)
 values (1,
 
@@ -51,13 +54,15 @@ As for Aniston’ relationship with Pitt today, a source told People the actress
 
 "Brad Pitt attended ex-wife Jennifer Aniston's 50th birthday bash");
 
+select * from articles;
+
 
 insert into articles (ID,web_address,publisher,fetch_date,body,title)
 values (2
 
 "https://www.foxnews.com/us/florida-man-arrested-for-allegedly-throwing-cookie-at-girlfriend",
 "Nicole Darrah",
-'2019-02-25 19:00:00',,
+'2019-02-25 19:00:00',
 "
 A Florida man was arrested for domestic battery after he reportedly threw a cookie at his girlfriend.
 
@@ -71,10 +76,12 @@ The 41-year-old, according to the news station, confessed to authorities that he
 
 CLICK HERE TO GET THE FOX NEWS APP
 
-Online records from the sheriff's office indicate Smith was booked at the Pasco County Jail in Land O' Lakes on $500 bond.",
+Online records from the sheriff's office indicate Smith was booked at the Pasco County Jail in Land O' Lakes on $500 bond.
+",
 
 "Florida man arrested for allegedly throwing cookie at girlfriend");
 
+select * from articles;
 
 
 insert into articles (ID,web_address,publisher,fetch_date,body,title)
@@ -82,7 +89,7 @@ values (3
 
 "https://www.foxnews.com/auto/circus-performers-crash-during-globe-of-death-motorcycle-stunt",
 "Gary Gastelu",
-'2019-02-25 15:00:00',,
+'2019-02-25 15:00:00',
 "
 They don’t call it the “globe of death” because it’s safe.
 Three circus performers riding motorcycles around the inside of a spherical cage were lucky to escape major injury when they crashed during a performance in Liverpool, England, on Sunday.
@@ -90,7 +97,8 @@ Video shot by spectator Vicky Ferry captured the moment when two of the bikes ta
 STREET RACING FARM TRACTOR IMPOUNDED BY POLICE
 "Everyone in the crowd was dumbstruck, people were screaming and lots of kids started crying,” Ferry told SWNS.
 Staff from the Gandeys Circus and a paramedic in the crowd rushed to the aid of the daredevils and the rest of the show was immediately cancelled.
-It was later reported that the riders were using replacement motorcycles because their custom bikes had recently been stolen, and that one of the riders had her ankle broken in the accident.",
+It was later reported that the riders were using replacement motorcycles because their custom bikes had recently been stolen, and that one of the riders had her ankle broken in the accident.
+",
 
 "Circus performers crash during 'globe of death' motorcycle stunt");
 
@@ -98,9 +106,10 @@ select * from articles;
 
 
 
+--Join
 
 select web_address, title, summary, score 
 from articles 
-join artsum on ID = ID_articlep
-join summary on ID = ID_summary
+join artsum on ID_article = articles.ID
+join summary on ID_summary = summary.ID;
 

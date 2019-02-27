@@ -1,15 +1,14 @@
 import React from 'react';
-import Logo from '../Logo/Logo.png'
+import Logo from '../Logo/Logo.js'
 import map from '../Logo/map.png'
-console.log(map);
-console.log(Logo);
-const MissionStatement = () => {
+
+const Home = () => {
     return (
         
        <div className = "container mx-auto bg-black" >
             
            <center>
-            <img src={Logo} alt="Temp Logo"></img>
+            <Logo/>
             <p className = "text-white"><center>(The logo will be a link to the home page in the final product)</center></p>
            <h1 className = "text-5xl font-bold text-indigo-dark">About US</h1>
            <br />
@@ -113,4 +112,4 @@ const MissionStatement = () => {
     );
 }
 
-export default MissionStatement;
+export default Home;

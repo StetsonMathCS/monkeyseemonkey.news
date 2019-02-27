@@ -1,4 +1,3 @@
--- Tables
 
 drop table if exists articles;
 
@@ -28,7 +27,6 @@ relevant double null
 );
 
 
--- Insert
 
 insert into articles (ID,web_address,publisher,fetch_date,body,title)
 values (1,
@@ -54,11 +52,10 @@ As for Aniston’ relationship with Pitt today, a source told People the actress
 
 "Brad Pitt attended ex-wife Jennifer Aniston's 50th birthday bash");
 
-select * from articles;
 
 
 insert into articles (ID,web_address,publisher,fetch_date,body,title)
-values (2
+values (2,
 
 "https://www.foxnews.com/us/florida-man-arrested-for-allegedly-throwing-cookie-at-girlfriend",
 "Nicole Darrah",
@@ -70,7 +67,7 @@ Wade Smith, 41, of Zephyrhills, was taken into custody on Sunday after deputies 
 
 SAN ANTONIO MAN ALLEGEDLY PISTOL-WHIPPED EX FOR REVEALING HIS CRIMINAL PAST TO NEW GIRLFRIEND
 
-Smith's girlfriend reportedly told investigators that he "threw a hard piece of cookie and hit her in the forehead," which deputies noted was red when they responded to the scene.
+Smith's girlfriend reportedly told investigators that he threw a hard piece of cookie and hit her in the forehead, which deputies noted was red when they responded to the scene.
 
 The 41-year-old, according to the news station, confessed to authorities that he threw the cookie at her.
 
@@ -81,11 +78,10 @@ Online records from the sheriff's office indicate Smith was booked at the Pasco 
 
 "Florida man arrested for allegedly throwing cookie at girlfriend");
 
-select * from articles;
 
 
 insert into articles (ID,web_address,publisher,fetch_date,body,title)
-values (3
+values (3,
 
 "https://www.foxnews.com/auto/circus-performers-crash-during-globe-of-death-motorcycle-stunt",
 "Gary Gastelu",
@@ -95,7 +91,7 @@ They don’t call it the “globe of death” because it’s safe.
 Three circus performers riding motorcycles around the inside of a spherical cage were lucky to escape major injury when they crashed during a performance in Liverpool, England, on Sunday.
 Video shot by spectator Vicky Ferry captured the moment when two of the bikes tangled as a third was performing a loop and smashed into them, sending its rider for a spill from the top of the 23-foot-tall cage.
 STREET RACING FARM TRACTOR IMPOUNDED BY POLICE
-"Everyone in the crowd was dumbstruck, people were screaming and lots of kids started crying,” Ferry told SWNS.
+Everyone in the crowd was dumbstruck, people were screaming and lots of kids started crying,” Ferry told SWNS.
 Staff from the Gandeys Circus and a paramedic in the crowd rushed to the aid of the daredevils and the rest of the show was immediately cancelled.
 It was later reported that the riders were using replacement motorcycles because their custom bikes had recently been stolen, and that one of the riders had her ankle broken in the accident.
 ",
@@ -106,10 +102,17 @@ select * from articles;
 
 
 
---Join
+
 
 select web_address, title, summary, score 
 from articles 
 join artsum on ID_article = articles.ID
 join summary on ID_summary = summary.ID;
+
+
+
+ALTER TABLE artsum ADD INDEX (id_article);
+ALTER TABLE artsum ADD INDEX (id_summary);
+
+SHOW INDEXES FROM artsum;
 

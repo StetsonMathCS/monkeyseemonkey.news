@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Logo from './Logo/Logo.js';
 
 class Search extends Component {
     constructor(props) {
@@ -11,7 +10,6 @@ class Search extends Component {
         return (
             <div className = "container mx-auto bg-black" >
                 <center className="center">
-                <Logo />
                 <form className="w-full max-w-sm">
                         <div className="flex items-center border-b border-b-2 border-blue py-2">
                             <input className="appearance-none bg-transparent border-none w-full text-grey-darker mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Search here" onChange={this.props.onSearchChange} aria-label="Full name"/>

@@ -1,15 +1,17 @@
 import React from 'react';
 import Logo from '../Logo/Logo.js'
 import map from '../Logo/map.png'
+import Search from '../Search/Search.js'
 
-const Home = () => {
+const Home = ({search, onSearchChange}) => {
     return (
         
        <div className = "container mx-auto bg-black" >
             
            <center>
             <Logo/>
-            <p className = "text-white"><center>(The logo will be a link to the home page in the final product)</center></p>
+            <Search search={search} onSearchChange={onSearchChange}/>
+            <p className = "text-white">(The logo will be a link to the home page in the final product)</p>
            <h1 className = "text-5xl font-bold text-indigo-dark">About US</h1>
            <br />
            <br />

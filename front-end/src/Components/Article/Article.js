@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from '../Logo/Logo.js';
 import trump from '../Logo/trump.jpg';
 import abc from '../Logo/abc.png';
+import trump_wall from '../Logo/trump_wall.jpg';
 
 
 const Article = () => {
@@ -12,7 +13,7 @@ const Article = () => {
             <h1 className = "text-green-lighter font-bold">Donald Trump Declares Border Problems a National Emergency </h1>
             <br />
             <br />
-            <img src = {trump} alt = "Non-biased image of Trump" height = "600" width = "800" />
+            <img src = {trump_wall} alt = "Non-biased image of Trump" width = "600" />
             <br />
             <br />
             <br />
@@ -62,8 +63,8 @@ const Article = () => {
             <br />
             <center>
             <div className="max-w-md w-full lg:flex">
-                <div className="flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
-                <img src = {trump} width = "400" height = "500"/>
+                <div className="flex items-stretch bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center">
+                <img src = {trump} width = "800" height = "500"/>
                 </div>
                 <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <div className="mb-8">

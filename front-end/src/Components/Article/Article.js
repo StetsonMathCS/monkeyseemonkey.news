@@ -13,7 +13,7 @@ const Article = () => {
             <h1 className = "text-green-lighter font-bold">Donald Trump Declares Border Problems a National Emergency </h1>
             <br />
             <br />
-            <img src = {trump_wall} alt = "Non-biased image of Trump" width = "600" />
+            <img src = {trump_wall} alt = "Non-biased image of Trump" width = "500" />
             <br />
             <br />
             <br />
@@ -62,9 +62,9 @@ const Article = () => {
             </ul>
             <br />
             <center>
-            <div className="max-w-md w-full lg:flex">
+            <div className="max-w-md w-full lg:flex rounded">
                 <div className="flex items-stretch bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center">
-                <img src = {trump} width = "800" height = "500"/>
+                <img src = {trump} width = "800" height = "500" className = "rounded"/>
                 </div>
                 <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <div className="mb-8">

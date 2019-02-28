@@ -13,7 +13,7 @@ const Article = () => {
             <h1 className = "text-green-lighter font-bold">Donald Trump Declares Border Problems a National Emergency </h1>
             <br />
             <br />
-            <img src = {trump_wall} alt = "Non-biased image of Trump" width = "500" />
+            <img src = {trump_wall} alt = "Non-biased image of Trump" width = "500" className = "rounded"/>
             <br />
             <br />
             <br />
@@ -86,6 +86,7 @@ const Article = () => {
                 </div>
                 </div>
         </center>
+        <br />
         <br />
         <br />
         </div>

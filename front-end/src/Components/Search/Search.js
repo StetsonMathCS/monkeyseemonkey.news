@@ -8,14 +8,13 @@ class Search extends Component {
 
     render() {
         return (
-            <div className = "container mx-auto bg-black" >
+            <div className = "bg-blue-darkest" >
                 <center className="center">
                 <form className="w-full max-w-sm">
-                        <div className="flex items-center border-b border-b-2 border-blue py-2">
-                            <input className="appearance-none bg-transparent border-none w-full text-grey-darker mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Search here" onChange={this.props.onSearchChange} aria-label="Full name"/>
+                        <div className="flex w-full items-center py-2 rounded-full bg-blue-darker">
+                            <input className="appearance-none bg-transparent border-none w-full text-white text-2xl ml-3 py-1 px-2 leading-tight focus:outline-none" type="text" onChange={this.props.onSearchChange} aria-label="Full name"/>
                             <Link to={`/searchresults/${this.props.search}`}>
-                                <button className="flex-no-shrink bg-blue hover:bg-blue-dark border-blue hover:border-blue-dark text-sm border-4 text-white py-1 px-2 rounded" type="button">
-                                    Search
+                                <button className="flex-no-shrink bg-blue hover:bg-blue-dark border-blue hover:border-blue-dark text-sm border-4 text-white py-4 px-8 mr-2 rounded-full" type="button">
                                 </button>
                             </Link>
                         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListItem from '../ListItem/ListItem';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //import Logo from '../Logo/Logo.js';
 
@@ -13,7 +14,18 @@ class SearchResults extends Component {
     render() {
         return (
             <div>
-                <p>{this.state.search}</p>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
+                <ListItem/>
             </div>
         );
     }

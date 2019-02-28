@@ -2,16 +2,23 @@ import React from 'react';
 import Logo from '../Logo/Logo.js'
 import map from '../Logo/map.png'
 import Search from '../Search/Search.js'
+import './Home.css';
 
 const Home = ({search, onSearchChange}) => {
     return (
         
-       <div className = "container mx-auto bg-black" >
-            
-           <center>
-            <Logo/>
-            <Search search={search} onSearchChange={onSearchChange}/>
-            <p className = "text-white">(The logo will be a link to the home page in the final product)</p>
+       <div className = "container mx-auto bg-blue-darkest" >
+            <center>
+            <div className="grid h-screen">
+                <div/>
+                <div/>
+                <div/>
+                <Logo className="object-bottom"/>
+                <Search className="" search={search} onSearchChange={onSearchChange}/>
+                <p className = "text-xl pt-3 text-green-lighter font-bold"> The worlds only <b>Unbiased</b> news source </p>
+                <p className = "self-end pb-3 text-green-lighter font-bold">our mission statement below</p>
+            </div>
+
            <h1 className = "text-5xl font-bold text-indigo-dark">About US</h1>
            <br />
            <br />

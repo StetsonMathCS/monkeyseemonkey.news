@@ -1,8 +1,12 @@
 import React from 'react';
 import logo from './Logo.png';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 const Logo = () => {
     return (
-        <img src={logo} alt="Logo"></img>
+        <Link to={`/`}>
+            <img src={logo} alt="Logo"></img>
+        </Link>
     );
 }
 

@@ -5,6 +5,7 @@ const Article = () => {
     return (
         <div className="align-center">
             <Logo/>
+            <p>I'm right here freddie!</p>
         </div>
     );
 }

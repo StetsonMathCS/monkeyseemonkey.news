@@ -1,11 +1,15 @@
 import React from 'react';
 import Logo from '../Logo/Logo';
+import trump from '../Logo/trump.jpg';
 
 const Article = () => {
     return (
-        <div className="align-center">
+        <div className="container mx-auto bg-black">
+        <center>
             <Logo/>
-            <p>I'm right here freddie!</p>
+            <h1 className = "text-white font-mono">Your Bias-free Article Compilation: </h1>
+            <img src = {trump} alt = "Non-biased image of Trump" />
+        </center>
         </div>
     );
 }

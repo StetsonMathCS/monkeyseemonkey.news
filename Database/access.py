@@ -10,14 +10,14 @@ cnx.close()
 import datetime
 import mysql.connector
 
-cnx = mysql.connector.connect(user='monkey', database='epJiphQuitmeoneykbet')
+cnx = mysql.connector.connect(user='monkey', database='monkey')
 cursor = cnx.cursor()
 
-query = ("SELECT web_address, title, scoreFROM articles ")
+query = ("SELECT * FROM articles ")
 
-query = ("SELECT title, summary FROM summary ")
+query = ("SELECT * FROM summary ")
 
-query = ("SELECT id_article, id_summary FROM artsum ")
+query = ("SELECT *  FROM artsum ")
 
 cursor.close()
 cnx.close()

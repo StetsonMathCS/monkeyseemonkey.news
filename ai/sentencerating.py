@@ -1,7 +1,9 @@
 import spacy
 
-# Simple mockup program intended to provide a foundation for rating sentences
-# according to a sentiment value.
+#########################################
+### Sentence sentiment rating program ###
+#########################################
+
 nlp = spacy.load('en_core_web_sm')
 text = open('fox2.txt', 'r').read()
 doc = nlp(text)
@@ -22,7 +24,7 @@ for sent in sents:
     ratings.append(rating)
     pass
 
-# Print sentences
+# Print sentence text
 i = 1
 for sent in sents: 
     print("----------------")

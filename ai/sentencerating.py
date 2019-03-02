@@ -1,6 +1,8 @@
 import spacy
 
-### Below is sentence rating function from sentencerating.py ###
+#########################################
+### Sentence sentiment rating program ###
+#########################################
 
 nlp = spacy.load('en_core_web_sm')
 text = open('fox2.txt', 'r').read()

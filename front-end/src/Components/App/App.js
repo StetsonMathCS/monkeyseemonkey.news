@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SearchResults from '../SearchResults/SearchResults';
+import JsonTesting from '../JsonTesting/Test';
 import Article from '../Article/Article';
+import Article2 from '../Article/Article2';
 import Home from '../Home/Home';
 import './App.css';
 class App extends Component {
@@ -29,7 +31,7 @@ class App extends Component {
                   render={(props) => <Home {...props} search={this.state.search} onSearchChange={this.onSearchChange} />} />
           <Route  path="/searchresults/:id" 
                   component={SearchResults}/>
-          <Route path="/:id" component={Article}/>
+          <Route path="/:id" component={Article2}/> 
         </div>
       </Router>
     );

@@ -3,7 +3,9 @@ package news.monkeyseemonkey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -14,24 +16,24 @@ public class SentimentDetector
 
     private Connection db;
     private Logger logger;
+    private DateFormat dateFormat;
 
     public SentimentDetector(Connection db)
     {
         this.db = db;
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         logger = LogManager.getLogger("SentimentDetector");
     }
 
-    public boolean alreadyProcessed(String msgId)
+    public boolean alreadyProcessed(String url)
     {
         try
         {
-            String sql = "SELECT 1 FROM testing WHERE id like ?";
+            String sql = "SELECT web_address FROM db_test WHERE web_address like ?";
             PreparedStatement pstmt = db.prepareStatement(sql);
-            // append -% to like query arg because id's actually
-            // have a sentencie # attached at the end
-            pstmt.setString(1, msgId + "-%");
+            pstmt.setString(1, url + "%");
             pstmt.execute();
-            return pstmt.getResultSet().next();
+            return pstmt.getResultSet().first();
         }
         catch(SQLException e)
         {
@@ -41,36 +43,39 @@ public class SentimentDetector
     }  
     
     public void intoDB(String url, String pub, String body, 
-    				String title, List imgs)
+    				String title, String img) throws SQLException
     {
-    	/*
-         * article url as varchar(1000)
-         * publisher as varchar(1000)
-         * fetch_date as datetime
-         * body as longtext
-         * title as varchar(1000)
-         * image_address as varchar(1000)
-         */
-                
-         try
-         {
-        	 String sql = "INSERT INTO testing" 
-        			 + "(url, publisher, body, title, image)"
-                     + " VALUES(?,?,?,?,?)";
-             PreparedStatement pstmt = db.prepareStatement(sql);
-             pstmt.setString(1, url);
-             pstmt.setString(2, pub);
-             pstmt.setString(3, body);
-             pstmt.setString(4, title);
-             pstmt.setString(5, imgs.toString());
-             pstmt.executeUpdate();
-         }
-         catch (SQLException e)
-         {
-        	 logger.log(Level.ERROR, e.getMessage());
-         }
-         logger.log(Level.ERROR, url + ", " + imgs);
-         logger.log(Level.DEBUG, url + ", " + imgs);
-         logger.log(Level.INFO, url + ", " + imgs);
+    	if(!alreadyProcessed(url))
+        {
+        	System.out.println("inserting into DB");
+        	PreparedStatement pstmt = null;
+        	try
+        	{
+        		String sql = "INSERT INTO db_test" 
+        				+ "(web_address, publisher, fetch_date, body, title, image_address)"
+        				+ " VALUES(?,?,?,?,?, ?)";
+        		pstmt = db.prepareStatement(sql);
+        		pstmt.setString(1, url);
+        		pstmt.setString(2, pub);
+        		pstmt.setString(3, dateFormat.format(new Date()));
+        		pstmt.setString(4, body);
+        		pstmt.setString(5, title);
+        		pstmt.setString(6, img);
+        		pstmt.executeUpdate();
+        	}
+        	catch (SQLException e)
+        	{
+        		System.out.println("ERROR");
+        		logger.log(Level.ERROR, e.getMessage());
+        	}
+        	finally
+        	{
+        		if(pstmt != null) pstmt.close();
+        	}
+        }
+        else
+        {
+        	System.out.println("Failed insert into DB, already processed");
+        }
     }
 }

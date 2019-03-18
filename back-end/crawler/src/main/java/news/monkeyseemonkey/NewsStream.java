@@ -6,6 +6,7 @@ import com.github.kevinsawicki.http.HttpRequest;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -22,7 +23,7 @@ public class NewsStream implements Runnable
     private ArrayList<String> searchTerms;
     private SimpleDateFormat dateFormat;
     
-    private static final Logger log = LogManager.getLogger(NewsStream.class);
+//    private static final Logger log = LogManager.getLogger(NewsStream.class);
 
     public NewsStream(SentimentDetector sentimentDetector,
                       Gson gson,
@@ -41,9 +42,9 @@ public class NewsStream implements Runnable
     {
         try
         {
-            while (true)
+            while(true)
             {
-                for (String searchTerm : searchTerms)
+                for(String searchTerm : searchTerms)
                 {
                     Date todayDate = new Date();
                     String today = dateFormat.format(todayDate);
@@ -55,36 +56,50 @@ public class NewsStream implements Runnable
                             "from", today,
                             "sortBy", "popularity")
                             .accept("application/json");
-                    if (request.code() == 200) {
+                    if(request.code() == 200)
+                    {
                         String json = request.body();
                         Map<String, Object> respmap = gson.fromJson(json, Map.class);
                         ArrayList<Map<String, Object>> articles = (ArrayList<Map<String, Object>>) respmap.get("articles");
-                        for (Map<String, Object> article : articles) {
+                        for(Map<String, Object> article : articles)
+                        {
                             String url = (String) article.get("url");
-                            if(!sentimentDetector.alreadyProcessed(url)) {
-                                // fetch the page and extract the main text
-//                                logger.log(Level.INFO, "Fetching " + url);
-                            	System.out.println("Fetching " + url);
+                            if(!sentimentDetector.alreadyProcessed(url))
+                            {
+//                            	System.out.println("Fetching " + url);
 //                            	logger = LoggerFactory.getLogger(NewsStream.class);
                                 HttpRequest artRequest = HttpRequest.get(url)
-                                        .userAgent("SmartCode");
-                                if (artRequest.code() == 200) {
+                                        .userAgent("MonkeySeeMonkeyNews");
+                                if(artRequest.code() == 200)
+                                {
                                     String artHtml = artRequest.body();
                                     Article crux = ArticleExtractor.with(url, artHtml)
                                             .extractContent()
                                             .article();
                                     String body = crux.document.text();
-                                    List images = crux.images;
                                     String publisher = crux.siteName;
                                     String title = crux.title;
-                                    sentimentDetector.intoDB(url, publisher, body, title, images);
+                                    String image = crux.imageUrl;
+                                    try
+                                    {
+                                    	sentimentDetector.intoDB(url, publisher, body, title, image);
+                                    }
+                                    catch(SQLException e)
+                                    {
+                                    	System.out.println("Error");
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                System.out.println("sleeping");
                 // sleep 1 day
                 Thread.sleep(1000 * 60 * 60 * 24);
+                /*
+                // sleep 1 minute
+                Thread.sleep(1000 * 60);
+                */
             }
         }
         catch(InterruptedException e)

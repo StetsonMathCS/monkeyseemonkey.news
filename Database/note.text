@@ -1,0 +1,86 @@
+Hassan
+
+Q- How to run Solr queries in Java ?
+
+Here is an example of the code that we need to apache SolrJ Java API
+
+
+String urlString = "http://localhost:8983/solr/bigboxstore";
+HttpSolrClient solr = new HttpSolrClient.Builder(urlString).build();
+solr.setParser(new XMLResponseParser());
+Note: SolrJ uses a binary format, rather than XML, as its default response format. For compatibility with Solr, it’s required to explicitly invoke setParser() to XML as shown above. More details on this can be found here.
+
+Also,
+
+Here is an example of the code that we need to do the querying indexed documents by Field and Id
+
+
+SolrQuery query = new SolrQuery();
+query.set("q", "price:599.99");
+QueryResponse response = solr.query(query);
+ 
+SolrDocumentList docList = response.getResults();
+assertEquals(docList.getNumFound(), 1);
+ 
+for (SolrDocument doc : docList) {
+     assertEquals((String) doc.getFieldValue("id"), "123456");
+     assertEquals((Double) doc.getFieldValue("price"), (Double) 599.99);
+}
+
+A simpler option is to query by Id using getById(). which will return only one document if a match is found:
+
+SolrDocument doc = solr.getById("123456");
+assertEquals((String) doc.getFieldValue("name"), "Kenmore Dishwasher");
+assertEquals((Double) doc.getFieldValue("price"), (Double) 599.99);
+
+
+____________
+
+Q- what a "schema.xml" contains ?
+
+schema.xml is usually the first file you configure when setting up a new Solr installation.
+
+The schema declares:
+
+what kinds of fields there are
+which field should be used as the unique/primary key
+which fields are required
+how to index and search each field
+
+The XML consists of a number of parts. We'll look at these in turn:
+
+Field Types
+Fields
+Misc
+
+___________
+
+Q- what fields we need in the xml file for articles and article summaries ?
+
+In my opinion I think in pur project we will use ( string type ) and ( Text type ), for articles and article summaries. like :
+
+ <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+or 
+ <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
+
+These for types.
+
+
+And for fields, I think we need ( publisher, date, title, score, web address ). and maybe it will be something like this :
+
+   <field name="publisher" type="string" indexed="true" stored="true" required="true" />   // this is for string type.
+or 
+
+   <field name="title" type="text" indexed="true" stored="true"/>   // this is for text type.
+
+
+The all things need the fidld name and the type name :
+
+ <fields>
+<!-- Valid attributes for fields:
+     name: mandatory - the name for the field
+     type: mandatory - the name of a previously defined type from the <types> section  
+
+___________________
+
+Hassan

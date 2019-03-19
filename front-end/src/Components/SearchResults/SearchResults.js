@@ -7,15 +7,13 @@ class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: String(props.match.params.id).split("+").join(" ")
+            search: props.match.params.id.split("+").join(" ")
         };
     }
 
     render() {
         return (
             <div>
-                <p>Hello</p>
-                {/*
                 <ListItem/>
                 <ListItem/>
                 <ListItem/>
@@ -28,7 +26,6 @@ class SearchResults extends Component {
                 <ListItem/>
                 <ListItem/>
                 <ListItem/>
-                */}
             </div>
         );
     }

@@ -13,6 +13,7 @@ class SearchResults extends Component {
 
     render() {
         return (
+            <div className = "container mx-auto bg-blue-darkest" >
             <div>
                 <ListItem/>
                 <ListItem/>
@@ -26,6 +27,7 @@ class SearchResults extends Component {
                 <ListItem/>
                 <ListItem/>
                 <ListItem/>
+            </div>
             </div>
         );
     }

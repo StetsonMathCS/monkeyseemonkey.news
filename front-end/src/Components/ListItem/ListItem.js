@@ -6,9 +6,7 @@ import abc from '../Logo/abc.png';
 const ListItem = () => {
     return (
         <Link to={`/article/:genericarticle`}>
-        <div className = "container mx-auto bg-blue-darkest" >
-             <p>test</p>
-        </div>
+            <p>test</p>
         </Link>
     );
 }

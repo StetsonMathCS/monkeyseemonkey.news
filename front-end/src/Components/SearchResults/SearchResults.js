@@ -18,6 +18,8 @@ class SearchResults extends Component {
             <center>
             <Logo />
             <Search />
+            <br />
+            <h1 className = "pt-3 pb-5 text-green-lighter font-bold">Your Search Results!</h1>
             <div>
                 <ListItem/>
                 <ListItem/>

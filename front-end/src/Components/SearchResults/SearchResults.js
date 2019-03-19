@@ -7,7 +7,7 @@ class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: props.match.params.id.split("+").join(" ")
+            search: String(props.match.params.id).split("+").join(" ")
         };
     }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ListItem from '../ListItem/ListItem';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Logo from '../Logo/Logo.js';
+import Search from '../Search/Search.js'
 
 class SearchResults extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class SearchResults extends Component {
             <div className = "container mx-auto bg-blue-darkest" >
             <center>
             <Logo />
+            <Search />
             <div>
                 <ListItem/>
                 <ListItem/>

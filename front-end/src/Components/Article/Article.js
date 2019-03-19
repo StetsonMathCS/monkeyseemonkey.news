@@ -3,64 +3,48 @@ import Logo from '../Logo/Logo.js';
 import trump from '../Logo/trump.jpg';
 import abc from '../Logo/abc.png';
 import trump_wall from '../Logo/trump_wall.jpg';
+import './Article.css';
 
 
 const Article = () => {
     return (
-        <div className="container mx-auto bg-black">
+        <div className="Grid bg-blue-darkest">
         <center>
             <Logo/>
-            <h1 className = "text-green-lighter font-bold">Donald Trump Declares Border Problems a National Emergency </h1>
-            <br />
-            <br />
+            <h1 className = "text-green-lighter font-bold pb-5">Donald Trump Declares Border Problems a National Emergency </h1>
             <img src = {trump_wall} alt = "Non-biased image of Trump" width = "500" className = "rounded"/>
-            <br />
-            <br />
-            <br />
-            <h1 className = "text-green-lighter font-bold">Your Compiled Article: </h1>
-            <br />
-            <br />
-            <br />
+            <h1 className = "text-green-lighter font-bold p-5">Your Compiled Article: </h1>
             </center>
-            <ul className = "text-white font-mono font-bold pl-32 text-xl">
-                <li>
+            <ul className = "text-white font-mono font-bold padding pb-5 text-xl">
+                <li className = "py-2">
                 President Trump has declared a nationial emergency regarding the funding of the border-wall between Mexico and the 
                 United States
                 </li>
-                <br />
-                <li>
+                <li className = "py-2">
                 There are not statutes that explicitly declare what a 'National Emergency' is
                 </li>
-                <br />
-                <li>
+                <li className = "py-2">
                 To this date, there has been a total of 58 national emergencies declared since 1976
                 </li>
-                <br />
-                <li>
+                <li className = "py-2">
                 Donald Trump can now explicitly cite different pieces of the U.S Code to justify his decision to construct the wall
-                </li>
-                <br />
-                <li>
+                </li >
+                <li className = "py-2">
                 Currently, estimates predict that there is only $2,000,000,000 available to build the wall, however this number
                 could be much higher 
                 </li>
-                <br />
-                <li>
+                <li className = "py-2">
                 Trump can use a variety of different sources in the U.S. code to support his actions, including drug defense and
                 national defense
                 </li>
-                <br />
-                <li>
+                <li className = "py-2">
                 As president, Trump can declare a National Emergency any time he wants, however there will almost definitely be 
                 some legal push back
                 </li>
-                <br />
-                <li>
+                <li className = "py-2">
                 Ultimately, Donald Trump will butt heads with Congress over the timing and financing of the wall
                 </li>
-                <br />
             </ul>
-            <br />
             <center>
             <div className="max-w-md w-full lg:flex rounded">
                 <div className="flex items-stretch bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center">
@@ -86,9 +70,6 @@ const Article = () => {
                 </div>
                 </div>
         </center>
-        <br />
-        <br />
-        <br />
         </div>
     );
 }

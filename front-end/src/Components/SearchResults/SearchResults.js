@@ -14,8 +14,6 @@ class SearchResults extends Component {
     render() {
         return (
             <div>
-                <p>Hello</p>
-                {/*
                 <ListItem/>
                 <ListItem/>
                 <ListItem/>
@@ -28,7 +26,6 @@ class SearchResults extends Component {
                 <ListItem/>
                 <ListItem/>
                 <ListItem/>
-                */}
             </div>
         );
     }

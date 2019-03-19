@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const ListItem = () => {
     return (
-        <Link to={`/:genericarticle`}>
+        <Link to={`/article/:genericarticle`}>
             <div className="align-center">
                 <div class="max-w-md w-full lg:flex">
                 <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('https://tailwindcss.com/img/card-left.jpg')" title="Woman holding a mug">

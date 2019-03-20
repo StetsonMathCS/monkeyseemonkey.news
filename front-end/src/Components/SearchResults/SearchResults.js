@@ -22,7 +22,6 @@ class SearchResults extends Component {
             <h1 className = "pt-3 pb-5 text-green-lighter font-bold">Your Search Results!</h1>
             <div>
                 <ListItem/>
-                <ListItem/>
             </div>
             </center>
             </div>

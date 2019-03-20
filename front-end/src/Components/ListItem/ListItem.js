@@ -18,7 +18,6 @@ const ListItem = () => {
                     </div>
                     <div className="flex items-center w-full container mx-auto bg-blue-darkest">
                     <img className="w-10 h-10 rounded-full mr-4" src = {abc}/>
-                    
                         <div className="text-sm container mx-auto bg-blue-darkest">
                             <p className="text-black leading-none">% Reliability</p>
                             <p className="text-grey-dark">86%</p>

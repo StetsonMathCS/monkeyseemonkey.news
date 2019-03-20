@@ -23,16 +23,8 @@ class SearchResults extends Component {
             <div>
                 <ListItem/>
                 <ListItem/>
-                <ListItem/>
-                <ListItem/>
-                <ListItem/>
-                <ListItem/>
-                <ListItem/>
-                <ListItem/>
-                <ListItem/>
-                <ListItem/>
-                <ListItem/>
-                <ListItem/>
+            </div>
+            </center>
             </div>
         );
     }

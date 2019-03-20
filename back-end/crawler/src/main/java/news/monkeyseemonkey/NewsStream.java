@@ -82,6 +82,8 @@ public class NewsStream implements Runnable
                                     String image = crux.imageUrl;
                                     try
                                     {
+                                    	System.out.println("crux.siteName: " + publisher);
+                                    	System.out.println("crux.title: " + title);
                                     	sentimentDetector.intoDB(url, publisher, body, title, image);
                                     }
                                     catch(SQLException e)

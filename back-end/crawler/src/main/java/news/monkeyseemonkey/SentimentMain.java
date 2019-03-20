@@ -33,9 +33,9 @@ public class SentimentMain
         
         try
         {
-        	String url = props.getProperty("londo_url");
-        	String user = props.getProperty("londo_user");
-        	String pass = props.getProperty("londo_pass");
+        	String url = props.getProperty("delenn_url");
+        	String user = props.getProperty("delenn_user");
+        	String pass = props.getProperty("delenn_pass");
         	
         	Class.forName(DRIVER).newInstance();
 //        	System.out.println("Connecting to database...");
@@ -45,7 +45,7 @@ public class SentimentMain
         	
         	stmt = db.createStatement();
         	String createTable;
-        	createTable = "CREATE TABLE IF NOT EXISTS db_test (\n"
+        	createTable = "CREATE TABLE IF NOT EXISTS articles (\n"
         			+ "	id INT PRIMARY KEY auto_increment NOT NULL,\n"
         			+ " web_address VARCHAR(1000) NOT NULL,\n"
         			+ " publisher VARCHAR(1000) NOT NULL,\n"

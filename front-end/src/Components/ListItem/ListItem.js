@@ -38,7 +38,7 @@ const ListItem = () => {
                     <div className="flex items-center w-full container mx-auto bg-blue-darkest">
                     <h3 className = "pt-3 pb-5 text-green-lighter font-bold">SOURCES:</h3>
                         <div className="text-sm container mx-auto bg-blue-darkest">
-                            <p className="mb-2 text-white">PBS, timesunion, CNN</p>
+                            <p className="mb-2 text-white">PBS, timesunion, CNN, FOX</p>
                         </div>
                 </div>
                 </div>

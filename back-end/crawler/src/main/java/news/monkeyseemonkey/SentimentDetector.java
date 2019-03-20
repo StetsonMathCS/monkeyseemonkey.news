@@ -29,7 +29,7 @@ public class SentimentDetector
     {
         try
         {
-            String sql = "SELECT web_address FROM db_test WHERE web_address like ?";
+            String sql = "SELECT web_address FROM articles WHERE web_address like ?";
             PreparedStatement pstmt = db.prepareStatement(sql);
             pstmt.setString(1, url + "%");
             pstmt.execute();
@@ -51,7 +51,7 @@ public class SentimentDetector
         	PreparedStatement pstmt = null;
         	try
         	{
-        		String sql = "INSERT INTO db_test" 
+        		String sql = "INSERT INTO articles" 
         				+ "(web_address, publisher, fetch_date, body, title, image_address)"
         				+ " VALUES(?,?,?,?,?, ?)";
         		pstmt = db.prepareStatement(sql);

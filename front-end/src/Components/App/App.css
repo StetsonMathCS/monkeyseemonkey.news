@@ -15,4 +15,8 @@ body {
     font-family: 'Roboto Slab', serif;
     font-weight: thin;
   }
+
+  ul {
+    list-style-position: inside;
+  }
   

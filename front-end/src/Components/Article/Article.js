@@ -32,25 +32,23 @@ class Article extends Component {
     }
 
     componentWillMount() {
-        fetch('http://localhost:4567/article', {
+        let url = 'http://localhost:4567/article/' + String(this.props.match.params.id).split("+").join(" ");
+        fetch(url, {
             method: 'get',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                article: String(this.props.match.params.id).split("+").join(" ")
-            })
         })
         .then(response => response.json())
         .then(data => {
             this.setState({
-                    articlename: data.articlename,
-                    img: data.img,
-                    bullets:  data.bullets.map((bullet, index) => {
-                        return (
-                            <li key={`bullet${index}`} className="padding">
-                                {bullet}
-                            </li>
-                        );
-                    })
+                articlename: data.articlename,
+                img: data.img,
+                bullets:  data.bullets.map((bullet, index) => {
+                    return (
+                        <li key={`bullet${index}`} className="padding">
+                            {bullet}
+                        </li>
+                    );
+                })
             });
         })
     }

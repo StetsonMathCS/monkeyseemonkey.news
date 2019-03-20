@@ -51,7 +51,7 @@ class Article extends Component {
                             </li>
                         );
                     })
-                });
+            });
         })
     }
 

@@ -4,13 +4,23 @@
 }
 
 .padding{
-    padding-left: 24rem;
-    padding-right: 20rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 1366px) {
+    .padding{
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
 }
 
 @media only screen and (max-width: 800px) {
     .padding{
-        padding-left: 4rem;
+        padding-left: 1rem;
         padding-right: 1rem;
     }
 }
+

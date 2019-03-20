@@ -15,7 +15,6 @@ class SearchResults extends Component {
     render() {
         return (
             <div className = "container mx-auto bg-blue-darkest" >
-<<<<<<< HEAD
             <center>
             <Logo />
             <Search />
@@ -26,27 +25,6 @@ class SearchResults extends Component {
                 <ListItem/>
             </div>
             </center>
-=======
-                <center/>
-                <Logo />
-                <Search />
-                <br />
-                <h1 className = "pt-3 pb-5 text-green-lighter font-bold">Your Search Results!</h1>
-                <div>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                    <ListItem/>
-                </div>
->>>>>>> e7428e179275ab17915606e6a90c90366f1e3c35
             </div>
         );
     }

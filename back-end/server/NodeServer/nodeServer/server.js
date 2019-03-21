@@ -14,18 +14,16 @@ app.use(cors());
 //here is a fake article information for 
 //JSON purposes for until we connect to database
 let database = [
-    article = [
-        {
-            name: "article name",
-            date: "article date",
-            id: "article id",
-            story: {
-                bullet1: "article bullet 1",
-                bullet2: "article bullet 2",
-                bullet3: "article bullet 3"
-            }
-        }
-    ]
+    {
+    name: "article name",
+    date: "article date",
+    id: "article id",
+    story: {
+        bullet1: "article bullet 1",
+        bullet2: "article bullet 2",
+        bullet3: "article bullet 3"
+    }
+    }
 ]
 
 app.get('/', (req, res) => {
@@ -41,9 +39,14 @@ app.post('/searchresults/:id', (req, res) => {
     //respond all article names and attached dates
 })
 
-app.get('/article/:id', (req, res) => {
-    const name = req.body.name;
-    //return article with matching name
+app.post('/article', (req, res) => {
+    name = req.body.name;
+    for(let article of database){
+        if(article.name == name){
+            res.json(article);
+        }
+    }
+   res.status(400).json("There is no article with that name");
 })
 
 app.listen(4567, () => {

@@ -46,17 +46,6 @@ app.get('/article/:id', (req, res) => {
     //return article with matching name
 })
 
-/* old code
 app.listen(4567, () => {
     console.log("app is running on port 4567");
-})*/
-
-fs.readFile('./index.html', function(err, html){
-    if(err) throw err;
-
-    http.createServer(function(req, res) {
-        res.writeHeader(200, {"Content-Type": "text/html"});
-        res.write(html);
-        res.end();
-    }).listen(4567);
 })

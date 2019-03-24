@@ -8,9 +8,9 @@ import trump_wall_card from '../Logo/trump_wall_card.jpg';
 const ListItem = () => {
     return (
         <Link to={`/article/:genericarticle`}>
-            <div className="max-w-md w-full lg:flex rounded shadow-lg ">
-                <div className="flex items-stretch bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center ">
-                <img src = {trump_wall} width = "700" height = "500" className = "rounded"/>
+            <div className="max-w-md lg:flex rounded shadow-lg">
+                <div className="items-stretch bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center ">
+                <img src = {trump_wall} width = "700" height = "400" className = "rounded"/>
                 </div>
                 <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal container mx-auto bg-blue-darker">
                     <div className="mb-8 container mx-auto bg-blue-darker">
@@ -27,8 +27,8 @@ const ListItem = () => {
                     </div>
                 <br />
             <div className="max-w-md w-full lg:flex rounded overflow-hidden shadow-lg ">
-            <div className="flex items-stretch bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center ">
-            <img src = {trump_wall_card} width = "600" height = "500" className = "rounded"/>
+            <div className="items-stretch bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center ">
+            <img src = {trump_wall_card} width = "600" height = "800" className = "rounded" height = "auto"/>
             </div>
                            <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal container mx-auto bg-blue-darker">
                     <div className="mb-8 container mx-auto bg-blue-darker">

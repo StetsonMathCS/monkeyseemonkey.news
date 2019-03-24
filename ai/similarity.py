@@ -1,10 +1,6 @@
 import spacy
-import sys
-import re
 
-spacy.prefer_gpu()
-nlp = spacy.load('en_core_web_md')
-
+"""
 theFile = open("similarityTesting.txt",encoding="utf8")
 
 bigString = theFile.read(9999999)
@@ -26,3 +22,11 @@ for a in range(0,len(arr)-1):
             temp *= len(docB)/len(docA)
         if(temp > 0.92):
             print("-----------------\n\n{}\n\n{}\n{}\n".format(arr[a],arr[b],temp))
+"""
+
+def similarity( title1 , title2 ):
+	spacy.prefer_gpu()
+	nlp = spacy.load('en_core_web_md')
+	one = nlp(title1)
+	two = nlp(title2)
+	return one.similarity(two)

@@ -77,14 +77,13 @@ public class NewsStream implements Runnable
                                             .extractContent()
                                             .article();
                                     String body = crux.document.text();
-                                    String publisher = crux.siteName;
-                                    String title = crux.title;
+                                    Object publisher = ((Map<String, Object>)(article.get("source"))).get("name");
+                                    Object title = article.get("title");
                                     String image = crux.imageUrl;
+                                    Object date = article.get("publishedAt");
                                     try
                                     {
-                                    	System.out.println("crux.siteName: " + publisher);
-                                    	System.out.println("crux.title: " + title);
-                                    	sentimentDetector.intoDB(url, publisher, body, title, image);
+                                    	sentimentDetector.intoDB(url, publisher, date, body, title, image);
                                     }
                                     catch(SQLException e)
                                     {

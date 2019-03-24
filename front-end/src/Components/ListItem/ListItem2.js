@@ -10,11 +10,11 @@ const ListItem2 = () => {
         <Link to={`/article/:genericarticle`}>
             <div className="max-w-md lg:flex">
             <div className>
-            <img src = {trump_wall_card} max-height = "auto" className = "rounded-l"/>
+            <img src = {trump_wall_card} max-height = "auto" className = "rounded-l lg:border-t-1"/>
             </div>
                            <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal bg-blue-darker">
                     <div className="mb-8 container mx-auto bg-blue-darker">
-                    <div className="font-bold text-xl mb-2 text-center text-green-lighter" >Trump's border wall could impact upstate military sites</div>
+                    <div className="font-bold text-xl mb-2 text-center text-green-lighter">Trump's border wall could impact upstate military sites</div>
                     <div height = "auto">                    
                     <p className="text-white text-base">An Air Force research lab at the mothballed Griffiss Air Force Base in Oneida County is facing a $14.2...</p>
                     </div>

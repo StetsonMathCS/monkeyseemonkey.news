@@ -31,7 +31,7 @@ class Article extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let url = 'http://localhost:4567/article/' + String(this.props.match.params.id).split("+").join(" ");
         fetch(url, {
             method: 'get',

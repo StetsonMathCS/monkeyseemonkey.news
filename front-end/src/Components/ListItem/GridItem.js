@@ -8,7 +8,7 @@ import './GridItem.css'
 
 const GridItem = () => {
     return (
-        <Link to={`/article/:genericarticle`} className="grid hover:border-white bg-blue-darker border-grey-light rounded-lg ">
+        <Link to={`/article/:genericarticle`} className="grid3 hover:border-white bg-blue-darker border-grey-light rounded-lg ">
             <img src = {trump_wall} className = "gridimg rounded-l-lg"/>
             <div className="gridtext grid2">
                 <div className="font-bold text-xl mb-2 text-center text-green-lighter pt-5"> why why why why why why whywhywhy why whywhywhywhywhywhywhywhywhywhy</div>

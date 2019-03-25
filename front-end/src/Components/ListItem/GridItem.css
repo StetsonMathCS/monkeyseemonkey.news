@@ -1,0 +1,22 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 150px;
+    width: 55vw;
+}
+
+.gridimg {
+    height: 150px;
+    width: 150px;
+}
+
+.gridtext {
+    grid-column-start: 2;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-columns: 46vw;
+    justify-items: start;
+}

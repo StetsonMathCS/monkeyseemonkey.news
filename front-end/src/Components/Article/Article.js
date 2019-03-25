@@ -4,6 +4,7 @@ import trump from '../Logo/trump.jpg';
 import abc from '../Logo/abc.png';
 import trump_wall from '../Logo/trump_wall.jpg';
 import './Article.css';
+import SourceList from '../SourceList/SourceList';
 
 
 class Article extends Component {
@@ -87,6 +88,7 @@ class Article extends Component {
                     </div>
                 </div>
             </center>
+            <SourceList/>
         </div>
     );
     }

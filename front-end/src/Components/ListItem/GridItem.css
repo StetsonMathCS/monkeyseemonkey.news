@@ -1,12 +1,12 @@
-.grid3 {
+.grid {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    height: 20vh;
-    width: 50vw;
+    height: 25vh;
+    width: 60vw;
 }
 
-.griding {
-    height: 150px;
+.gridimg {
+    height: 25vh;
     width: 250px;
 }
 

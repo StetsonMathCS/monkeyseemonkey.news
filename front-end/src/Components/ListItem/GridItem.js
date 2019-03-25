@@ -8,10 +8,10 @@ import './GridItem.css'
 
 const GridItem = () => {
     return (
-        <Link to={`/article/:genericarticle`} className="grid hover:border-white bg-blue-darker">
-            <img src = {trump_wall} className = "griding rounded-l-lg"/>
+        <Link to={`/article/:genericarticle`} className="grid hover:border-white bg-blue-darker border-r border-b border-l border-t border-grey-light rounded">
+            <img src = {trump_wall} className = "gridimg rounded-l"/>
             <div className="gridtext grid2">
-                <div className="font-bold text-xl mb-2 text-center text-green-lighter pt-5"> why why why why why why whywhywhy why whywhywhywhywhywhywhywhywhywhy</div>
+                <h1 className="font-bold mb-2 text-center text-green-lighter pt-5">Donald Trump Declares Border Problems a National Emergency</h1>
                 <div className="text-grey text-base"> goodbye </div>
             </div>
             <br />

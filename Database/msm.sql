@@ -23,7 +23,8 @@ drop table if exists artsum;
 create table artsum(
 id_article int not null,
 id_summary int not null,
-relevant double null
+relevant double null,
+score double null
 );
 
 

@@ -1,13 +1,13 @@
 .grid {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    height: 150px;
-    width: 55vw;
+    height: 20vh;
+    width: 50vw;
 }
 
-.gridimg {
+.griding {
     height: 150px;
-    width: 150px;
+    width: 250px;
 }
 
 .gridtext {

@@ -20,7 +20,7 @@ class SourceList extends Component {
   render() {
     return (
       <div>
-        <h1 className = "center text-white font-bold text-xl mb-2"> Sources </h1>
+        <h1 className = "text-center text-white font-bold text-xl mb-2"> Sources </h1>
         <table className = "w-full"> 
           <tr>
             <th className = "text-white font-mono font-bold pb-5 text-xl"> Title + link </th>

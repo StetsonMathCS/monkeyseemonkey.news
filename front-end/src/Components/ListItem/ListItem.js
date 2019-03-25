@@ -8,9 +8,9 @@ import trump_wall_card from '../Logo/trump_wall_card.jpg';
 const ListItem = () => {
     return (
         <Link to={`/article/:genericarticle`}>
-            <div className="max-w-md lg:flex" width = "800">
-                <div className>
-                <img src = {trump_wall} max-height = "auto" className = "rounded-l border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light"/>
+            <div className="max-w-md lg:flex">
+                <div>
+                <img src = {trump_wall}  height = "auto" width = "auto" className = "w-full block rounded-b rounded-l border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light"/>
                 </div>
                 <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal container mx-auto bg-blue-darker">
                     <div className="mb-8 container mx-auto bg-blue-darker">
@@ -24,7 +24,7 @@ const ListItem = () => {
                 <br />
             <div className="max-w-md lg:flex">
             <div className>
-            <img src = {trump_wall_card} max-height = "auto" className = "rounded-l "/>
+            <img src = {trump_wall_card} height = "auto" width = "auto" className = "w-full block rounded-b rounded-l border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light"/>
             </div>
                            <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal bg-blue-darker">
                     <div className="mb-8 container mx-auto bg-blue-darker">

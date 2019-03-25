@@ -32,7 +32,7 @@ class Article extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         let url = 'http://localhost:4567/article/' + String(this.props.match.params.id).split("+").join(" ");
         fetch(url, {
             method: 'get',
@@ -68,25 +68,26 @@ class Article extends Component {
                 {bullets}
             </ul>
             <center>
-                <div className="max-w-md w-full lg:flex rounded">
-                    <div className="flex items-stretch bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center">
-                    <img src = {trump} width = "800" height = "500" className = "rounded"/>
+                <div className="max-w-md lg:flex">
+                    <div >
+                    <img src = {trump}  max-height = "auto" className = "rounded-l border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light"/>
                     </div>
                     <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                        <div className="mb-8">
-                            <p className="text-black font-bold text-xl mb-2">Our Closest Match!</p>
+                        <div className>
+                            
                             <p className="text-grey-darker text-base">We found an article from ABC that passes our reliability metrics! If you are 
                             looking for some reliable news, this article would be a good place to start!</p>
                         </div>
                         <div className="flex items-center w-full">
                             <img className="w-10 h-10 rounded-full mr-4" src = {abc}/>
-                            <div className="text-sm">
-                                <p className="text-black leading-none">% Reliability</p>
-                                <p className="text-grey-dark">86%</p>
-                            </div>
+                            
+                                <p className="text-black leading-none text-sm">% Reliability</p>
+                                <p className="text-grey-dark text-sm">-86%</p>
+                            
                         </div>
                     </div>
                 </div>
+                <br />
             </center>
             <SourceList/>
         </div>

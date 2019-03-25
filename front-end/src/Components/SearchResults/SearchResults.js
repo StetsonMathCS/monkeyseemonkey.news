@@ -8,9 +8,28 @@ class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: String(props.match.params.id).split("+").join(" ")
+            search: String(props.match.params.id).split("+").join(" "),
+            listItems: []
         };
     }
+
+    componentDidMount() {
+        let url = 'http://localhost:4567/article/' + this.state.search;
+        fetch(url, {
+            method: 'get',
+            headers: {'Content-Type': 'application/json'},
+        })
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                listItems:  data.listItems.map((index, title, description, image) => {
+                    return (
+                        <ListItem key={`bullet ${index}`} title = {title} description = {description} image = {image}/>
+                    );
+                })
+            });
+        })
+    }    
 
     render() {
         return (

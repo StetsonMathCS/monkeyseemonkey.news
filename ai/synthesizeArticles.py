@@ -1,8 +1,6 @@
-### TO DO ###
-# Apply Hannah's removeTheBias() function; return updated list of strings
-
 import spacy
 import mysql.connector
+# import biasRemoval
 
 summaries = []
 
@@ -17,7 +15,14 @@ textbodies = cursor.fetchall()
 
 for body in textbodies:
     temp = body
-    summary = removeTheBias(temp)
-    summaries.append[summary]
+    synthesis = removeTheBias(temp)
+    summaries.append[synthesis]
 
+# Below database insertion will likely be removed upon completion of Nick's
+# program
+add_summary = ("INSERT INTO summary "
+              "(summary)"
+              "VALUES (%s)")
 
+for body in summaries:
+    cursor.execute(add_summary, body)

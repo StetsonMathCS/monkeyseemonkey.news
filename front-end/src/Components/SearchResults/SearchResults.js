@@ -21,15 +21,11 @@ class SearchResults extends Component {
     }
     
     loadItems() {
-        let url = 'http://localhost:4567/searchresults/wt=json';
-        fetch(url, {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: {
-                query: this.state.search,
-                limit: 10,
-                start: page * 10
-            }
+        let body = "{\"query\":" + this.state.search + ",\"limit\":\"10\",\"start\":"+ this.state.page * 10;
+        fetch("http://localhost:4567/searchresults/wt=json", { 
+            body: body, 
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
+            method: "POST" 
         })
         .then(response => {
             if (response.ok) {

@@ -2,12 +2,12 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
     height: 25vh;
-    width: 60vw;
+    width: 57vw;
 }
 
 .gridimg {
-    height: 25vh;
-    width: 250px;
+    height: 24.4vh;
+    width: 380px;
 }
 
 .gridtext {

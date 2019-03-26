@@ -27,7 +27,7 @@ const ListItem = () => {
                 <br />
                 <div className="max-w-md lg:flex">
                     <div>
-                    <img src = {trump_wall_card} height = "auto" className = "rounded-l border-r border-b border-l border-grey-light lg:border-l lg:border-t lg:border-grey-light h-14"/>
+                    <img src = {trump_wall_card} className = "rounded-l border-r border-b border-l border-grey-light lg:border-l lg:border-t lg:border-grey-light h-14"/>
                     </div>
                     <div max-height = "auto" className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal bg-blue-darker">
                         <div className>

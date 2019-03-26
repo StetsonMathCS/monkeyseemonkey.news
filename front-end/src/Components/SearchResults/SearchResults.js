@@ -39,9 +39,15 @@ class SearchResults extends Component {
                 <Search />
                 <br />
                 <h1 className = "pt-3 pb-5 text-green-lighter font-bold">Your Search Results!</h1>
+                <br />
                 <div>
                     <GridItem/>
+                    <br />
+                    <br />
+                    <GridItem/>
                 </div>
+                    <br />
+                    <br />
                 </center>
             </div>
         );

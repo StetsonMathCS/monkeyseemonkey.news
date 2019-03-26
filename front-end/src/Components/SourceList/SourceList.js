@@ -9,14 +9,15 @@ class SourceList extends Component {
   
 
 
-  // title: sources                                         //
-  // make a table with columns and rows and stuff           //
-  // publisher, title, date published (and column labels)   //
+  // title: sources
+  // make a table with columns and rows and stuff
+  // publisher, title, date published (and column labels) 
   // the title will be a link to the article                
   // publisher: link to publisher as well as logo           
-  // centered, same size font as article, white font        //
+  // centered, same size font as article, white font        
   // background color change to light grey/blue             
-  // make sure is seperated for beautiful                   
+  // make sure is seperated for beautiful
+
   render() {
     return (
       <div>

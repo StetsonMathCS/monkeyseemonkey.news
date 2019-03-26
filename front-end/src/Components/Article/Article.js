@@ -68,9 +68,9 @@ class Article extends Component {
                 {bullets}
             </ul>
             <center>
-                <div className="max-w-md lg:flex">
+                <div className="max-w-md h-14 lg:flex">
                     <div >
-                    <img src = {trump}  max-height = "auto" className = "rounded-l border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light"/>
+                    <img src = {abc} className = "rounded-l border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light"/>
                     </div>
                     <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                         <div className>

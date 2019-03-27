@@ -9,7 +9,7 @@ create table articles (
     body longtext not null,
     title varchar(1000) not null,
 	image_address varchar(1000)  null,
-    score double null
+	score double null
 );
 drop table if exists summary;
 
@@ -21,19 +21,19 @@ create table summary (
 drop table if exists artsum;
 
 create table artsum(
-id_article int not null,
-id_summary int not null,
-relevant double null
+	id_article int not null,
+	id_summary int not null,
+	relevant double null
 );
 
 
-
-insert into articles (ID,web_address,publisher,fetch_date,body,title)
+insert into articles (id,web_address,publisher,publisherurl,fetch_date,body,title)
 values (1,
 
 "https://www.foxnews.com/entertainment/brad-pitt-attended-ex-wife-jennifer-anistons-50th-birthday-bash",
-"Jaclyn Hendricks",
+"Foxnews",
 '2019-02-10 12:00:00',
+"https://www.foxnews.com",
 "
 Jennifer Aniston‘s 50th birthday party included a special guest.
 
@@ -54,12 +54,13 @@ As for Aniston’ relationship with Pitt today, a source told People the actress
 
 
 
-insert into articles (ID,web_address,publisher,fetch_date,body,title)
+insert into articles (id,web_address,publisher,publisherurl,fetch_date,body,title)
 values (2,
 
 "https://www.foxnews.com/us/florida-man-arrested-for-allegedly-throwing-cookie-at-girlfriend",
-"Nicole Darrah",
+"Foxnews",
 '2019-02-25 19:00:00',
+"https://www.foxnews.com",
 "
 A Florida man was arrested for domestic battery after he reportedly threw a cookie at his girlfriend.
 
@@ -80,12 +81,13 @@ Online records from the sheriff's office indicate Smith was booked at the Pasco 
 
 
 
-insert into articles (ID,web_address,publisher,fetch_date,body,title)
+insert into articles (id,web_address,publisher,publisherurl,fetch_date,body,title)
 values (3,
 
 "https://www.foxnews.com/auto/circus-performers-crash-during-globe-of-death-motorcycle-stunt",
-"Gary Gastelu",
+"Foxnews",
 '2019-02-25 15:00:00',
+"https://www.foxnews.com",
 "
 They don’t call it the “globe of death” because it’s safe.
 Three circus performers riding motorcycles around the inside of a spherical cage were lucky to escape major injury when they crashed during a performance in Liverpool, England, on Sunday.
@@ -100,7 +102,7 @@ It was later reported that the riders were using replacement motorcycles because
 
 select * from articles;
 
-
+select id, web_address from articles;
 
 
 

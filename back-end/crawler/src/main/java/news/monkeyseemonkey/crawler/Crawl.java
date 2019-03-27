@@ -1,4 +1,4 @@
-package news.monkeyseemonkey;
+package news.monkeyseemonkey.crawler;
 
 import com.chimbori.crux.articles.Article;
 import com.chimbori.crux.articles.ArticleExtractor;
@@ -14,22 +14,20 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class NewsStream implements Runnable
+public class Crawl implements Runnable
 {
 
-    private SentimentDetector sentimentDetector;
+    private Insert inserter;
     private Gson gson;
     private String apiKey;
     private ArrayList<String> searchTerms;
     private SimpleDateFormat dateFormat;
-    
-//    private static final Logger log = LogManager.getLogger(NewsStream.class);
 
-    public NewsStream(SentimentDetector sentimentDetector,
+    public Crawl(Insert inserter,
                       Gson gson,
                       Properties props)
     {
-        this.sentimentDetector = sentimentDetector;
+        this.inserter = inserter;
         this.gson = gson;
         apiKey = props.getProperty("news_api_key");
         searchTerms = Lists.newArrayList(
@@ -38,7 +36,8 @@ public class NewsStream implements Runnable
         this.dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     }
 
-    public void run()
+    @SuppressWarnings("unchecked")
+	public void run()
     {
         try
         {
@@ -64,10 +63,8 @@ public class NewsStream implements Runnable
                         for(Map<String, Object> article : articles)
                         {
                             String url = (String) article.get("url");
-                            if(!sentimentDetector.alreadyProcessed(url))
+                            if(!inserter.alreadyProcessed(url))
                             {
-//                            	System.out.println("Fetching " + url);
-//                            	logger = LoggerFactory.getLogger(NewsStream.class);
                                 HttpRequest artRequest = HttpRequest.get(url)
                                         .userAgent("MonkeySeeMonkeyNews");
                                 if(artRequest.code() == 200)
@@ -83,7 +80,7 @@ public class NewsStream implements Runnable
                                     Object date = article.get("publishedAt");
                                     try
                                     {
-                                    	sentimentDetector.intoDB(url, publisher, date, body, title, image);
+                                    	inserter.intoDB(url, publisher, date, body, title, image);
                                     }
                                     catch(SQLException e)
                                     {

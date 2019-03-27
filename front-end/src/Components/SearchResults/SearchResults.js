@@ -3,6 +3,7 @@ import ListItem from '../ListItem/ListItem';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Logo from '../Logo/Logo.js';
 import Search from '../Search/Search.js'
+import InfiniteScroll from 'react-infinite-scroller'
 import GridItem from '../ListItem/GridItem'
 import GridItem2 from '../ListItem/GridItem2'
 class SearchResults extends Component {
@@ -43,6 +44,14 @@ class SearchResults extends Component {
     }    
 
     render() {
+
+        let items = [];
+        this.state.listItems.map((item, i) => {
+            items.push(
+                <GridItem name={item.name} description={item.description} img={item.img} key={i}/>
+            );
+        });
+
         return (
             <div className = "container mx-auto bg-blue-darkest" >
                 <center>

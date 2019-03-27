@@ -3,7 +3,9 @@ import ListItem from '../ListItem/ListItem';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Logo from '../Logo/Logo.js';
 import Search from '../Search/Search.js'
-
+import InfiniteScroll from 'react-infinite-scroller'
+import GridItem from '../ListItem/GridItem'
+import GridItem2 from '../ListItem/GridItem2'
 class SearchResults extends Component {
     constructor(props) {
         super(props);
@@ -14,24 +16,42 @@ class SearchResults extends Component {
     }
 
     componentDidMount() {
-        let url = 'http://localhost:4567/article/' + this.state.search;
-        fetch(url, {
-            method: 'get',
-            headers: {'Content-Type': 'application/json'},
+        this.loadItems();
+    }
+    
+    loadItems() {
+        let body = "{\"query\":" + this.state.search + ",\"limit\":\"10\",\"start\":"+ this.state.page * 10;
+        fetch("http://localhost:8983/solr/monkey/query?wt=json", { 
+            body: body, 
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
+            method: "POST" 
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                this.setState({ hasMore: false });
+                throw new Error('failed to fetch articles');
+            }
         })
         .then(response => response.json())
         .then(data => {
             this.setState({
-                listItems:  data.listItems.map((index, title, description, image) => {
-                    return (
-                        <ListItem key={`bullet ${index}`} title = {title} description = {description} image = {image}/>
-                    );
-                })
+                listItems:  data.listItems,
+                page: this.state.page++
             });
         })
     }    
 
     render() {
+
+        let items = [];
+        this.state.listItems.map((item, i) => {
+            items.push(
+                <GridItem name={item.name} description={item.description} img={item.img} key={i}/>
+            );
+        });
+
         return (
             <div className = "container mx-auto bg-blue-darkest" >
                 <center>
@@ -42,8 +62,7 @@ class SearchResults extends Component {
                 <br />
                 <br />
                 <div>
-                {/*
-                <InfiniteScroll
+                <InfiniteScroll>
                     pageStart={0}
                     loadMore={this.loadItems()}
                     hasMore={this.state.hasMore}
@@ -51,8 +70,6 @@ class SearchResults extends Component {
                     >
                     {items}
                 </InfiniteScroll>
-                */}
-                <GridItem2/>
                 </div>
                     <br />
                     <br />

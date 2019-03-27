@@ -4,15 +4,13 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Logo from '../Logo/Logo.js';
 import Search from '../Search/Search.js'
 import GridItem from '../ListItem/GridItem'
-import InfiniteScroll from 'react-infinite-scroller';
+import GridItem2 from '../ListItem/GridItem2'
 class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
             search: String(props.match.params.id).split("+").join(" "),
-            listItems: [],
-            hasMore: true,
-            page: 0
+            listItems: []
         };
     }
 
@@ -35,25 +33,16 @@ class SearchResults extends Component {
                 throw new Error('failed to fetch articles');
             }
         })
+        .then(response => response.json())
         .then(data => {
             this.setState({
                 listItems:  data.listItems,
                 page: this.state.page++
             });
         })
-    }
-    
+    }    
+
     render() {
-        let items = [];
-
-        this.state.listItems.map((item, i) => {
-            items.push(
-                <GridItem key={i} name={item.name} img={item.img} description={item.description}/>
-            );
-        });
-
-
-
         return (
             <div className = "container mx-auto bg-blue-darkest" >
                 <center>
@@ -61,6 +50,8 @@ class SearchResults extends Component {
                 <Search />
                 <br />
                 <h1 className = "pt-3 pb-5 text-green-lighter font-bold">Your Search Results!</h1>
+                <br />
+                <br />
                 <div>
                 <InfiniteScroll
                     pageStart={0}
@@ -71,6 +62,8 @@ class SearchResults extends Component {
                     {items}
                 </InfiniteScroll>
                 </div>
+                    <br />
+                    <br />
                 </center>
             </div>
         );

@@ -5,6 +5,7 @@ import abc from '../Logo/abc.png';
 import trump_wall from '../Logo/trump_wall.jpg';
 import './Article.css';
 import SourceList from '../SourceList/SourceList';
+import GridItem3 from '../ListItem/GridItem3'
 
 
 class Article extends Component {
@@ -68,25 +69,7 @@ class Article extends Component {
                 {bullets}
             </ul>
             <center>
-                <div className="max-w-md h-14 lg:flex">
-                    <div >
-                    <img src = {abc} className = "rounded-l border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light"/>
-                    </div>
-                    <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                        <div className>
-                            
-                            <p className="text-grey-darker text-base">We found an article from ABC that passes our reliability metrics! If you are 
-                            looking for some reliable news, this article would be a good place to start!</p>
-                        </div>
-                        <div className="flex items-center w-full">
-                            <img className="w-10 h-10 rounded-full mr-4" src = {abc}/>
-                            
-                                <p className="text-black leading-none text-sm">% Reliability</p>
-                                <p className="text-grey-dark text-sm">-86%</p>
-                            
-                        </div>
-                    </div>
-                </div>
+                <GridItem3/>
                 <br />
             </center>
             <SourceList/>

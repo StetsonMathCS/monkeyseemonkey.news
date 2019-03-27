@@ -5,7 +5,6 @@ create table articles (
     id int primary key auto_increment not null,
     web_address varchar(1000) not null,
     publisher varchar(1000) not null,
-	publisherurl varchar(1000) not null,
     fetch_date datetime not null,
     body longtext not null,
     title varchar(1000) not null,
@@ -28,7 +27,7 @@ create table artsum(
 );
 
 
-insert into articles (ID,web_address,publisher,publisherurl,fetch_date,body,title)
+insert into articles (id,web_address,publisher,publisherurl,fetch_date,body,title)
 values (1,
 
 "https://www.foxnews.com/entertainment/brad-pitt-attended-ex-wife-jennifer-anistons-50th-birthday-bash",
@@ -55,7 +54,7 @@ As for Aniston’ relationship with Pitt today, a source told People the actress
 
 
 
-insert into articles (ID,web_address,publisher,publisherurl,fetch_date,body,title)
+insert into articles (id,web_address,publisher,publisherurl,fetch_date,body,title)
 values (2,
 
 "https://www.foxnews.com/us/florida-man-arrested-for-allegedly-throwing-cookie-at-girlfriend",
@@ -82,7 +81,7 @@ Online records from the sheriff's office indicate Smith was booked at the Pasco 
 
 
 
-insert into articles (ID,web_address,publisher,publisherurl,fetch_date,body,title)
+insert into articles (id,web_address,publisher,publisherurl,fetch_date,body,title)
 values (3,
 
 "https://www.foxnews.com/auto/circus-performers-crash-during-globe-of-death-motorcycle-stunt",
@@ -103,7 +102,7 @@ It was later reported that the riders were using replacement motorcycles because
 
 select * from articles;
 
-
+select id, web_address from articles;
 
 
 

@@ -8,7 +8,7 @@ const Home = ({search, onSearchChange}) => {
     return (
        <div className = "container mx-auto bg-blue-darkest" >
             <center>
-            <div className="homegrid h-screen">
+            <div className="grid h-screen">
                 <div/>
                 <div/>
                 <div/>

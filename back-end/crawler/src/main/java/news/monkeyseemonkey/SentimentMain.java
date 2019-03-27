@@ -1,4 +1,4 @@
-package news.monkeyseemonkey.crawler;
+package news.monkeyseemonkey;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,9 +10,9 @@ import java.util.Properties;
 
 import com.google.gson.Gson;
 
-public class Main
+public class SentimentMain
 {
-//	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	
     public static void main( String[] args ) throws Exception
     {
@@ -33,16 +33,14 @@ public class Main
         
         try
         {
-        	/*
         	String url = props.getProperty("delenn_url");
         	String user = props.getProperty("delenn_user");
         	String pass = props.getProperty("delenn_pass");
         	
         	Class.forName(DRIVER).newInstance();
-        	System.out.println("Connecting to database...");
+//        	System.out.println("Connecting to database...");
         	db = DriverManager.getConnection(url, user, pass);
-        	System.out.println("Database connection established.");
-			*/
+//        	System.out.println("Database connection established.");
 
         	
         	stmt = db.createStatement();
@@ -93,10 +91,10 @@ public class Main
 
         Gson gson = new Gson();
 
-        Insert inserter = new Insert(db);
+        SentimentDetector sentimentDetector = new SentimentDetector(db);
         
-        Crawl crawler = new Crawl(inserter, gson, props);
-        Thread newsStreamThread = new Thread(crawler);
+        NewsStream newsStream = new NewsStream(sentimentDetector, gson, props);
+        Thread newsStreamThread = new Thread(newsStream);
         
         newsStreamThread.start();
         newsStreamThread.join();

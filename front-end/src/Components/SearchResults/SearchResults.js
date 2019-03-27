@@ -3,6 +3,7 @@ import ListItem from '../ListItem/ListItem';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Logo from '../Logo/Logo.js';
 import Search from '../Search/Search.js'
+import GridItem2 from '../ListItem/GridItem2'
 
 class SearchResults extends Component {
     constructor(props) {

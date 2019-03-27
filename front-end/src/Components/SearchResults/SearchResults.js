@@ -21,7 +21,7 @@ class SearchResults extends Component {
     
     loadItems() {
         let body = "{\"query\":" + this.state.search + ",\"limit\":\"10\",\"start\":"+ this.state.page * 10;
-        fetch("http://localhost:4567/searchresults/wt=json", { 
+        fetch("http://localhost:8983/solr/monkey/query?wt=json", { 
             body: body, 
             headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
             method: "POST" 

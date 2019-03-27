@@ -62,7 +62,7 @@ class SearchResults extends Component {
                 <br />
                 <br />
                 <div>
-                <InfiniteScroll
+                <InfiniteScroll>
                     pageStart={0}
                     loadMore={this.loadItems()}
                     hasMore={this.state.hasMore}

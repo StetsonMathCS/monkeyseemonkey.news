@@ -62,6 +62,7 @@ class SearchResults extends Component {
                 <br />
                 <br />
                 <div>
+                {/*
                 <InfiniteScroll>
                     pageStart={0}
                     loadMore={this.loadItems()}
@@ -69,7 +70,8 @@ class SearchResults extends Component {
                     loader={<div>Loading ...</div>}
                     >
                     {items}
-                </InfiniteScroll>
+                </InfiniteScroll>*/}
+                <GridItem2/>
                 </div>
                     <br />
                     <br />

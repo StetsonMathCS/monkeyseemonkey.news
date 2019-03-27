@@ -3,10 +3,6 @@
     grid-template-columns: 1fr;
 }
 
-.center{
-    text-align: center;
-}
-
 .table-auto{
     table-layout: auto;
 }

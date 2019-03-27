@@ -62,14 +62,7 @@ class SearchResults extends Component {
                 <br />
                 <br />
                 <div>
-                <InfiniteScroll
-                    pageStart={0}
-                    loadMore={this.loadItems()}
-                    hasMore={this.state.hasMore}
-                    loader={<div>Loading ...</div>}
-                    >
-                    {items}
-                </InfiniteScroll>
+                <GridItem2/>
                 </div>
                     <br />
                     <br />

@@ -17,7 +17,7 @@ class SearchResults extends Component {
     }
 
     componentDidMount() {
-        loadItems();
+        this.loadItems();
     }
     
     loadItems() {
@@ -38,7 +38,7 @@ class SearchResults extends Component {
         .then(data => {
             this.setState({
                 listItems:  data.listItems,
-                page: page++
+                page: this.state.page++
             });
         })
     }
@@ -64,7 +64,7 @@ class SearchResults extends Component {
                 <div>
                 <InfiniteScroll
                     pageStart={0}
-                    loadMore={loadItems()}
+                    loadMore={this.loadItems()}
                     hasMore={this.state.hasMore}
                     loader={<div>Loading ...</div>}
                     >

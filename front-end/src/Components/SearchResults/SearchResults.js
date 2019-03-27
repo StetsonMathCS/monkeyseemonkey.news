@@ -34,6 +34,7 @@ class SearchResults extends Component {
     render() {
         return (
             <div className = "container mx-auto bg-blue-darkest" >
+<<<<<<< HEAD
             <center>
             <Logo />
             <Search />
@@ -43,6 +44,21 @@ class SearchResults extends Component {
                 <ListItem/>
             </div>
             </center>
+=======
+                <center>
+                <Logo />
+                <Search />
+                <br />
+                <h1 className = "pt-3 pb-5 text-green-lighter font-bold">Your Search Results!</h1>
+                <br />
+                <br />
+                <div>
+                <GridItem2/>
+                </div>
+                    <br />
+                    <br />
+                </center>
+>>>>>>> dca74366c5c8bed5c478da5a516e517336a50914
             </div>
         );
     }

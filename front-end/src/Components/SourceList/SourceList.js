@@ -6,7 +6,6 @@ class SourceList extends Component {
   constructor(props) {
     super(props);
     }
-  
 
 
   // title: sources
@@ -24,19 +23,19 @@ class SourceList extends Component {
         <h1 className = "text-center text-white font-bold text-xl mb-2"> Sources </h1>
         <table className = "w-full"> 
           <tr>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Title + link </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Publisher + link </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Date Published </th>
+            <th> <a href="https://www.google.com/">Article 1</a> </th>
+            <th> <a href="https://www.google.com/">Publisher 1</a> </th>
+            <th> Date 1 </th>
           </tr>
           <tr>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Article 1 </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Publisher 1 </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Date 1 </th>
+            <th> <a href="https://www.google.com/">Article 2</a> </th>
+            <th> <a href="https://www.google.com/">Publisher 2</a> </th>
+            <th> Date 2 </th>
           </tr>
           <tr>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Article 2 </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Publisher 2 </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Date 2 </th>
+            <th> <a href="https://www.google.com/">Article 3</a> </th>
+            <th> <a href="https://www.google.com/">Publisher 3</a> </th>
+            <th> Date 3 </th>
           </tr>
         </table>
       </div>

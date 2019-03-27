@@ -5,7 +5,6 @@ import JsonTesting from '../JsonTesting/Test';
 import Article from '../Article/Article';
 import Article2 from '../Article/Article2';
 import Home from '../Home/Home';
-import Sources from '../Sources/Sources';
 import './App.css';
 class App extends Component {
 
@@ -30,9 +29,10 @@ class App extends Component {
         <div>
           <Route  exact path="/" 
                   render={(props) => <Home {...props} search={this.state.search} onSearchChange={this.onSearchChange} />} />
-          <Route path="/searchresults/(|:id)" component={SearchResults}/>
+          <Route  path="/searchresults/:id" component={SearchResults}/>
+          <Route path="/searchresults/" component={SearchResults}/> 
           <Route path="/article/:id" component={Article}/>
-          <Route path="/sources/:id" component={Sources}/>
+          
         </div>
       </Router>
     );

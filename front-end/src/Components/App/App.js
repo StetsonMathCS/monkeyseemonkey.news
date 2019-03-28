@@ -4,8 +4,8 @@ import SearchResults from '../SearchResults/SearchResults';
 import JsonTesting from '../JsonTesting/Test';
 import Article from '../Article/Article';
 import Article2 from '../Article/Article2';
-import Home from '../Home/Home';
 import Sources from '../Sources/Sources';
+import Home from '../Home/Home';
 import './App.css';
 class App extends Component {
 
@@ -33,6 +33,7 @@ class App extends Component {
           <Route path="/searchresults/(|:id)" component={SearchResults}/>
           <Route path="/article/:id" component={Article}/>
           <Route path="/sources/:id" component={Sources}/>
+          
         </div>
       </Router>
     );

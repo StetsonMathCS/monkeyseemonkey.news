@@ -1,4 +1,4 @@
-package news.monkeyseemonkey;
+package news.monkeyseemonkey.crawler;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,16 +11,16 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 
 
-public class SentimentDetector
+public class Insert
 {
 
     private Connection db;
     private Logger logger;
 
-    public SentimentDetector(Connection db)
+    public Insert(Connection db)
     {
         this.db = db;
-        logger = LogManager.getLogger("SentimentDetector");
+        logger = LogManager.getLogger("Insert");
     }
 
     public boolean alreadyProcessed(String url)
@@ -53,7 +53,7 @@ public class SentimentDetector
         	{
         		String sql = "INSERT INTO articles" 
         				+ "(web_address, publisher, fetch_date, body, title, image_address)"
-        				+ " VALUES(?,?,?,?,?, ?)";
+        				+ " VALUES(?,?,?,?,?,?)";
         		pstmt = db.prepareStatement(sql);
         		pstmt.setString(1, url);
         		pstmt.setObject(2, pub);

@@ -48,7 +48,7 @@ class SearchResults extends Component {
         let items = [];
         this.state.listItems.map((item, i) => {
             items.push(
-                <GridItem name={item.name} description={item.description} img={item.img} key={i}/>
+                <GridItem name={item.name} description={item.description} key={i}/>
             );
         });
 

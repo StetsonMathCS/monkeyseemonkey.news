@@ -1,0 +1,88 @@
+Query 1:
+
+summary:"europe from 2022"
+
+the result is {
+		"summaryid":"2",
+        "summary":["New cars sold in Europe from 2022 will have to be fitted with systems to limit their speed."],
+        "title":["Europe will require carmakers"],
+        "url":"https://www.cnn.com/2019/03/27/tech/europe-speed-limits-scli/index.html",
+        "score":7.0,
+        "_version_":1629177032365572096}]
+  }
+  
+Query 2:
+
+title:title
+
+the result is {
+
+{
+        "summaryid":"5",
+        "summary":["Test"],
+        "title":["Title"],
+        "url":"https://test.com",
+        "score":10.0,
+        "_version_":1629177493135032320},
+      {
+        "summaryid":"1",
+        "summary":["this is a summary"],
+        "title":["My Title"],
+        "url":"http://example.com",
+        "score":1.0,
+        "_version_":1628995247834923008}
+}
+
+Query 3:
+
+title:my title
+summary:"donald trump's"
+
+the result is 
+
+{
+        "summaryid":"3",
+        "summary":["House Democrats' attempt to override President Donald Trump's first veto failed Tuesday, leaving the president's national emergency declaration in place for now."],
+        "title":["House fails to override Trump's veto"],
+        "url":"https://www.cnbc.com/2019/03/26/house-cant-override-trump-veto-on-border-wall-emergency-declaration.html",
+        "score":6.0,
+        "_version_":1629177244858449920},
+      {
+        "summaryid":"1",
+        "summary":["this is a summary"],
+        "title":["My Title"],
+        "url":"http://example.com",
+        "score":1.0,
+        "_version_":1628995247834923008}]
+  }
+
+
+
+
+Query 4:
+
+score:[1 TO 6]
+
+the result is {
+ {
+        "summaryid":"1",
+        "summary":["this is a summary"],
+        "title":["My Title"],
+        "url":"http://example.com",
+        "score":1.0,
+        "_version_":1628995247834923008},
+      {
+        "summaryid":"3",
+        "summary":["House Democrats' attempt to override President Donald Trump's first veto failed Tuesday, leaving the president's national emergency declaration in place for now."],
+        "title":["House fails to override Trump's veto"],
+        "url":"https://www.cnbc.com/2019/03/26/house-cant-override-trump-veto-on-border-wall-emergency-declaration.html",
+        "score":6.0,
+        "_version_":1629177244858449920},
+      {
+        "summaryid":"4",
+        "summary":["This is an additional summary"],
+        "title":["Summary"],
+        "url":"https://summary.com",
+        "score":2.0,
+        "_version_":1629177359877799936}
+	

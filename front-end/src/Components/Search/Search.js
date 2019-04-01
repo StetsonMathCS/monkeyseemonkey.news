@@ -9,7 +9,7 @@ class Search extends Component {
     render() {
         return (
             <div className = "bg-blue-darkest" >
-                <center className="center">
+                <center className = "center">
                 <form className="w-full max-w-sm">
                         <div className="flex w-full items-center py-2 rounded-full bg-blue-darker">
                             <input className="appearance-none bg-transparent border-none w-full text-white text-2xl ml-3 py-1 px-2 leading-tight focus:outline-none" type="text" onChange={this.props.onSearchChange} aria-label="Full name"/>

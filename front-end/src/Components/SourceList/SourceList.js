@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Source from './Source/Source';
 import './SourceList.css';
 
 class SourceList extends Component {
@@ -7,36 +8,21 @@ class SourceList extends Component {
     super(props);
     }
   
-
-
-  // title: sources
-  // make a table with columns and rows and stuff
-  // publisher, title, date published (and column labels) 
-  // the title will be a link to the article                
-  // publisher: link to publisher as well as logo           
-  // centered, same size font as article, white font        
-  // background color change to light grey/blue             
-  // make sure is seperated for beautiful
-
   render() {
     return (
-      <div>
-        <h1 className = "text-center text-white font-bold text-xl mb-2"> Sources </h1>
-        <table className = "w-full"> 
+      <div className = "pt-5 text-white">
+        <h1 className = "text-center font-bold text-xl mb-2"> Sources </h1>
+        <table className = "w-full pb-5 text-xl"> 
+          <Source/>
           <tr>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Title + link </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Publisher + link </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Date Published </th>
+            <th> Article 1 </th>
+            <th> Publisher 1 </th>
+            <th> Date 1 </th>
           </tr>
           <tr>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Article 1 </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Publisher 1 </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Date 1 </th>
-          </tr>
-          <tr>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Article 2 </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Publisher 2 </th>
-            <th className = "text-white font-mono font-bold pb-5 text-xl"> Date 2 </th>
+            <th> Article 2 </th>
+            <th> Publisher 2 </th>
+            <th> Date 2 </th>
           </tr>
         </table>
       </div>

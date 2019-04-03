@@ -8,7 +8,7 @@ import './GridItem.css'
 
 const GridItem = (name, description) => {
     return (
-        <Link to={`/article/` + name.split(" ").join("+")} className="grid hover:border-blue bg-blue-darker border-r-2 border-b-2 border-l-2 border-t-2 border-blue-darker rounded">
+        <Link to={`/article/+` + name.split(" ").join("+")} className="grid hover:border-blue bg-blue-darker border-r-2 border-b-2 border-l-2 border-t-2 border-blue-darker rounded">
             
             <div id = "display" className="gridtext grid2">
                 <h2 id = "positioner" className="font-bold mb-2 text-center text-green-lighter pt-5">{name}</h2>

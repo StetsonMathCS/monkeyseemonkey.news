@@ -21,7 +21,7 @@ class SearchResults extends Component {
     
     loadItems() {
         let body = "{\"query\":" + this.state.search + ",\"limit\":\"10\",\"start\":"+ this.state.page * 10;
-        fetch("http://localhost:8983/solr/monkey/query?wt=json", { 
+        fetch("http://localhost:4567/searchresults/wt=json", { 
             body: body, 
             headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
             method: "POST" 
@@ -48,7 +48,7 @@ class SearchResults extends Component {
         let items = [];
         this.state.listItems.map((item, i) => {
             items.push(
-                <GridItem name={item.name} description={item.description} img={item.img} key={i}/>
+                <GridItem name={item.name} description={item.description} key={i}/>
             );
         });
 
@@ -62,16 +62,14 @@ class SearchResults extends Component {
                 <br />
                 <br />
                 <div>
-                {/*
-                <InfiniteScroll>
+                <InfiniteScroll
                     pageStart={0}
                     loadMore={this.loadItems()}
                     hasMore={this.state.hasMore}
                     loader={<div>Loading ...</div>}
                     >
                     {items}
-                </InfiniteScroll>*/}
-                <GridItem2/>
+                </InfiniteScroll>
                 </div>
                     <br />
                     <br />

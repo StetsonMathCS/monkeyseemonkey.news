@@ -30,8 +30,7 @@ class App extends Component {
         <div>
           <Route  exact path="/" 
                   render={(props) => <Home {...props} search={this.state.search} onSearchChange={this.onSearchChange} />} />
-          <Route  path="/searchresults/:id" component={SearchResults}/>
-          <Route path="/searchresults/" component={SearchResults}/> 
+          <Route path="/searchresults/:id" component={SearchResults}/>
           <Route path="/article/:id" component={Article}/>
           <Route path="/sources/:id" component={Sources}/>
         </div>

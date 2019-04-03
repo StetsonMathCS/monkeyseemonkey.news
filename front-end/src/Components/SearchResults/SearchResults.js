@@ -21,9 +21,10 @@ class SearchResults extends Component {
     
     loadItems() {
         let body = "{\"query\":" + this.state.search + ",\"limit\":\"10\",\"start\":"+ this.state.page * 10;
-        fetch("http://localhost:4567/searchresults/wt=json", { 
+        fetch(process.env.REACT_APP_URL + "/searchresults/wt=json", { 
             body: body, 
-            headers: { "Content-Type": "application/x-www-form-urlencoded" }, 
+            headers: { "Content-Type": "application/x-www-form-urlencoded",
+                        "Authoritization": "Basic" + window.btoa(unescape(encodeURIComponent(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)))}, 
             method: "POST" 
         })
         .then(response => {

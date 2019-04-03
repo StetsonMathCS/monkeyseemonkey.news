@@ -1,6 +1,6 @@
 import spacy
 import mysql.connector
-# import biasRemoval
+from ai import removebias
 
 nlp = spacy.load('en_core_web_sm')
 with open('flaggedwordslist.txt') as f:
@@ -11,6 +11,12 @@ cnx = mysql.connector.connect(user='monkey', password = 'epJiphQuitmeoneykbet',
 
 cursor = cnx.cursor()
 
+# Store article id's in artids variable
+query = ("SELECT id FROM articles")
+cursor.execute(query)
+artids = cursor.fetchall()
+
+# Store body column in articles variable
 query = ("SELECT body FROM articles")
 cursor.execute(query)
 articles = cursor.fetchall()
@@ -21,6 +27,7 @@ articles = cursor.fetchall()
 ##
 
 ## Iterate through article, removing sentences if they contain a flagged word
+## Delete later, once bias removal function becomes available
 for article in articles:
     doc = nlp(article)
     sents = list(article.sents)
@@ -34,9 +41,20 @@ for article in articles:
             pass
 
 ## Rudimentary database insertion- will likely be deleted / modified
+add_id = ("INSERT INTO summary "
+         "(id)"
+         "VALUES (%s)")
 add_summary = ("INSERT INTO summary "
-              "(article)"
+              "(summary)"
               "VALUES (%s)")
+
+for artid in artids:
+    cursor.execute(add_id, artid)
 
 for article in articles:
     cursor.execute(add_summary, article)
+
+cnx.commit()
+
+cursor.close()
+cnx.close()

@@ -1,0 +1,52 @@
+.topLogo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: end;
+}
+.gridding{
+    display:grid;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 1fr 100px 1fr 100px;
+}
+.griddingImg{
+    height: 1fr;
+    width: 1fr;
+    display: inline-block;
+}
+.articleGrid{
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    height: 1fr;
+    width: 100%;
+}
+.articleScore{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.scoreText{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: end;
+}
+.sourceScore{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+.recentArticlesText{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 5;
+}

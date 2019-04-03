@@ -10,9 +10,9 @@ create table articles (
     title varchar(1000) not null,
 	image_address varchar(1000)  null,
 	score double null,
-	summary longtext not null
+	summary longtext null
 );
-drop table if exists summary;
+
 
 
 
@@ -94,8 +94,8 @@ select id, web_address from articles;
 
 
 
-ALTER TABLE articles ADD INDEX (summary);
 ALTER TABLE articles ADD INDEX (title);
+ALTER TABLE articles ADD INDEX (publisher);
 
 SHOW INDEXES FROM articles;
 

@@ -5,14 +5,23 @@ import sourceScore from './SourceScore.png';
 import score from './Score.jpg';
 import './Sources.css';
 import '../ListItem/GridItem.css'
+import Logo from '../Logo/Logo.js'
+import Search from '../Search/Search.js'
 
 
 const Sources = () => {
 
     return (
         <div className = "bg-blue-darkest">
+                <center>
+                    <Logo />
+                    <Search />
+                </center>
             <div className = "gridding">
                     <div className = "topLogo">
+                        <h1 className = "text-center text-5xl text-green-lighter font-bold">
+                        Publisher: 
+                        </h1>
                         <img src={abc} className = "topLogo"/>
                     </div>
                     <div className = "scoreText">
@@ -25,7 +34,7 @@ const Sources = () => {
                     </div>
                     <div className = "recentArticlesText">
                     <h1 className = "text-center text-4xl text-green-lighter font-bold">
-                            Recent Articles:
+                            Recent Articles From ABC:
                     </h1>
                     </div>
             </div>

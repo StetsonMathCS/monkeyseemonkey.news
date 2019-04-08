@@ -5,7 +5,8 @@ import abc from '../Logo/abc.png';
 import trump_wall from '../Logo/trump_wall.jpg';
 import './Article.css';
 import SourceList from '../SourceList/SourceList';
-import GridItem3 from '../ListItem/GridItem3'
+import GridItem3 from '../ListItem/GridItem3';
+import ShareThis from '../ShareThis/ShareThis';
 
 
 class Article extends Component {
@@ -73,6 +74,8 @@ class Article extends Component {
                 <br />
             </center>
             <SourceList/>
+            <ShareThis/>
+            
         </div>
     );
     }

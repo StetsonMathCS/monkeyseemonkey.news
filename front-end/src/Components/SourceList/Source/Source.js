@@ -2,7 +2,6 @@ import React from 'react';
 import '../SourceList.css';
 import { totalmem } from 'os';
 
-
 const Source = ({title, publisher, date, titleLink}) => {
     return (
         <tr>

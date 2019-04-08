@@ -19,6 +19,9 @@ const Sources = () => {
                 </center>
             <div className = "gridding">
                     <div className = "topLogo">
+                        <h1 className = "text-center text-5xl text-green-lighter font-bold">
+                        Publisher: 
+                        </h1>
                         <img src={abc} className = "topLogo"/>
                     </div>
                     <div className = "scoreText">

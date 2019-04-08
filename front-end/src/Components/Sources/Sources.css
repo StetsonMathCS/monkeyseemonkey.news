@@ -1,3 +1,10 @@
+h1 {
+    padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-left: 80px;
+}
+
 .topLogo{
   display: block;
   margin-left: auto;

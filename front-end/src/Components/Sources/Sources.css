@@ -1,8 +1,10 @@
 h1 {
-    padding-top: 50px;
+  padding-top: 50px;
   padding-right: 30px;
   padding-bottom: 30px;
   padding-left: 80px;
+  position: relative;
+  right: 13px;
 }
 
 .topLogo{
@@ -15,7 +17,7 @@ h1 {
   grid-column-start: 1;
   grid-column-end: end;
   position: relative;
-  left: 10px;
+  left: 3px;
 }
 .gridding{
     display:grid;
@@ -54,7 +56,7 @@ h1 {
     grid-row-start: 3;
     grid-row-end: 4;
     position: relative;
-    left: 20px;
+    left: 10px;
 }
 .recentArticlesText{
     grid-column-start: 1;
@@ -62,3 +64,4 @@ h1 {
     grid-row-start: 4;
     grid-row-end: 5;
 }
+

@@ -58,7 +58,7 @@ public class Main
         			+ " score DOUBLE\n"
         			+ ");";
         	stmt.execute(createTable);
-        stmt.close();
+        //stmt.close();
         //db.close();
         }
         catch(SQLException se)
@@ -71,14 +71,14 @@ public class Main
         }
         finally
         {
-            try
-            {
-               if(stmt!=null) stmt.close();
-            }
-            catch(SQLException se2)
-            {
-            	//error
-            }
+            // try
+            // {
+            //    if(stmt!=null) stmt.close();
+            // }
+            // catch(SQLException se2)
+            // {
+            // 	//error
+            // }
             /*
             try
             {

@@ -25,8 +25,8 @@ const Sources = () => {
                         <img src={abc} className = "topLogo"/>
                     </div>
                     <div className = "scoreText">
-                        <h1 className = "text-center text-4xl text-green-lighter font-bold">
-                            Average Rating:
+                        <h1 className = "text-center text-3xl text-green-lighter font-bold">
+                            Average Bias Rating:
                         </h1>
                     </div>
                     <div className = "sourceScore">

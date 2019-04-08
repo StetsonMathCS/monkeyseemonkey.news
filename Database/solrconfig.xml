@@ -1385,3 +1385,35 @@
 		</lst>
  
 	</requestHandler>
+
+ <searchComponent name="suggest" class="solr.SuggestComponent">
+  <lst name="suggester">
+    <str name="name">mySuggester</str>
+    <str name="lookupImpl">FuzzyLookupFactory</str>
+    <str name="storeDir">suggester_fuzzy_dir</str>
+
+    <!-- Substitute these for the two above for another "flavor"
+      <str name="lookupImpl">AnalyzingInfixLookupFactory</str>
+      <str name=”indexPath”>suggester_infix_dir</str>
+    -->
+
+    <str name="dictionaryImpl">DocumentDictionaryFactory</str>
+    <str name="field">summary</str>
+    <str name="suggestAnalyzerFieldType">text_general</str>
+    <str name="buildOnStartup">true</str>
+    <str name="buildOnCommit">false</str>
+   </lst>
+  </searchComponent>
+
+  <requestHandler name="/suggesthandler" class="solr.SearchHandler" startup="lazy" >
+    <lst name="defaults">
+     <str name="suggest">true</str>
+     <str name="suggest.count">10</str>
+     <str name="suggest.dictionary">mySuggester</str>
+    </lst>
+    <arr name="components">
+     <str>suggest</str>
+    </arr>
+  </requestHandler>
+
+</config>

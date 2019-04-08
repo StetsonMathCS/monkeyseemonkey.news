@@ -32,12 +32,9 @@ const Sources = () => {
                     <div className = "sourceScore">
                         <img src={sourceScore} ></img>
                     </div>
-                    <div className = "recentArticlesText">
-                    <h1 className = "text-center text-4xl text-green-lighter font-bold">
-                            Recent Articles From ABC:
-                    </h1>
-                    </div>
             </div>
+            <h1 className = "text-center text-green-lighter">Recent Articles from this Publisher: </h1>
+            <br />
             <div className="articleGrid hover:border-blue bg-blue-darker border-r-2 border-b-2 border-l-2 border-t-2 border-blue-darker rounded">
             <div id = "display" className="gridtext grid2">
                 <h2 id = "positioner" className="font-bold mb-2 text-center text-green-lighter pt-5">Donald Trump Declares Border <br /> Problems a National Emergency</h2>

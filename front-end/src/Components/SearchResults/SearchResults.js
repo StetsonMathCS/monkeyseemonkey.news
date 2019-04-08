@@ -10,8 +10,9 @@ class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: String(props.match.params.id).split("+").join(" "),
-            listItems: []
+            search: String(props.match.params.id).split("+").join(" ").replace(/ /, ""),
+            listItems: [],
+            start: 0
         };
     }
 
@@ -20,12 +21,12 @@ class SearchResults extends Component {
     }
     
     loadItems() {
-        let body = "{\"query\":" + this.state.search + ",\"limit\":\"10\",\"start\":"+ this.state.page * 10;
-        fetch(process.env.REACT_APP_URL + "/searchresults/wt=json", { 
-            body: body, 
+        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
+        console.log(body);
+        fetch(body, { 
             headers: { "Content-Type": "application/x-www-form-urlencoded",
                         "Authoritization": "Basic" + window.btoa(unescape(encodeURIComponent(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)))}, 
-            method: "POST" 
+            method: "GET" 
         })
         .then(response => {
             if (response.ok) {
@@ -39,7 +40,7 @@ class SearchResults extends Component {
         .then(data => {
             this.setState({
                 listItems:  data.listItems,
-                page: this.state.page++
+                start: (this.state.start + 10)
             });
         })
     }    

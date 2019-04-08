@@ -9,22 +9,11 @@ create table articles (
     body longtext not null,
     title varchar(1000) not null,
 	image_address varchar(1000)  null,
-	score double null
+	score double null,
+	summary longtext null
 );
-drop table if exists summary;
 
-create table summary (
-	id int primary key auto_increment not null,
-    title varchar(1000) not null,
-    summary text not null
-    );
-drop table if exists artsum;
 
-create table artsum(
-	id_article int not null,
-	id_summary int not null,
-	relevant double null
-);
 
 
 insert into articles (id,web_address,publisher,fetch_date,body,title)
@@ -103,15 +92,10 @@ select id, web_address from articles;
 
 
 
-select web_address, title, summary, score 
-from articles 
-join artsum on ID_article = articles.ID
-join summary on ID_summary = summary.ID;
 
 
+ALTER TABLE articles ADD INDEX (title);
+ALTER TABLE articles ADD INDEX (publisher);
 
-ALTER TABLE artsum ADD INDEX (id_article);
-ALTER TABLE artsum ADD INDEX (id_summary);
-
-SHOW INDEXES FROM artsum;
+SHOW INDEXES FROM articles;
 

@@ -15,29 +15,51 @@ class SearchResults extends Component {
             start: 0
         };
     }
-
+/*
     componentDidMount() {
         this.loadItems();
     }
+*/
+    response (response) {
+        response = response.json();
+        this.setState({
+            start: (this.state.start + 10)
+        })
+        for(let doc of response.docs) {
+            this.state.listItems.push(doc);
+        }
+    }
+
+    load () {
+        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json&json.wrf=response";
+        let script = document.createElement('script');
+        script.src = body;
+        document.body.appendChild(script);
+    }
     
     loadItems() {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
+        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json&json.wrf=my_callback";
         console.log(body);
         fetch(body, { 
+            mode: "cors",
             headers: { "Content-Type": "application/x-www-form-urlencoded",
-                        "Authoritization": "Basic" + window.btoa(unescape(encodeURIComponent(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)))}, 
+                        "Authoritization": "Basic" + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)}, 
             method: "GET" 
         })
         .then(response => {
             if (response.ok) {
-                return response.json();
+                console.log(response);
             } else {
                 this.setState({ hasMore: false });
                 throw new Error('failed to fetch articles');
             }
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            response.json();
+        })
         .then(data => {
+            console.log(data);
             this.setState({
                 listItems:  data.listItems,
                 start: (this.state.start + 10)
@@ -66,7 +88,7 @@ class SearchResults extends Component {
                 <div>
                 <InfiniteScroll
                     pageStart={0}
-                    loadMore={this.loadItems()}
+                    loadMore={this.load()}
                     hasMore={this.state.hasMore}
                     loader={<div>Loading ...</div>}
                     >

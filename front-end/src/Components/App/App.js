@@ -6,6 +6,7 @@ import Article from '../Article/Article';
 import Article2 from '../Article/Article2';
 import Home from '../Home/Home';
 import Sources from '../Sources/Sources';
+import Stats from '../Stats/Stats';
 import './App.css';
 class App extends Component {
 
@@ -33,6 +34,7 @@ class App extends Component {
           <Route path="/searchresults/:id" component={SearchResults}/>
           <Route path="/article/:id" component={Article}/>
           <Route path="/sources/:id" component={Sources}/>
+          <Route path="/stats/:id" component={Stats}/>
         </div>
       </Router>
     );

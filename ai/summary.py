@@ -11,14 +11,12 @@ cnx = mysql.connector.connect(user='monkey', password='epJiphQuitmeoneykbet',
 
 cursor = cnx.cursor()
 
-query = (""" SELECT id , title , body FROM articles 
-    WHERE fetch_date >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
-    AND fetch_date < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY """)
+query = (""" SELECT id , body FROM articles WHERE summary = null """)
 cursor.execute(query)
 myresult = cursor.fetchall()
 
 for row in myresult:
-	summary = rb.removeTheBias(row[2])
+	summary = rb.removeTheBias(row[1])
 	query = ("UPDATE articles SET summary = '" + summary[0] + "' WHERE id = " + row[0])
 	cursor.execute(query)
 	print(cursor.fetchall())

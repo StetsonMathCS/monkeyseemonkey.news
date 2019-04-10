@@ -35,7 +35,6 @@ for article in articles:
                 pass
             pass
 
-## Rudimentary database insertion- will likely be deleted / modified
 add_summary = ("INSERT INTO articles "
               "(summary)"
               "VALUES (%s)")

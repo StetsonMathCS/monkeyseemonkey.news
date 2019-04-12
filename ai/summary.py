@@ -1,9 +1,7 @@
 import spacy
 import mysql.connector
-import similarity
-import synthesizeArticles
+
 import removebias as rb
-import similarity
 
 cnx = mysql.connector.connect(user='monkey', password='epJiphQuitmeoneykbet',
                               host='localhost',

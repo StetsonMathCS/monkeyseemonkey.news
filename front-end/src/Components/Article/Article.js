@@ -13,7 +13,7 @@ class Article extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          articlename: "Donald Trump Declares Border Problems a National Emergency",
+          title: "Donald Trump Declares Border Problems a National Emergency",
           img: trump_wall,
           bullets: [
               "President Trump has declared a nationial emergency regarding the funding of the border-wall between Mexico and the United States",
@@ -35,17 +35,18 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        let url = 'http://localhost:4567/article/' + String(this.props.match.params.id).split("+").join(" ");
+        let url = process.env.REACT_APP_URL + "solr/monkey/select?q=title%3" + encodeURIComponent(String(this.props.match.params.id).split("+").join(" ").replace(/+/, "")) + "&wt=json";
         fetch(url, {
             method: 'get',
             headers: {'Content-Type': 'application/json'},
         })
         .then(response => response.json())
-        .then(data => {
+        .then(response => response.docs[0])
+        .then(article => {
             this.setState({
-                articlename: data.articlename,
-                img: data.img,
-                bullets:  data.bullets.map((bullet, index) => {
+                title: article.title,
+                img: article.img,
+                bullets:  data.summary.split("\n").map((bullet, index) => {
                     return (
                         <li key={`bullet${index}`} className="padding">
                             {bullet}
@@ -57,12 +58,12 @@ class Article extends Component {
     }
 
     render() { 
-        let {articlename, img, bullets} = this.state;
+        let {title, img, bullets} = this.state;
         return (
         <div className="Grid bg-blue-darkest">
             <center>
                 <Logo/>
-                <h1 className = "text-green-lighter font-bold pb-5">{articlename}</h1>
+                <h1 className = "text-green-lighter font-bold pb-5">{title}</h1>
                 <img src = {img} alt = "Non-biased image of Trump" width = "500" className = "rounded"/>
                 <h1 className = "text-green-lighter font-bold p-5">Your Compiled Article: </h1>
             </center>

@@ -4,15 +4,14 @@ import trump from '../Logo/trump.jpg';
 import abc from '../Logo/abc.png';
 import trump_wall from '../Logo/trump_wall.jpg';
 import trump_wall_card from '../Logo/trump_wall_card.jpg';
-import './GridItem.css'
+import './GridItem.css';
 
-const GridItem = (name, description) => {
+const GridItem = (title, summary) => {
     return (
-        <Link to={`/article/+` + name.split(" ").join("+")} className="grid hover:border-blue bg-blue-darker border-r-2 border-b-2 border-l-2 border-t-2 border-blue-darker rounded">
-            
+        <Link to={`/article/+` + title.split(" ").join("+")} className="grid hover:border-blue bg-blue-darker border-r-2 border-b-2 border-l-2 border-t-2 border-blue-darker rounded">
             <div id = "display" className="gridtext grid2">
-                <h2 id = "positioner" className="font-bold mb-2 text-center text-green-lighter pt-5">{name}</h2>
-                <div className="text-grey text-base pt-5">{description}</div>
+                <h2 id = "positioner" className="font-bold mb-2 text-center text-green-lighter pt-5">{title}</h2>
+                <div className="text-grey text-base pt-5">{summary}</div>
             </div>
             <br />
             <br />

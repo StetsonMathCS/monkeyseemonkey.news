@@ -11,15 +11,15 @@ class SearchResults extends Component {
         super(props);
         this.state = {
             search: String(props.match.params.id).split("+").join(" ").replace(/ /, ""),
-            listItems: [],
+            articles: [],
             start: 0
         };
     }
-/*
+
     componentDidMount() {
         this.loadItems();
     }
-*/
+/*
     response (response) {
         response = response.json();
         this.setState({
@@ -36,14 +36,15 @@ class SearchResults extends Component {
         script.src = body;
         document.body.appendChild(script);
     }
+*/
     
     loadItems() {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json&json.wrf=my_callback";
+        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
         console.log(body);
         fetch(body, { 
             mode: "cors",
-            headers: { "Content-Type": "application/x-www-form-urlencoded",
-                        "Authoritization": "Basic" + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)}, 
+            headers: { "Content-Type": "application/json",
+                        "Authorization": "Basic" + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)}, 
             method: "GET" 
         })
         .then(response => {
@@ -54,14 +55,11 @@ class SearchResults extends Component {
                 throw new Error('failed to fetch articles');
             }
         })
-        .then(response => {
-            console.log(response);
-            response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            console.log(data);
+            if(data.numFound <= 10) this.setState({hasMore: false});
             this.setState({
-                listItems:  data.listItems,
+                articles:  data.docs,
                 start: (this.state.start + 10)
             });
         })
@@ -70,9 +68,9 @@ class SearchResults extends Component {
     render() {
 
         let items = [];
-        this.state.listItems.map((item, i) => {
+        this.state.articles.map((article, i) => {
             items.push(
-                <GridItem name={item.name} description={item.description} key={i}/>
+                <GridItem title={article.title} summary={article.summary} key={i}/>
             );
         });
 
@@ -88,7 +86,7 @@ class SearchResults extends Component {
                 <div>
                 <InfiniteScroll
                     pageStart={0}
-                    loadMore={this.load()}
+                    loadMore={this.loadItems()}
                     hasMore={this.state.hasMore}
                     loader={<div>Loading ...</div>}
                     >

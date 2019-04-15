@@ -11,11 +11,6 @@ cnx = mysql.connector.connect(user='monkey', password = 'epJiphQuitmeoneykbet',
 
 cursor = cnx.cursor()
 
-# Store article id's in artids variable
-query = ("SELECT id FROM articles")
-cursor.execute(query)
-artids = cursor.fetchall()
-
 # Store body column in articles variable
 query = ("SELECT body FROM articles")
 cursor.execute(query)
@@ -23,7 +18,7 @@ articles = cursor.fetchall()
 
 ## Summarize articles using bias removal program
 # for article in articles:
-#     article = removeTheBias(article)
+#     article = removeBias(article)
 ##
 
 ## Iterate through article, removing sentences if they contain a flagged word
@@ -40,16 +35,9 @@ for article in articles:
                 pass
             pass
 
-## Rudimentary database insertion- will likely be deleted / modified
-add_id = ("INSERT INTO summary "
-         "(id)"
-         "VALUES (%s)")
-add_summary = ("INSERT INTO summary "
+add_summary = ("INSERT INTO articles "
               "(summary)"
               "VALUES (%s)")
-
-for artid in artids:
-    cursor.execute(add_id, artid)
 
 for article in articles:
     cursor.execute(add_summary, article)

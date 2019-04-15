@@ -24,7 +24,7 @@ for a in range(0,len(arr)-1):
             print("-----------------\n\n{}\n\n{}\n{}\n".format(arr[a],arr[b],temp))
 """
 
-def similarity( title1 , title2 ):
+def titleSimilarity( title1 , title2 ):
 	spacy.prefer_gpu()
 	nlp = spacy.load('en_core_web_md')
 	one = nlp(title1)

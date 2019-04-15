@@ -31,10 +31,10 @@ const Home = ({search, onSearchChange}) => {
                 <br />
                 
                 <center>
-                    <p className = "text-xl text-white font-mono">Here at MSM, we believe that everybody should have free and unlimited access to reliable<br />
+                    <p className = "text-xl text-white font-mono"><b><u>Here at MSM, we believe that everybody should have free and unlimited access to reliable<br />
                         and trustworthy news sources. As part of our application model, we deploy artificial intelligence to crawl <br />
                         the web and filter out any bias that is identified in recently published news articles. We stand firmly against prejudice, <br />
-                        and our goal is to provide our users with as much accuracy as possible when keeping up to date with the news.
+                        and our goal is to provide our users with as much accuracy as possible when keeping up to date with the news.</u></b>
                     </p>
                     <br />
                     <br />
@@ -59,14 +59,14 @@ const Home = ({search, onSearchChange}) => {
                     <p className = "text-xl text-white font-mono">All objective content is compiled into an easy to read, user friendly news report</p>
                     <br />
                     <br />
-                    <h1 className = "text-xl text-green-lighter font-bold"><center>What will the Compiled Report Include?</center></h1>
+                    <h1 className = "text-xl text-green-lighter font-bold positioner"><center>What will the Compiled Report Include?</center></h1>
                     </center>
                     <br />
                     <center>
-                    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
                         <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2 text-center text-white">Dates and Times</div>
-                            <p className="text-grey-darker text-base">
+                            <div className="font-bold text-xl mb-2 text-center text-green-lighter"><b>Dates and Times</b></div>
+                            <p className="text-white text-base">
                                 Our compilation will include all relevant dates and times to ensure news accuracy
                             </p>
                         </div>
@@ -74,10 +74,10 @@ const Home = ({search, onSearchChange}) => {
                             </div>
                     </div>
                     <br />
-                    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
                         <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2 text-center text-white">Names of Relevant Individuals</div>
-                            <p className="text-grey-darker text-base">
+                            <div className="font-bold text-xl mb-2 text-center text-green-lighter">Names of Relevant Individuals</div>
+                            <p className="text-white text-base">
                                All names of relevant individuals will be kept and displayed appropriately
                             </p>
                         </div>
@@ -85,10 +85,10 @@ const Home = ({search, onSearchChange}) => {
                             </div>
                     </div>
                     <br />
-                    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
                         <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2 text-center text-white">Direct Quotations</div>
-                            <p className="text-grey-darker text-base">
+                            <div className="font-bold text-xl mb-2 text-center text-green-lighter">Direct Quotations</div>
+                            <p className="text-white text-base">
                                 Direct quotatioins from individuals and organizations will be kept, as long as they are relevant and important.
                             </p>
                         </div>
@@ -96,10 +96,10 @@ const Home = ({search, onSearchChange}) => {
                             </div>
                     </div>
                     <br />
-                    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
                         <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2 text-center text-white">Pictures</div>
-                            <p className="text-grey-darker text-base">
+                            <div className="font-bold text-xl mb-2 text-center text-green-lighter">Pictures</div>
+                            <p className="text-white text-base">
                             Most pictures will be kept, however pictures containing bias will be detected and flagged.
                             </p>
                         </div>
@@ -107,10 +107,10 @@ const Home = ({search, onSearchChange}) => {
                             </div>
                     </div>
                     <br />
-                    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
                         <div className="px-6 py-4">
-                            <div className="font-bold text-xl mb-2 text-center text-white">Facts and Statistics</div>
-                            <p className="text-grey-darker text-base">
+                            <div className="font-bold text-xl mb-2 text-center text-green-lighter">Facts and Statistics</div>
+                            <p className="text-white text-base">
                                 Of course, facts and statistics will be retained, allowing our articles to remain as objective as possible.
                             </p>
                         </div>

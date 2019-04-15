@@ -234,19 +234,18 @@ def removeTheBias(article_to_parse):
             if str(bias) == str(a):
                 articleSentencesCopy.remove(str(bias))
 
-
+    cleanedString = ""
     cleanFile = open("cleaned.txt", 'w')
     for cleaned in articleSentencesCopy:
         cleanFile.write(cleaned + "\n")
-    
-    
-    
-LANGUAGE = "english"
-SENTENCES_COUNT = 5
+        cleanedString+=(cleaned + "\n")
 
-biasFreeSummary = open("bias_free_summary.txt","w")
-if __name__ == "__main__":
-    removeTheBias('trumplies.txt')
+    return cleanedString
+
+def getSummary(cleanedString):
+    LANGUAGE = "english"
+    SENTENCES_COUNT = 5
+    summarizedString = ""
     parser = PlaintextParser.from_file("cleaned.txt", Tokenizer(LANGUAGE))
     stemmer = Stemmer(LANGUAGE)
 
@@ -255,5 +254,19 @@ if __name__ == "__main__":
 
     for sentence in summarizer(parser.document, SENTENCES_COUNT):
         biasFreeSummary.write(str(sentence) + "\n" +"\n")
-        print(sentence)
+        #print(sentence)
+        summarizedString+=(str(sentence))
+    print(summarizedString)
+    return summarizedString
+
+    
+    
+    
+
+
+biasFreeSummary = open("bias_free_summary.txt","w")
+if __name__ == "__main__":
+    cleanedString = removeTheBias("trumplies.txt")
+    getSummary(cleanedString)
+    
 

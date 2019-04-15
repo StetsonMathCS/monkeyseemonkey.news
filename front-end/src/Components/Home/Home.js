@@ -18,20 +18,23 @@ const Home = ({search, onSearchChange}) => {
                 <Logo className="object-bottom"/>
                 <Search className="" search={search} onSearchChange={onSearchChange}/>
                 <p id="about" className="text-xl pt-3 text-green-lighter font-bold"> The World's only <b>UNBIASED</b> News Source </p>
-                <p className="self-end pb-3 text-green-lighter font-bold">our mission statement below</p>
+                <p className="self-end pb-3 text-green-lighter font-bold">Our Mission Statement Below</p>
+                <br />
+                <img src = {map} height = "42" width = "30" alt = "arrow"></img>
             </div>
             <div id="about">
-                <h1 className = "text-5xl font-bold text-blue-light text-center aboutUs"><b>About Us</b></h1>
+                <h1 className = "text-5xl font-bold text-blue-light text-center positioner"><b>About Us</b></h1>
                 <br />
                 <br />
                 
-                <h1 className = "text-green-lighter font-bold"><center>Our Mission Statement</center></h1>
+                <h1 className = "text-green-lighter font-bold positioner"><center>Mission Statement</center></h1>
                 <br />
+                
                 <center>
-                    <p className = "text-xl text-white font-mono">Here at Monkeyseemonkey.news, we believe that everybody should have consistent access to reliable<br />
-                        and trustworthy news sources. As part of our software model, we deploy Artificial Intelligence to crawl <br />
-                        the web and filter out any bias that we so commonly see in our modern news sources. We have no prejudice, <br />
-                        and our goal is to provide our users with 100% accuracy in regards to their news searches.
+                    <p className = "text-xl text-white font-mono">Here at MSM, we believe that everybody should have free and unlimited access to reliable<br />
+                        and trustworthy news sources. As part of our application model, we deploy artificial intelligence to crawl <br />
+                        the web and filter out any bias that is identified in recently published news articles. We stand firmly against prejudice, <br />
+                        and our goal is to provide our users with as much accuracy as possible when keeping up to date with the news.
                     </p>
                     <br />
                     <br />

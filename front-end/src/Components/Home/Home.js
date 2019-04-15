@@ -21,7 +21,7 @@ const Home = ({search, onSearchChange}) => {
                 <p className="self-end pb-3 text-green-lighter font-bold">our mission statement below</p>
             </div>
             <div id="about">
-                <h1 className = "text-5xl font-bold text-indigo-dark">About US</h1>
+                <h1 className = "text-5xl font-bold text-blue-light text-center aboutUs"><b>About Us</b></h1>
                 <br />
                 <br />
                 

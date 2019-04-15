@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SearchResults from '../SearchResults/SearchResults';
-import JsonTesting from '../JsonTesting/Test';
 import Article from '../Article/Article';
-import Article2 from '../Article/Article2';
 import Home from '../Home/Home';
 import Sources from '../Sources/Sources';
 import Stats from '../Stats/Stats';

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo.js';
-import trump from '../Logo/trump.jpg';
-import abc from '../Logo/abc.png';
 import trump_wall from '../Logo/trump_wall.jpg';
 import './Article.css';
 import SourceList from '../SourceList/SourceList';
@@ -35,7 +33,7 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        let url = process.env.REACT_APP_URL + "solr/monkey/select?q=title%3" + encodeURIComponent(String(this.props.match.params.id).split("+").join(" ").replace(/+/, "")) + "&wt=json";
+        let url = process.env.REACT_APP_URL + "solr/monkey/select?q=title%3" + encodeURIComponent(String(this.props.match.params.id).split("+").join(" ").replace(/\+/, "")) + "&wt=json";
         fetch(url, {
             method: 'get',
             headers: {'Content-Type': 'application/json'},
@@ -46,7 +44,7 @@ class Article extends Component {
             this.setState({
                 title: article.title,
                 img: article.img,
-                bullets:  data.summary.split("\n").map((bullet, index) => {
+                bullets:  article.summary.split("\n").map((bullet, index) => {
                     return (
                         <li key={`bullet${index}`} className="padding">
                             {bullet}

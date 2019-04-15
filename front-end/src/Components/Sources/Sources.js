@@ -1,8 +1,5 @@
 import React from 'react';
 import abc from '../Logo/abc.png';
-import trump_wall from '../Logo/trump_wall.jpg';
-import sourceScore from './SourceScore.png';
-import score from './Score.jpg';
 import './Sources.css';
 import '../ListItem/GridItem.css'
 import Logo from '../Logo/Logo.js'

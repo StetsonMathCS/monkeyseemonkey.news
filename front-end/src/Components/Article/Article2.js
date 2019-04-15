@@ -4,7 +4,6 @@ import trump from '../Logo/trump.jpg';
 import abc from '../Logo/abc.png';
 import trump_wall from '../Logo/trump_wall.jpg';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-//npm install react-html-parser
 
 const Article = () => {
     var fakeData = require('../Article/fakedata.json');

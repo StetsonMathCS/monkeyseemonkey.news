@@ -32,7 +32,7 @@ const Stats = () => {
                 </h2>
                 </div>
                 <div className="articleGrid hover:border-blue bg-blue-darker border-r-2 border-b-2 border-l-2 border-t-2 border-blue-darker rounded align-middle">
-                <img src = {abc}></img>
+                <img src = {abc} alt="Oops! something didn't load properly!"> </img>
                 <div id = "display" className="gridtext grid2">
                 <h2 className = "text-right biasScore text-green-lighter font-bold">3</h2>
             </div>

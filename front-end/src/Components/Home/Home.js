@@ -17,7 +17,7 @@ const Home = ({search, onSearchChange}) => {
                 <div/>
                 <Logo className="object-bottom"/>
                 <Search className="" search={search} onSearchChange={onSearchChange}/>
-                <p id="about" className="text-xl pt-3 text-green-lighter font-bold"> The world's only Unbiased news source </p>
+                <p id="about" className="text-xl pt-3 text-green-lighter font-bold"> The World's only <b>UNBIASED</b> News Source </p>
                 <p className="self-end pb-3 text-green-lighter font-bold">our mission statement below</p>
             </div>
             <div id="about">
@@ -138,7 +138,7 @@ const Home = ({search, onSearchChange}) => {
                 <div/>
                 <Logo className="object-bottom"/>
                 <Search className="" search={search} onSearchChange={onSearchChange}/>
-                <p className="text-md pt-3 text-green-lighter font-bold"> The Worlds Only <b>Unbiased</b> News Source </p>
+                <p className="text-md pt-3 text-green-lighter font-bold"> The Worlds Only <b>UNBIASED</b> News Source </p>
                 <p className="self-end pb-3 text-green-lighter font-bold">Our Mission Statement Below</p>
             </div>
             <div id="about">

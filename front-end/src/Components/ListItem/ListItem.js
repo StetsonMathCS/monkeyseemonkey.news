@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import abc from '../Logo/abc.png';
 import trump_wall_card from '../Logo/trump_wall_card.jpg';
 
@@ -8,7 +8,7 @@ const ListItem = () => {
         <Link to={`/article/:genericarticle`}>
             <div className="max-w-md h-14 lg:flex">
                     <div >
-                    <img src = {abc} className = "rounded-l border-r border-b border-l border-grey-light lg:border-l lg:border-t lg:border-grey-light"/>
+                    <img src = {abc} className = "rounded-l border-r border-b border-l border-grey-light lg:border-l lg:border-t lg:border-grey-light" alt="Oops! something didn't load properly!"/>
                     </div>
                     <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal bg-blue-darker">
                         <div className>
@@ -25,7 +25,7 @@ const ListItem = () => {
                 <br />
                 <div className="max-w-md lg:flex">
                     <div>
-                    <img src = {trump_wall_card} className = "rounded-l border-r border-b border-l border-grey-light lg:border-l lg:border-t lg:border-grey-light h-14"/>
+                    <img src = {trump_wall_card} className = "rounded-l border-r border-b border-l border-grey-light lg:border-l lg:border-t lg:border-grey-light h-14" alt="Oops! Something didn't load properly!"/>
                     </div>
                     <div max-height = "auto" className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal bg-blue-darker">
                         <div className>

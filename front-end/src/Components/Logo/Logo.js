@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './msm3.png';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 
 const Logo = () => {
     return (

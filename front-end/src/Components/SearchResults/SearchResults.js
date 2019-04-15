@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import ListItem from '../ListItem/ListItem';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Logo from '../Logo/Logo.js';
 import Search from '../Search/Search.js'
 import InfiniteScroll from 'react-infinite-scroller'
 import GridItem from '../ListItem/GridItem'
-import GridItem2 from '../ListItem/GridItem2'
 class SearchResults extends Component {
     constructor(props) {
         super(props);
@@ -19,24 +16,6 @@ class SearchResults extends Component {
     componentDidMount() {
         this.loadItems();
     }
-/*
-    response (response) {
-        response = response.json();
-        this.setState({
-            start: (this.state.start + 10)
-        })
-        for(let doc of response.docs) {
-            this.state.listItems.push(doc);
-        }
-    }
-
-    load () {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json&json.wrf=response";
-        let script = document.createElement('script');
-        script.src = body;
-        document.body.appendChild(script);
-    }
-*/
     
     loadItems() {
         let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
@@ -67,11 +46,9 @@ class SearchResults extends Component {
 
     render() {
 
-        let items = [];
+        let items = 
         this.state.articles.map((article, i) => {
-            items.push(
-                <GridItem title={article.title} summary={article.summary} key={i}/>
-            );
+            return <GridItem title={article.title} summary={article.summary} key={i}/>
         });
 
         return (

@@ -62,7 +62,7 @@ class Article extends Component {
             <center>
                 <Logo/>
                 <h1 className = "text-green-lighter font-bold pb-5">{title}</h1>
-                <img src = {img} alt = "Non-biased image of Trump" width = "500" className = "rounded"/>
+                <img src = {img} alt = "Non-biased Trump" width = "500" className = "rounded"/>
                 <h1 className = "text-green-lighter font-bold p-5">Your Compiled Article: </h1>
             </center>
             <ul className = "text-white font-mono font-bold padding pb-5 text-xl">

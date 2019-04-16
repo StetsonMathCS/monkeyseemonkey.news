@@ -23,7 +23,7 @@ class SearchResults extends Component {
         fetch(body, { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
-                        "Authorization": "Basic" + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)}, 
+                        "Authorization": "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)}, 
             method: "GET" 
         })
         .then(response => {

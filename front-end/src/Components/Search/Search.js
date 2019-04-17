@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { finished } from 'stream';
 //import SearchLog2 from '../Search/SearchLog.json';

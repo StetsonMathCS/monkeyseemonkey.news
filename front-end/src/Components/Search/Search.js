@@ -45,7 +45,8 @@ class Search extends Component {
         
         
     }
-   
+
+
     render() {
         //console.log(;
         //var name_element = document.getElementById('test').onchange;

@@ -3,10 +3,6 @@ import Source from './Source/Source';
 import './SourceList.css';
 
 class SourceList extends Component {
-
-  constructor(props) {
-    super(props);
-    }
   
   render() {
     return (

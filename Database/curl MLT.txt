@@ -1,0 +1,10 @@
+These are some curl example using /MLT:
+
+curl -v http://localhost:8983/solr/monkey/mlt?q=summaryid:10&wt=xml&fl=publisher,title,url,summaryid,summary
+
+curl -v http://localhost:8983/solr/monkey/mlt?q=summary:*Minnesota*&wt=xml&fl=publisher,title,url
+
+curl -v http://localhost:8983/solr/monkey/mlt?q=title:woman&wt=xml&fl=publisher,title,url,summary,date
+
+
+Note: You should have at least 5 similar articles so you could have MLT results

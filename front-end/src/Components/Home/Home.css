@@ -9,3 +9,7 @@
     font-weight: Light;
     line-height: 2;
 }
+.positioner {
+    position: relative;
+    right: 24px;
+}

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import SearchResults from '../SearchResults/SearchResults';
 import Article from '../Article/Article';
 import Home from '../Home/Home';
 import Sources from '../Sources/Sources';
 import Stats from '../Stats/Stats';
+import Publisher from '../Publisher/Publisher';
 import './App.css';
 class App extends Component {
 
@@ -33,6 +34,7 @@ class App extends Component {
           <Route path="/article/:id" component={Article}/>
           <Route path="/sources/:id" component={Sources}/>
           <Route path="/stats/:id" component={Stats}/>
+          <Route path="/publisher/:id" component={Publisher}/>
         </div>
       </Router>
     );

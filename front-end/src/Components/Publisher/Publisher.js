@@ -3,7 +3,7 @@ import Logo from '../Logo/Logo.js';
 import Search from '../Search/Search.js'
 import InfiniteScroll from 'react-infinite-scroller'
 import GridItem from '../ListItem/GridItem'
-class SearchResults extends Component {
+class Publisher extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,36 +18,31 @@ class SearchResults extends Component {
     }
     
     loadItems() {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
-        let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
-        fetch("https://afternoon-scrubland-89567.herokuapp.com/solr/monkey/selectq=summary%3Atrump's&start=0&wt=json", { 
+        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=publisher%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
+        console.log(body);
+        fetch(body, { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
-                        "Authorization": authorization}, 
+                        "Authorization": "Basic" + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)}, 
             method: "GET" 
         })
-        /*.then(response => {
+        .then(response => {
             if (response.ok) {
-
+                console.log(response);
             } else {
                 this.setState({ hasMore: false });
                 throw new Error('failed to fetch articles');
             }
-        })*/
+        })
         .then(response => response.json())
-        //.then(response => console.log(response))
         .then(data => {
-            console.log(data);
-            data = data.response;
-            console.log(data);
             if(data.numFound <= 10) this.setState({hasMore: false});
             this.setState({
                 articles:  data.docs,
                 start: (this.state.start + 10)
             });
         })
-    }    
-
+    }
     render() {
 
         let items = 
@@ -81,5 +76,4 @@ class SearchResults extends Component {
         );
     }
 }
-
-export default SearchResults;
+export default Publisher;

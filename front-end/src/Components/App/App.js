@@ -16,6 +16,10 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+    document.title = "MSM"
+  }
+
   onSearchChange = (event) => {
     console.log(event);
     this.setState({

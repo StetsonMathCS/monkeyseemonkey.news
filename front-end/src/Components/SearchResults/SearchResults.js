@@ -19,23 +19,27 @@ class SearchResults extends Component {
     
     loadItems() {
         let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
-        console.log(body);
-        fetch(body, { 
+        let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
+        fetch("https://afternoon-scrubland-89567.herokuapp.com/solr/monkey/selectq=summary%3Atrump's&start=0&wt=json", { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
-                        "Authorization": "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)}, 
+                        "Authorization": authorization}, 
             method: "GET" 
         })
-        .then(response => {
+        /*.then(response => {
             if (response.ok) {
-                console.log(response);
+
             } else {
                 this.setState({ hasMore: false });
                 throw new Error('failed to fetch articles');
             }
-        })
+        })*/
         .then(response => response.json())
+        //.then(response => console.log(response))
         .then(data => {
+            console.log(data);
+            data = data.response;
+            console.log(data);
             if(data.numFound <= 10) this.setState({hasMore: false});
             this.setState({
                 articles:  data.docs,

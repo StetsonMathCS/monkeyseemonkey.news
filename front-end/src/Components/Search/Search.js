@@ -10,7 +10,7 @@ import { finished } from 'stream';
 window.onload=function(){
       
 var v;
-const fs = require('fs');
+var fs = require('browserify-fs');
     document.getElementById('test').addEventListener('change', function(event) {
         v = event.target.value;
 
@@ -32,7 +32,7 @@ const fs = require('fs');
             console.error(err);
             return;
         };
-        
+        console.log("Wrote to file");
     });
     });
   }

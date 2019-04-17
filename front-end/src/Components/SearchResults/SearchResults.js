@@ -37,9 +37,7 @@ class SearchResults extends Component {
         .then(response => response.json())
         //.then(response => console.log(response))
         .then(data => {
-            console.log(data);
             data = data.response;
-            console.log(data);
             if(data.numFound <= 10) this.setState({hasMore: false});
             this.setState({
                 articles:  data.docs,
@@ -52,6 +50,9 @@ class SearchResults extends Component {
 
         let items = 
         this.state.articles.map((article, i) => {
+            article.title = article.title + '';
+            article.summary = article.summary + '';
+            console.log(article.title);
             return <GridItem title={article.title} summary={article.summary} key={i}/>
         });
 
@@ -65,14 +66,15 @@ class SearchResults extends Component {
                 <br />
                 <br />
                 <div>
-                <InfiniteScroll
+                {/*<InfiniteScroll
                     pageStart={0}
                     loadMore={this.loadItems()}
                     hasMore={this.state.hasMore}
                     loader={<div>Loading ...</div>}
                     >
-                    {items}
-                </InfiniteScroll>
+                    <div>{items}</div>
+                </InfiniteScroll>*/}
+                {items}
                 </div>
                     <br />
                     <br />

@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { finished } from 'stream';
+//import SearchLog2 from '../Search/SearchLog.json';
+//import console = require('console');
+//import console = require('console');
+//import * as fs from 'fs';
+//
 
 //var fs = require('fs');
 window.onload=function(){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { finished } from 'stream';
 //import SearchLog2 from '../Search/SearchLog.json';
 //import console = require('console');
@@ -28,22 +28,21 @@ const fs = require('fs');
         //alert(data);
         */
        console.log(data);
-       fs.writeFile('./SearchLog.json', data, (err) => {
+       /*fs.writeFile('./SearchLog.json', data, (err) => {
         if (err) {
             console.error(err);
             return;
         };
         
     });
+    */
     });
   }
 
 
 class Search extends Component {
-    
     constructor(props) {
         super(props);
-        
         
     }
 
@@ -60,9 +59,7 @@ class Search extends Component {
                             <input className="appearance-none bg-transparent border-none w-full text-white text-2xl ml-3 py-1 px-2 leading-tight focus:outline-none" type="text" onChange={this.props.onSearchChange} aria-label="Full name" id ="test"  />
                             <Link to={`/searchresults/+${this.props.search}`}>
                                 <button className="flex-no-shrink bg-blue hover:bg-blue-dark border-blue hover:border-blue-dark text-sm border-4 text-white py-4 px-8 mr-2 rounded-full" type="button" >
-                                
                                 </button>
-                            
                             </Link>
 
                         </div>

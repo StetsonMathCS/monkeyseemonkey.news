@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   onSearchChange = (event) => {
-    console.log(event);
     this.setState({
         search: event.target.value.replace(/ /g,"+")
     });
@@ -31,10 +30,11 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="100vh bg-blue-darkest">
           <Route  exact path="/" 
                   render={(props) => <Home {...props} search={this.state.search} onSearchChange={this.onSearchChange} />} />
-          <Route path="/searchresults/:id" component={SearchResults}/>
+          <Route exact path="/searchresults/:id" 
+                  render={(props) => <SearchResults {...props} search={this.state.search} onSearchChange={this.onSearchChange} />} />
           <Route path="/article/:id" component={Article}/>
           <Route path="/sources/:id" component={Sources}/>
           <Route path="/stats/:id" component={Stats}/>

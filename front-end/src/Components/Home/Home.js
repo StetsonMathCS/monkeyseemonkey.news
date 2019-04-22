@@ -126,16 +126,17 @@ const Home = ({search, onSearchChange}) => {
                     <br />
                     <h1 className = "text-2xl text-green-lighter font-bold positioner">We also display up to date stats on our publishers!</h1>
                     </center>
+                    <br />
                 </div>
-                <img src = {abc} height = "42" width = "30" alt = "arrow"></img>
+                <img src = {abc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
                 <br />
-                <img src = {cnn} height = "42" width = "30" alt = "arrow"></img>
+                <img src = {cnn} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
                 <br />
-                <img src = {fox} height = "42" width = "30" alt = "arrow"></img>
+                <img src = {fox} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
                 <br />
-                <img src = {nbc} height = "42" width = "30" alt = "arrow"></img>
+                <img src = {nbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
                 <br />
-                <img src = {bbc} height = "42" width = "30" alt = "arrow"></img>
+                <img src = {bbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
                 </center> 
             </div>
       <MediaQuery query="(min-device-width: 1824px)">

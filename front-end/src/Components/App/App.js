@@ -16,11 +16,8 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
-    document.title = "MSM"
-  }
-
   onSearchChange = (event) => {
+    console.log(event);
     this.setState({
         search: event.target.value.replace(/ /g,"+")
     });
@@ -30,11 +27,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="100vh bg-blue-darkest">
+        <div>
           <Route  exact path="/" 
                   render={(props) => <Home {...props} search={this.state.search} onSearchChange={this.onSearchChange} />} />
-          <Route exact path="/searchresults/:id" 
-                  render={(props) => <SearchResults {...props} search={this.state.search} onSearchChange={this.onSearchChange} />} />
+          <Route path="/searchresults/:id" component={SearchResults}/>
           <Route path="/article/:id" component={Article}/>
           <Route path="/sources/:id" component={Sources}/>
           <Route path="/stats/:id" component={Stats}/>

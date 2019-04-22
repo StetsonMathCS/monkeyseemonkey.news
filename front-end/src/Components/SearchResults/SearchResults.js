@@ -13,31 +13,23 @@ class SearchResults extends Component {
         };
     }
 
-    /*componentDidMount() {
+    componentDidMount() {
         this.loadItems();
-    }*/
+    }
     
     loadItems() {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
         let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
-        fetch(body, { 
+        fetch("https://afternoon-scrubland-89567.herokuapp.com/solr/monkey/selectq=summary%3Atrump's&start=0&wt=json", { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
                         "Authorization": authorization}, 
             method: "GET" 
         })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                this.setState({
-                    hasMore: false
-                })
-                throw new Error('Failed to fetch articles from solr');
-            }
-        })
+        .then(response => response.json())
         .then(data => {
+            console.log(data);
             data = data.response;
+            console.log(data);
             if(data.numFound <= 10) this.setState({hasMore: false});
             this.setState({
                 articles:  data.docs,
@@ -50,8 +42,6 @@ class SearchResults extends Component {
 
         let items = 
         this.state.articles.map((article, i) => {
-            article.title = article.title + '';
-            article.summary = article.summary + '';
             return <GridItem title={article.title} summary={article.summary} key={i}/>
         });
 
@@ -59,8 +49,9 @@ class SearchResults extends Component {
             <div className = "container mx-auto bg-blue-darkest" >
                 <center>
                 <Logo />
-                <Search search={this.props.search} onSearchChange={this.props.onSearchChange}/>
+                <Search />
                 <br />
+                <h1 className = "pt-3 pb-5 text-green-lighter font-bold">Your Search Results!</h1>
                 <br />
                 <br />
                 <div>
@@ -70,9 +61,8 @@ class SearchResults extends Component {
                     hasMore={this.state.hasMore}
                     loader={<div>Loading ...</div>}
                     >
-                    <div>{items}</div>
+                    {items}
                 </InfiniteScroll>
-                {/*items*/}
                 </div>
                     <br />
                     <br />

@@ -4,8 +4,14 @@ import map from '../Logo/map.png'
 import Search from '../Search/Search.js'
 import './Home.css';
 import MediaQuery from 'react-responsive';
+import abc from '../Logo/abc.png';
+import cnn from '../Logo/cnn.png';
+import fox from '../Logo/fox.jpg';
+import nbc from '../Logo/nbc.png';
+import bbc from '../Logo/bbc.png';
 
 const Home = ({search, onSearchChange}) => {
+
     return (
     <div>
     <MediaQuery query="(min-device-width: 1224px)">
@@ -15,10 +21,12 @@ const Home = ({search, onSearchChange}) => {
                 <div/>
                 <div/>
                 <div/>
-                <Logo/>
-                <Search search={search} onSearchChange={onSearchChange}/>
+                <center><Logo className="object-bottom"/></center>
+                <Search className="" search={search} onSearchChange={onSearchChange}/>
                 <p id="about" className="text-xl pt-3 text-green-lighter font-bold"> The World's only <b>UNBIASED</b> News Source </p>
                 <p className="self-end pb-3 text-green-lighter font-bold">Our Mission Statement Below</p>
+                <br />
+                <center><img src = {map} height = "42" width = "30" alt = "arrow"></img></center>
             </div>
             <div id="about">
                 <h1 className = "text-5xl font-bold text-blue-light text-center positioner"><b>About Us</b></h1>
@@ -115,8 +123,20 @@ const Home = ({search, onSearchChange}) => {
                         <div className="flex flex-col flex-auto text-center px-6 py-4">
                             </div>
                     </div>
+                    <br />
+                    <h1 className = "text-2xl text-green-lighter font-bold positioner">We also display up to date stats on our publishers!</h1>
                     </center>
+                    <br />
                 </div>
+                <img src = {abc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
+                <br />
+                <img src = {cnn} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
+                <br />
+                <img src = {fox} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
+                <br />
+                <img src = {nbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
+                <br />
+                <img src = {bbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
                 </center> 
             </div>
       <MediaQuery query="(min-device-width: 1824px)">

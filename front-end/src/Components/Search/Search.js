@@ -15,10 +15,7 @@ var v;
        console.log(data);
        //fs.writeFile('./SearchLog.json', data, (err) => {
          
-        writeFileP(`${__dirname}/Search/SearchLog.json`, {
-        data
-   
-    });
+        
     });
     
   }

@@ -128,16 +128,18 @@ const Home = ({search, onSearchChange}) => {
                     </center>
                     <br />
                 </div>
+                <div className = "frontBias">
                 <h1 className = "text-xl text-green-lighter font-bold positioner"><span className = "publisher">Publisher</span> <span className = "bias">Bias Score</span></h1>
-                <img src = {abc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
+                <div className = "positionMe"><img src = {abc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">4.0</h1></div>
                 <br />
-                <img src = {cnn} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
+                <div className = "positionMe"><img src = {cnn} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">7.3</h1></div>
                 <br />
-                <img src = {fox} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
+                <div className = "positionMe"><img src = {fox} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">2.7</h1></div>
                 <br />
-                <img src = {nbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
+                <div className = "positionMe"><img src = {nbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">5.4</h1></div>
                 <br />
-                <img src = {bbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
+                <div className = "positionMe"><img src = {bbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">1.6</h1></div>
+                </div>
                 </center> 
             </div>
       <MediaQuery query="(min-device-width: 1824px)">

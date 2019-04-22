@@ -21,12 +21,10 @@ const Home = ({search, onSearchChange}) => {
                 <div/>
                 <div/>
                 <div/>
-                <center><Logo className="object-bottom"/></center>
-                <Search className="" search={search} onSearchChange={onSearchChange}/>
+                <Logo/>
+                <Search search={search} onSearchChange={onSearchChange}/>
                 <p id="about" className="text-xl pt-3 text-green-lighter font-bold"> The World's only <b>UNBIASED</b> News Source </p>
                 <p className="self-end pb-3 text-green-lighter font-bold">Our Mission Statement Below</p>
-                <br />
-                <center><img src = {map} height = "42" width = "30" alt = "arrow"></img></center>
             </div>
             <div id="about">
                 <h1 className = "text-5xl font-bold text-blue-light text-center positioner"><b>About Us</b></h1>

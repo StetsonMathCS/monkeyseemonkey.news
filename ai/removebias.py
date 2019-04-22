@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 from __future__ import division, print_function, unicode_literals
-
+import pysolr
 from sumy.parsers.html import HtmlParser
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
@@ -290,6 +290,7 @@ def getSummary(cleanedString):
 if __name__ == "__main__":
 	# cleanedString = removeTheBias(open("similarityTesting.txt").read())
 	# getSummary(cleanedString)
+	#solr = pysolr.Solr('http://localhost:8983/solr/', timeout=10)
 	cnx = mysql.connector.connect(user='monkey', password='epJiphQuitmeoneykbet',
                               host='localhost',
                               database='monkey')
@@ -309,3 +310,19 @@ if __name__ == "__main__":
 		query = ("UPDATE articles SET score = '" + cleaned[1] + "' WHERE id = " + row[0])
 		cursor.execute(query)
 		print(cursor.fetchall())
+		#Adding the summary to solr after save it in the database
+		#query = (" SELECT * FROM articles WHERE id = " + row[0] )
+		#cursor.execute(query)
+		#result = cursor.fetchall()
+		#Note that the add method has commit=True by default, so this is immediately committed
+		#solr.add([  
+		#	{
+		#		"summaryid":result[0],
+		#		"summary":[result[8]],
+		#		"title":[result[5]],
+		#		"url":result[1],
+		#		"score":result[7],
+		#		"publisher":result[2],
+		#		"date":result[3],
+		#	}
+		#])

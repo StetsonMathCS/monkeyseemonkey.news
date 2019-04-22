@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Link } from "react-router-dom";
-var fs = require('fs');
 
+//var fs = require('fs');
 window.onload=function(){
       
 var v;
@@ -13,14 +13,15 @@ var v;
         };
         let data = JSON.stringify(search);
        console.log(data);
+       /* waiting for search to be fixed
        fs.writeFile('./SearchLog.json', data, (err) => {
         if (err) {
             console.error(err);
             return;
         };  
+    });*/
     });
-    });
-  }
+} 
 
 class Search extends Component {
     

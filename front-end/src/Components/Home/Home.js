@@ -4,6 +4,11 @@ import map from '../Logo/map.png'
 import Search from '../Search/Search.js'
 import './Home.css';
 import MediaQuery from 'react-responsive';
+import abc from '../Logo/abc.png';
+import cnn from '../Logo/cnn.png';
+import fox from '../Logo/fox.jpg';
+import nbc from '../Logo/nbc.png';
+import bbc from '../Logo/bbc.png';
 
 const Home = ({search, onSearchChange}) => {
 
@@ -122,6 +127,15 @@ const Home = ({search, onSearchChange}) => {
                     <h1 className = "text-2xl text-green-lighter font-bold positioner">We also display up to date stats on our publishers!</h1>
                     </center>
                 </div>
+                <img src = {abc} height = "42" width = "30" alt = "arrow"></img>
+                <br />
+                <img src = {cnn} height = "42" width = "30" alt = "arrow"></img>
+                <br />
+                <img src = {fox} height = "42" width = "30" alt = "arrow"></img>
+                <br />
+                <img src = {nbc} height = "42" width = "30" alt = "arrow"></img>
+                <br />
+                <img src = {bbc} height = "42" width = "30" alt = "arrow"></img>
                 </center> 
             </div>
       <MediaQuery query="(min-device-width: 1824px)">

@@ -20,3 +20,11 @@
     width: 120px;
     height: 150px;
 }
+.publisher {
+    position: relative;
+    right: 120px;
+}
+.bias {
+    position: relative;
+    left: 75px;
+}

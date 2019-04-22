@@ -128,6 +128,7 @@ const Home = ({search, onSearchChange}) => {
                     </center>
                     <br />
                 </div>
+                <h1 className = "text-xl text-green-lighter font-bold positioner"><span className = "publisher">Publisher</span> <span className = "bias">Bias Score</span></h1>
                 <img src = {abc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>
                 <br />
                 <img src = {cnn} height = "42" width = "30" alt = "arrow" className = "logoStat"></img>

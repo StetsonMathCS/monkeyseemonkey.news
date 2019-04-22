@@ -290,7 +290,7 @@ def getSummary(cleanedString):
 if __name__ == "__main__":
 	# cleanedString = removeTheBias(open("similarityTesting.txt").read())
 	# getSummary(cleanedString)
-	#solr = pysolr.Solr('http://localhost:8983/solr/', timeout=10)
+	#solr = pysolr.Solr('http://solr:LiWofKemchOjEir@monkeyseemonkey.news/solr/monkey', timeout=10)
 	cnx = mysql.connector.connect(user='monkey', password='epJiphQuitmeoneykbet',
                               host='localhost',
                               database='monkey')
@@ -314,7 +314,6 @@ if __name__ == "__main__":
 		#query = (" SELECT * FROM articles WHERE id = " + row[0] )
 		#cursor.execute(query)
 		#result = cursor.fetchall()
-		#Note that the add method has commit=True by default, so this is immediately committed
 		#solr.add([  
 		#	{
 		#		"summaryid":result[0],
@@ -326,3 +325,4 @@ if __name__ == "__main__":
 		#		"date":result[3],
 		#	}
 		#])
+		#print(solr.commit())

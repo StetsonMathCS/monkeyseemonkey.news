@@ -118,6 +118,8 @@ const Home = ({search, onSearchChange}) => {
                         <div className="flex flex-col flex-auto text-center px-6 py-4">
                             </div>
                     </div>
+                    <br />
+                    <h1 className = "text-2xl text-green-lighter font-bold positioner">We also display up to date stats on our publishers!</h1>
                     </center>
                 </div>
                 </center> 

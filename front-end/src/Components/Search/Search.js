@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Link } from "react-router-dom";
-var fs = require('fs');
-const writeFileP = require("write-file-p");
+
+//var fs = require('fs');
 window.onload=function(){
       
 var v;

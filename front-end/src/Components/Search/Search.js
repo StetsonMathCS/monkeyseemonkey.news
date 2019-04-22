@@ -13,12 +13,6 @@ var v;
         };
         let data = JSON.stringify(search);
        console.log(data);
-       //fs.writeFile('./SearchLog.json', data, (err) => {
-         
-        writeFileP(`${__dirname}/Search/SearchLog.json`, {
-        data
-   
-    });
     });
     
   }

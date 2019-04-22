@@ -10,15 +10,15 @@ import { finished } from 'stream';
 
 window.onload=function(){
       
-var v;
-var fs = require('browserify-fs');
-    document.getElementById('test').addEventListener('change', function(event) {
-        v = event.target.value;
+//var v;
+//var fs = require('browserify-fs');
+//    document.getElementById('test').addEventListener('change', function(event) {
+//        v = event.target.value;
 
-        let search= {  
-            search: v
-        };
-        let data = JSON.stringify(search);
+ //       let search= {  
+//            search: v
+//        };
+//        let data = JSON.stringify(search);
         
         /*fs.writeFile('../Search/SearchLog2.json', data, finished); 
         function finished(err)
@@ -27,7 +27,7 @@ var fs = require('browserify-fs');
         }
         //alert(data);
         */
-       console.log(data);
+//       console.log(data);
        /*fs.writeFile('./SearchLog.json', data, (err) => {
         if (err) {
             console.error(err);
@@ -36,8 +36,8 @@ var fs = require('browserify-fs');
         console.log("Wrote to file");
     });
     */
-    });
-  }
+//    });
+}
 
 
 class Search extends Component {

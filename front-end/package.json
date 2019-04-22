@@ -16,7 +16,9 @@
     "react-native-responsive-screen": "^1.2.1",
     "react-responsive": "^6.1.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.8"
+    "react-scripts": "^2.1.8",
+    "write": "^1.0.3",
+    "write-file-p": "^1.0.7"
   },
   "scripts": {
     "build:css": "postcss src/tailwind.css -o src/index.css",

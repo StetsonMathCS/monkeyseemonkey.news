@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Link } from "react-router-dom";
 var fs = require('fs');
-
+const writeFileP = require("write-file-p");
 window.onload=function(){
       
 var v;
@@ -13,13 +13,14 @@ var v;
         };
         let data = JSON.stringify(search);
        console.log(data);
-       fs.writeFile('./SearchLog.json', data, (err) => {
-        if (err) {
-            console.error(err);
-            return;
-        };  
+       //fs.writeFile('./SearchLog.json', data, (err) => {
+         
+        writeFileP(`${__dirname}/Search/SearchLog.json`, {
+        data
+   
     });
     });
+    
   }
 
 class Search extends Component {

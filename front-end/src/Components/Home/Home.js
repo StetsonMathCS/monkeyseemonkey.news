@@ -6,6 +6,7 @@ import './Home.css';
 import MediaQuery from 'react-responsive';
 
 const Home = ({search, onSearchChange}) => {
+
     return (
     <div>
     <MediaQuery query="(min-device-width: 1224px)">

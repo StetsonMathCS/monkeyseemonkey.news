@@ -288,7 +288,7 @@ query = (" SELECT id , body, web_address, publisher, fetch_date, title FROM arti
 cursor.execute(query)
 myresult = cursor.fetchall()
 
-print("Articles Im about to fix : ", len(myresult))
+print("Articles Im about to remove bias from ", len(myresult) , " articles")
 
 for row in myresult:
 	cleaned = removeTheBias(row[1])

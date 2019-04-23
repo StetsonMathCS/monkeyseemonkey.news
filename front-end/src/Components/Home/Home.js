@@ -21,12 +21,10 @@ const Home = ({search, onSearchChange}) => {
                 <div/>
                 <div/>
                 <div/>
-                <center><Logo className="object-bottom"/></center>
-                <Search className="" search={search} onSearchChange={onSearchChange}/>
+                <Logo/>
+                <Search search={search} onSearchChange={onSearchChange}/>
                 <p id="about" className="text-xl pt-3 text-green-lighter font-bold"> The World's only <b>UNBIASED</b> News Source </p>
                 <p className="self-end pb-3 text-green-lighter font-bold">Our Mission Statement Below</p>
-                <br />
-                <center><img src = {map} height = "42" width = "30" alt = "arrow"></img></center>
             </div>
             <div id="about">
                 <h1 className = "text-5xl font-bold text-blue-light text-center positioner"><b>About Us</b></h1>
@@ -126,16 +124,20 @@ const Home = ({search, onSearchChange}) => {
                     <br />
                     <h1 className = "text-2xl text-green-lighter font-bold positioner">We also display up to date stats on our publishers!</h1>
                     </center>
+                    <br />
                 </div>
-                <img src = {abc} height = "42" width = "30" alt = "arrow"></img>
+                <div className = "frontBias">
+                <h1 className = "text-xl text-green-lighter font-bold positioner"><span className = "publisher">Publisher</span> <span className = "bias">Bias Score</span></h1>
+                <div className = "positionMe"><img src = {abc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">4.0</h1></div>
                 <br />
-                <img src = {cnn} height = "42" width = "30" alt = "arrow"></img>
+                <div className = "positionMe"><img src = {cnn} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">7.3</h1></div>
                 <br />
-                <img src = {fox} height = "42" width = "30" alt = "arrow"></img>
+                <div className = "positionMe"><img src = {fox} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">2.7</h1></div>
                 <br />
-                <img src = {nbc} height = "42" width = "30" alt = "arrow"></img>
+                <div className = "positionMe"><img src = {nbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">5.4</h1></div>
                 <br />
-                <img src = {bbc} height = "42" width = "30" alt = "arrow"></img>
+                <div className = "positionMe"><img src = {bbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">1.6</h1></div>
+                </div>
                 </center> 
             </div>
       <MediaQuery query="(min-device-width: 1824px)">

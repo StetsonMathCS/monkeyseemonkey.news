@@ -276,7 +276,6 @@ def getSummary(cleanedString, sentenceCount, sumNum ):
 	#print(summarizedString)
 	return summarizedString
 
-
 cnx = mysql.connector.connect(user='monkey', password='epJiphQuitmeoneykbet',
 							  host='localhost',
 							  database='monkey')

@@ -4,7 +4,9 @@ import pysolr
 from sumy.parsers.html import HtmlParser
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
-from sumy.summarizers.lsa import LsaSummarizer as Summarizer
+from sumy.summarizers.lsa import LsaSummarizer as Summarizer1
+from sumy.summarizers.luhn import LuhnSummarizer as Summarizer2
+from sumy.summarizers.edmundson import EdmundsonSummarizer as Summarizer3
 from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words
 import spacy
@@ -20,7 +22,7 @@ def removeTheBias(article_to_parse):
 	nlp = spacy.load('en_core_web_sm')
 	#op = open(article_to_parse, 'r').read()
 	article = nlp(article_to_parse)
-	totalSentences = len(article.sents)
+	totalSentences = len(list(article.sents))
 
 	r1 = range(10, 20)
 	r2 = range(20, 30)
@@ -42,9 +44,9 @@ def removeTheBias(article_to_parse):
 	with open('flaggedwordslist.txt', 'r') as flaggedFindNum:
 		for line in flaggedFindNum:
 			word, number = line.split()
-			wordValues[word] = number
 			word = word.lower()
 			number = float(number)
+			wordValues[word] = number
 			number = number * 10
 			if float(number) in r1:
 				extraneous.append(word)
@@ -223,22 +225,8 @@ def removeTheBias(article_to_parse):
 	vp_sentences = list(OrderedDict.fromkeys(vp_sentences))
 
 
-	articleFile = open("trumplies.txt", "r").read()
-	art = nlp(articleFile)
-
-	artSentArray = []
-
-	for s in art.sents:
-		str(s).strip()
-		artSentArray.append(str(s))
-
-	artSentArray = list(OrderedDict.fromkeys(artSentArray))
-
-	articleSentencesCopy = []
+	articleSentencesCopy = articleArray.copy()
 	conglomerate = []
-
-	for st in artSentArray:
-		articleSentencesCopy.append(st)
 
 	# for ab in ex_sentences:
 	#     conglomerate.append(ab)
@@ -266,63 +254,75 @@ def removeTheBias(article_to_parse):
 		cleanFile.write(cleaned + "\n")
 		cleanedString+=(cleaned + "\n")
 
-	return (cleanedString, rating / totalSentences)
+	return (cleanedString, rating / (totalSentences * 8) )
 
-def getSummary(cleanedString):
+
+def getSummary(cleanedString, sentenceCount, sumNum ):
 	LANGUAGE = "english"
-	SENTENCES_COUNT = 5
 	summarizedString = ""
-	parser = PlaintextParser.from_file("cleaned.txt", Tokenizer(LANGUAGE))
+	parser = PlaintextParser.from_string(cleanedString, Tokenizer(LANGUAGE))
 	stemmer = Stemmer(LANGUAGE)
 
-	summarizer = Summarizer(stemmer)
+	summarizer = Summarizer1(stemmer)
+	if(sumNum == 2): summarizer = Sumarizer2(stemmer)
+	if(sumNum == 3): summarizer = Sumarizer3(stemmer)
+
 	summarizer.stop_words = get_stop_words(LANGUAGE)
 
-	for sentence in summarizer(parser.document, SENTENCES_COUNT):
+	for sentence in summarizer(parser.document, sentenceCount):
 		# biasFreeSummary.write(str(sentence) + "\n" +"\n")
 		# print(sentence)
-		summarizedString+=(str(sentence))
-	print(summarizedString)
+		summarizedString += (str(sentence))
+	#print(summarizedString)
 	return summarizedString
 
 
-#biasFreeSummary = open("bias_free_summary.txt","w")
-if __name__ == "__main__":
-	# cleanedString = removeTheBias(open("similarityTesting.txt").read())
-	# getSummary(cleanedString)
-	#solr = pysolr.Solr('http://localhost:8983/solr/', timeout=10)
-	cnx = mysql.connector.connect(user='monkey', password='epJiphQuitmeoneykbet',
-                              host='localhost',
-                              database='monkey')
+cnx = mysql.connector.connect(user='monkey', password='epJiphQuitmeoneykbet',
+							  host='localhost',
+							  database='monkey')
 
-	cursor = cnx.cursor()
+solr = pysolr.Solr('http://localhost:8983/solr/', timeout=10)
 
-	query = (" SELECT id , body FROM articles WHERE summary = null ")
+cursor = cnx.cursor()
+
+query = (" SELECT id , body, web_address, publisher, fetch_date, title FROM articles WHERE summary IS NULL ")
+cursor.execute(query)
+myresult = cursor.fetchall()
+
+print("Articles Im about to fix : ", len(myresult))
+
+for row in myresult:
+	cleaned = removeTheBias(row[1])
+	summary = getSummary(cleaned[0], 5, 2)
+
+	# for debugging
+	print(summary)
+	print("Score : ", cleaned[1])
+
+	# UN-comment following lines when you want this to save to the database for sure
+	query = ("UPDATE articles SET summary = '" + summary + "' WHERE id = " + str(row[0]))
 	cursor.execute(query)
-	myresult = cursor.fetchall()
+	cnx.commit()
+	#print(cursor.fetchall())
+	query = ("UPDATE articles SET score = '" + str(cleaned[1]) + "' WHERE id = " + str(row[0]))
+	cursor.execute(query)
+	cnx.commit()
+	#print(cursor.fetchall())
 
-	for row in myresult:
-		cleaned = removeTheBias(row[1])
-		summary = getSummary(cleaned[0])
-		query = ("UPDATE articles SET summary = '" + summary + "' WHERE id = " + row[0])
-		cursor.execute(query)
-		print(cursor.fetchall())
-		query = ("UPDATE articles SET score = '" + cleaned[1] + "' WHERE id = " + row[0])
-		cursor.execute(query)
-		print(cursor.fetchall())
-		#Adding the summary to solr after save it in the database
-		#query = (" SELECT * FROM articles WHERE id = " + row[0] )
-		#cursor.execute(query)
-		#result = cursor.fetchall()
-		#Note that the add method has commit=True by default, so this is immediately committed
-		#solr.add([  
-		#	{
-		#		"summaryid":result[0],
-		#		"summary":[result[8]],
-		#		"title":[result[5]],
-		#		"url":result[1],
-		#		"score":result[7],
-		#		"publisher":result[2],
-		#		"date":result[3],
-		#	}
-		#])
+	# Adding the summary to solr after save it in the database
+	#query = (" SELECT id, web_address, publisher, fetch_date, title, score, summary  FROM articles WHERE id = " + str(row[0]))
+	#cursor.execute(query)
+	#result = cursor.fetchall()
+
+	# Note that the add method has commit=True by default, so this is immediately committed
+	solr.add([
+		{
+			"summaryid":row[0],
+			"summary":	summary,
+			"title":	row[5],
+			"url":		row[1],
+			"score":	cleaned[1],
+			"publisher":row[3],
+			"date":		row[4],
+		},
+	])

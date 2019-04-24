@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo.js';
 import trump_wall from '../Logo/trump_wall.jpg';
-import './Article.css';
+import './Article.css'
 import SourceList from '../SourceList/SourceList';
 import GridItem3 from '../ListItem/GridItem3';
 import ShareThis from '../ShareThis/ShareThis';
@@ -12,7 +12,6 @@ class Article extends Component {
         super(props);
         this.state = {
           title: "Donald Trump Declares Border Problems a National Emergency",
-          img: trump_wall,
           bullets: [
               "President Trump has declared a nationial emergency regarding the funding of the border-wall between Mexico and the United States",
               "There are not statutes that explicitly declare what a 'National Emergency' is",
@@ -33,6 +32,7 @@ class Article extends Component {
     }
 
     componentDidMount() {
+        console.log(String(this.props.match.params.id).split("+").join(" ").replace(/ /, ""));
         let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=title%3A" + encodeURIComponent(String(this.props.match.params.id).split("+").join(" ").replace(/ /, "")) + "&wt=json";
         let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
         fetch(body, { 
@@ -49,7 +49,12 @@ class Article extends Component {
             }
         })
         .then(data => {
-                data = data.response.docs[0];
+                for(const article of data.response.docs) {
+                    if(article.title[0] === String(this.props.match.params.id).split("+").join(" ").replace(/ /, "")) {
+                        data = article;
+                        break;
+                    }
+                }
                 data.summary = data.summary[0].split(".");
                 data.summary.pop();
                 this.setState({
@@ -68,23 +73,22 @@ class Article extends Component {
     render() { 
         let {title, img, bullets} = this.state;
         return (
-        <div className="Grid bg-blue-darkest">
             <center>
-                <Logo/>
-                <h1 className = "text-green-lighter font-bold pb-5">{title}</h1>
-                <img src = {img} alt = "Non-biased Trump" width = "500" className = "rounded"/>
-                <h1 className = "text-green-lighter font-bold p-5">Your Compiled Article: </h1>
+                <div className="grid bg-blue-darkest">
+                    <center>
+                        <Logo/>
+                        <h1 className = "text-green-lighter font-bold pb-5">{title}</h1>
+                    </center>
+                    <ul className = "text-white font-mono font-bold pb-5 text-xl">
+                        {bullets}
+                    </ul>
+                    <center>
+                        <br />
+                    </center>
+                    <SourceList/>
+                    <ShareThis/>
+                </div>
             </center>
-            <ul className = "text-white font-mono font-bold padding pb-5 text-xl">
-                {bullets}
-            </ul>
-            <center>
-                <br />
-            </center>
-            <SourceList/>
-            <ShareThis/>
-            
-        </div>
     );
     }
 }

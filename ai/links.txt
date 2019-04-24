@@ -1,0 +1,5 @@
+Links we might want to use:
+
+https://github.com/thomasschmied/Text_Summarization_with_Tensorflow
+https://monkeylearn.com/sentiment-analysis/
+https://github.com/explosion/spacy/blob/master/examples/deep_learning_keras.py

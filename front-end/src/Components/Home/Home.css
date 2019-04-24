@@ -14,9 +14,24 @@
     right: 24px;
 }
 .logoStat {
-    position: relative;
-    right: 170px;
+    margin-right: 60px;
     padding-bottom: 40px;
     width: 120px;
     height: 150px;
+}
+.publisher {
+    position: relative;
+    right: 120px;
+}
+.positionMe {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: 53px;
+}
+.text {
+    margin-left: 0px;
+}
+.frontBias {
+    margin-left: 100px;
 }

@@ -1,31 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter} from "react-router-dom";
-//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { finished } from 'stream';
-//import SearchLog2 from '../Search/SearchLog.json';
-//import console = require('console');
-//import console = require('console');
-//import * as fs from 'fs';
-//
-
-//var fs = require('fs');
-
-/*
-window.onload=function(){
-      
-var v;
-    document.getElementById('test').addEventListener('change', function(event) { // DO NOT CALL THE DOM WHEN USING REACT
-        v = event.target.value;
-
-        let search= {  
-            search: v
-        };
-        let data = JSON.stringify(search);
-       console.log(data);
-    });
-    
-  }
-*/
+import { withRouter} from "react-router-dom";
 class Search extends Component {
     constructor(props) {
         super(props);

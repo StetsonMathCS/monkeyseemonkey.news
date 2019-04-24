@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Logo from '../Logo/Logo.js';
 import Search from '../Search/Search.js'
 import { withRouter } from "react-router-dom";
-import InfiniteScroll from 'react-infinite-scroller'
 import GridItem from '../ListItem/GridItem'
-import { Signer } from 'crypto';
 class SearchResults extends Component {
     constructor(props) {
         super(props);
@@ -71,6 +69,7 @@ class SearchResults extends Component {
 
     render() {
         let items = [];
+        // eslint-disable-next-line
         this.state.articles.map((article, i) => {
             items.push(
                 <GridItem title={article.title[0]} summary={article.summary[0].split(".")[0].replace(/\+/, ".")} key={i}/>

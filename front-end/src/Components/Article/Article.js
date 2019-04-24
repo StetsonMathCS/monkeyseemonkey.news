@@ -3,7 +3,6 @@ import Logo from '../Logo/Logo.js';
 import trump_wall from '../Logo/trump_wall.jpg';
 import './Article.css'
 import SourceList from '../SourceList/SourceList';
-import GridItem3 from '../ListItem/GridItem3';
 import ShareThis from '../ShareThis/ShareThis';
 
 

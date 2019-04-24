@@ -264,8 +264,8 @@ def getSummary(cleanedString, sentenceCount, sumNum ):
 	stemmer = Stemmer(LANGUAGE)
 
 	summarizer = Summarizer1(stemmer)
-	if(sumNum == 2): summarizer = Sumarizer2(stemmer)
-	if(sumNum == 3): summarizer = Sumarizer3(stemmer)
+	if(sumNum == 2): summarizer = Summarizer2(stemmer)
+	if(sumNum == 3): summarizer = Summarizer3(stemmer)
 
 	summarizer.stop_words = get_stop_words(LANGUAGE)
 

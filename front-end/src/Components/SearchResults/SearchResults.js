@@ -56,7 +56,7 @@ class SearchResults extends Component {
                 data = data.response;
                 if(data.numFound <= 10) this.setState({hasMore: false});
                 this.setState({
-                    articles:  data.docs,
+                    articles: this.state.articles.concat(data.docs),
                     start: (this.state.start + 10)
                 });
             } else {

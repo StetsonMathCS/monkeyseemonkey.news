@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { withRouter, BrowserRouter, Route } from 'react-router-dom';
 import SearchResults from '../SearchResults/SearchResults';
 import Article from '../Article/Article';
 import Home from '../Home/Home';
@@ -20,16 +20,17 @@ class App extends Component {
     document.title = "MSM"
   }
 
-  onSearchChange = (event) => {
+  onSearchChange = (searchR) => {
     this.setState({
-        search: event.target.value.replace(/ /g,"+")
+        search: searchR.replace(/ /g,"+")
     });
+
   }
 
 
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div className="100vh bg-blue-darkest">
           <Route  exact path="/" 
                   render={(props) => <Home {...props} search={this.state.search} onSearchChange={this.onSearchChange} />} />
@@ -40,7 +41,7 @@ class App extends Component {
           <Route path="/stats/:id" component={Stats}/>
           <Route path="/publisher/:id" component={Publisher}/>
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }

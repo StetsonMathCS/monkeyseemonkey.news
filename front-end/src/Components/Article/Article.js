@@ -33,26 +33,36 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        let url = process.env.REACT_APP_URL + "solr/monkey/select?q=title%3" + encodeURIComponent(String(this.props.match.params.id).split("+").join(" ").replace(/\+/, "")) + "&wt=json";
-        fetch(url, {
-            method: 'get',
-            headers: {'Content-Type': 'application/json'},
+        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=title%3A" + encodeURIComponent(String(this.props.match.params.id).split("+").join(" ").replace(/ /, "")) + "&wt=json";
+        let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
+        fetch(body, { 
+            mode: "cors",
+            headers: { "Content-Type": "application/json",
+                        "Authorization": authorization}, 
+            method: "GET" 
         })
-        .then(response => response.json())
-        .then(response => response.docs[0])
-        .then(article => {
-            this.setState({
-                title: article.title,
-                img: article.img,
-                bullets:  article.summary.split("\n").map((bullet, index) => {
-                    return (
-                        <li key={`bullet${index}`} className="padding">
-                            {bullet}
-                        </li>
-                    );
-                })
-            });
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to fetch articles from solr');
+            }
         })
+        .then(data => {
+                data = data.response.docs[0];
+                data.summary = data.summary[0].split(".");
+                data.summary.pop();
+                this.setState({
+                    title:  data.title[0],
+                    bullets: data.summary.map((bullet, index) => {
+                        return (
+                            <li key={`bullet${index}`} className="padding">
+                                {bullet}
+                            </li>
+                        );
+                    })
+                });
+        });
     }
 
     render() { 
@@ -69,7 +79,6 @@ class Article extends Component {
                 {bullets}
             </ul>
             <center>
-                <GridItem3/>
                 <br />
             </center>
             <SourceList/>

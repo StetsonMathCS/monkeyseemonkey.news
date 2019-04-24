@@ -1,22 +1,37 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo.js';
 import Search from '../Search/Search.js'
+import { withRouter } from "react-router-dom";
 import InfiniteScroll from 'react-infinite-scroller'
 import GridItem from '../ListItem/GridItem'
+import { Signer } from 'crypto';
 class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
             search: String(props.match.params.id).split("+").join(" ").replace(/ /, ""),
+            hasMore: true,
             articles: [],
             start: 0
         };
     }
 
-    /*componentDidMount() {
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.setState ({
+            search: String(this.props.match.params.id).split("+").join(" ").replace(/ /, ""),
+            hasMore: true,
+            articles: [],
+            start: 0
+            });
+            this.loadItems();
+        }
+    }
+
+    componentDidMount() {
         this.loadItems();
-    }*/
-    
+    }
+
     loadItems() {
         let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
         let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
@@ -32,29 +47,32 @@ class SearchResults extends Component {
             } else {
                 this.setState({
                     hasMore: false
-                })
+                });
                 throw new Error('Failed to fetch articles from solr');
             }
         })
         .then(data => {
-            console.log(data);
-            data = data.response;
-            console.log(data);
-            if(data.numFound <= 10) this.setState({hasMore: false});
-            this.setState({
-                articles:  data.docs,
-                start: (this.state.start + 10)
-            });
-        })
+            if (Array.isArray(data.response.docs) || data.response.docs.length) {
+                data = data.response;
+                if(data.numFound <= 10) this.setState({hasMore: false});
+                this.setState({
+                    articles: this.state.articles.concat(data.docs),
+                    start: (this.state.start + 10)
+                });
+            } else {
+                this.setState({
+                    hasMore: false
+                });
+            }
+        });
     }    
 
     render() {
-
-        let items = 
+        let items = [];
         this.state.articles.map((article, i) => {
-            article.title = article.title + '';
-            article.summary = article.summary + '';
-            return <GridItem title={article.title} summary={article.summary} key={i}/>
+            items.push(
+                <GridItem title={article.title[0]} summary={article.summary[0]} key={i}/>
+            );
         });
 
         return (
@@ -66,15 +84,18 @@ class SearchResults extends Component {
                 <br />
                 <br />
                 <div>
+                {/*}
                 <InfiniteScroll
                     pageStart={0}
                     loadMore={this.loadItems()}
-                    hasMore={this.state.hasMore}
+                    hasMore={false}
+                    initialLoad={true}
                     loader={<div>Loading ...</div>}
                     >
-                    <div>{items}</div>
+                    <div>{this.state.items}</div>
                 </InfiniteScroll>
-                {/*items*/}
+                */}
+                {items}
                 </div>
                     <br />
                     <br />
@@ -84,4 +105,4 @@ class SearchResults extends Component {
     }
 }
 
-export default SearchResults;
+export default withRouter(SearchResults);

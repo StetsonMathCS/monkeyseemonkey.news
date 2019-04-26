@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo.js';
-import trump_wall from '../Logo/trump_wall.jpg';
-import './Article.css'
-import SourceList from '../SourceList/SourceList';
+import './Article.css';
 import ShareThis from '../ShareThis/ShareThis';
 
 
@@ -70,7 +68,7 @@ class Article extends Component {
     }
 
     render() { 
-        let {title, img, bullets} = this.state;
+        let {title, bullets} = this.state;
         return (
             <center>
                 <div className="grid bg-blue-darkest">
@@ -84,7 +82,6 @@ class Article extends Component {
                     <center>
                         <br />
                     </center>
-                    <SourceList/>
                     <ShareThis/>
                 </div>
             </center>

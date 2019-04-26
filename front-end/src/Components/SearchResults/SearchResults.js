@@ -21,6 +21,7 @@ class SearchResults extends Component {
             articles: [],
             start: 0
             });
+            // eslint-disable-next-line
             this.state.search = this.props.match.params.id;
             this.loadItems();
         }

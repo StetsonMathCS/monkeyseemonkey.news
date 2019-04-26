@@ -10,7 +10,6 @@ class SearchResults extends Component {
         this.state = {
             search: String(props.match.params.id).split("+").join(" ").replace(/ /, ""),
             hasMore: true,
-            initialLoad: true,
             articles: [],
             start: 0
         };
@@ -61,7 +60,7 @@ class SearchResults extends Component {
         .then(data => {
             if (Array.isArray(data.response.docs) || data.response.docs.length) {
                 data = data.response;
-                data.docs = this.state.articles.concat(data.docs);
+                //data.docs = this.state.articles.concat(data.docs);
                 if(data.numFound <= this.state.start + 10) this.setState({hasMore: false});
                 this.setState({
                     articles: data.docs,

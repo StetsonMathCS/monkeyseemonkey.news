@@ -79,6 +79,7 @@ class SearchResults extends Component {
                 <center>
                 <Logo />
                 <Search search={this.props.search} onSearchChange={this.props.onSearchChange}/>
+                {/* put in link to modified search */}
                 <br />
                 <br />
                 <br />

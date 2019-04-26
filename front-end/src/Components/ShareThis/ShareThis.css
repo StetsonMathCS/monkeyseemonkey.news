@@ -20,7 +20,7 @@
   width: 1em;
   height: 1em;
   margin-right: .4em;
-  vertical-align: top
+  vertical-align: top;
 }
 
 .resp-sharing-button--small svg {
@@ -88,5 +88,5 @@
 }
 
 .socialPadding {
-    padding-left: 196px
+    padding-left: 0px
 }

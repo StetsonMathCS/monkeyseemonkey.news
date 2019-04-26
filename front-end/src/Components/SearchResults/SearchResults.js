@@ -28,6 +28,7 @@ class SearchResults extends Component {
             articles: [],
             start: 0
             });
+            // eslint-disable-next-line
             this.state.search = this.props.match.params.id;
         }
 
@@ -97,6 +98,7 @@ class SearchResults extends Component {
                 <center>
                 <Logo />
                 <Search search={this.props.search} onSearchChange={this.props.onSearchChange}/>
+                {/* put in link to modified search */}
                 <br />
                 <br />
                 <br />

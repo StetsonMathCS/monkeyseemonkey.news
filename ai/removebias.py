@@ -23,6 +23,7 @@ def removeTheBias(article_to_parse):
     #op = open(article_to_parse, 'r').read()
     article = nlp(article_to_parse)
     totalSentences = len(list(article.sents))
+    if(totalSentences < 1): totalSentences = 1
 
     r1 = range(10, 20)
     r2 = range(20, 30)
@@ -280,11 +281,11 @@ cnx = mysql.connector.connect(user='monkey', password='epJiphQuitmeoneykbet',
                               host='localhost',
                               database='monkey')
 
-solr = pysolr.Solr('http://localhost:8983/solr/', timeout=10)
+solr = pysolr.Solr('http://solr:LiWofKemchOjEir@monkeyseemonkey.news/solr/monkey', timeout=10)
 
 cursor = cnx.cursor()
 
-query = (" SELECT id , body, web_address, publisher, fetch_date, title FROM articles WHERE summary IS NULL ")
+query = (" SELECT id , body, web_address, publisher, fetch_date, title FROM articles WHERE summary is NULL")
 cursor.execute(query)
 myresult = cursor.fetchall()
 
@@ -297,14 +298,16 @@ for row in myresult:
     # for debugging
     print(summary)
     print("Score : ", cleaned[1])
+    print("---------------------")
 
     # UN-comment following lines when you want this to save to the database for sure
-    query = ("UPDATE articles SET summary = '" + summary + "' WHERE id = " + str(row[0]))
-    cursor.execute(query)
+
+    query = ("UPDATE articles SET summary = \"'%s'\" WHERE id = %s")
+    cursor.execute(query, (summary,row[0]))
     cnx.commit()
     #print(cursor.fetchall())
-    query = ("UPDATE articles SET score = '" + str(cleaned[1]) + "' WHERE id = " + str(row[0]))
-    cursor.execute(query)
+    query = ("UPDATE articles SET score = '%s' WHERE id = %s")
+    cursor.execute(query, (cleaned[1],row[0]))
     cnx.commit()
     #print(cursor.fetchall())
 
@@ -314,14 +317,16 @@ for row in myresult:
     #result = cursor.fetchall()
 
     # Note that the add method has commit=True by default, so this is immediately committed
+
     solr.add([
         {
             "summaryid":row[0],
-            "summary":    summary,
+            "summary":  summary,
             "title":    row[5],
-            "url":        row[1],
+            "url":      row[2],
             "score":    cleaned[1],
             "publisher":row[3],
-            "date":        row[4],
+            "date":     row[4],
         },
     ])
+    solr.commit()

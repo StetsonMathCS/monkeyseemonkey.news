@@ -17,13 +17,14 @@ class SearchResults extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.location.pathname !== prevProps.location.pathname) {
             this.setState ({
-            search: String(this.props.match.params.id).split("+").join(" ").replace(/ /, ""),
             hasMore: true,
             articles: [],
             start: 0
             });
+            this.state.search = this.props.match.params.id;
             this.loadItems();
         }
+        
     }
 
     componentDidMount() {
@@ -31,8 +32,9 @@ class SearchResults extends Component {
     }
 
     loadItems() {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
+        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + 0 + "&wt=json";
         let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
+        console.log(body);
         fetch(body, { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
@@ -54,7 +56,7 @@ class SearchResults extends Component {
                 data = data.response;
                 if(data.numFound <= 10) this.setState({hasMore: false});
                 this.setState({
-                    articles: this.state.articles.concat(data.docs),
+                    articles: data.docs,
                     start: (this.state.start + 10)
                 });
             } else {
@@ -70,7 +72,7 @@ class SearchResults extends Component {
         // eslint-disable-next-line
         this.state.articles.map((article, i) => {
             items.push(
-                <GridItem title={article.title[0]} summary={article.summary[0]} key={i}/>
+                <GridItem title={article.title[0]} summary={article.summary[0].split(".")[0].replace(/\+/, ".")} key={i}/>
             );
         });
 

@@ -12,7 +12,6 @@ class SearchResults extends Component {
         this.state = {
             search: String(props.match.params.id).split("+").join(" ").replace(/ /, ""),
             hasMore: true,
-            initialLoad: true,
             articles: [],
             start: 0,
             spellCheck: "spell"
@@ -31,15 +30,10 @@ class SearchResults extends Component {
             articles: [],
             start: 0
             });
-            // eslint-disable-next-line
             this.state.search = this.props.match.params.id;
+            this.loadItems();
         }
-
-        if(prevState.initialLoad) {
-            this.setState({
-            initialLoad: false
-        });
-        }
+        
     }
 
     componentDidMount() {
@@ -49,6 +43,7 @@ class SearchResults extends Component {
     loadItems() {
         let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + 0 + "&wt=json";
         let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
+        console.log(body);
         fetch(body, { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
@@ -68,7 +63,7 @@ class SearchResults extends Component {
         .then(data => {
             if (data.response.docs.length !== 0) {
                 data = data.response;
-                data.docs = this.state.articles.concat(data.docs);
+                //data.docs = this.state.articles.concat(data.docs);
                 if(data.numFound <= this.state.start + 10) this.setState({hasMore: false});
                 this.setState({
                     articles: data.docs,

@@ -3,7 +3,6 @@ import Logo from '../Logo/Logo.js';
 import Search from '../Search/Search.js';
 import { withRouter } from "react-router-dom";
 import GridItem from '../ListItem/GridItem';
-import InfiniteScroll from 'react-infinite-scroller';
 import './SearchResults.css';
 import { Link } from "react-router-dom";
 class SearchResults extends Component {
@@ -14,14 +13,9 @@ class SearchResults extends Component {
             hasMore: true,
             articles: [],
             start: 0,
-            spellCheck: "spell"
+            spellCheck: ""
         };
     }
-    /*
-    shouldComponentUpdate(nextProps) {
-        return nextProps.location.pathname != this.props.location.pathname;
-    }
-    */
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.location.pathname !== prevProps.location.pathname) {
@@ -30,6 +24,7 @@ class SearchResults extends Component {
             articles: [],
             start: 0
             });
+            // eslint-disable-next-line
             this.state.search = this.props.match.params.id;
             this.loadItems();
         }
@@ -80,8 +75,7 @@ class SearchResults extends Component {
 
     render() {
         let items = [];
-        // eslint-disable-next-line
-        if(this.state.articles.length) {
+        if(this.state.articles.length) { // eslint-disable-next-line
             this.state.articles.map((article, i) => {
                 items.push(
                     <GridItem title={article.title[0]} summary={article.summary[0].split(".")[0].replace(/\+/, ".")} key={i}/>
@@ -98,23 +92,10 @@ class SearchResults extends Component {
                 <center>
                 <Logo />
                 <Search search={this.props.search} onSearchChange={this.props.onSearchChange}/>
-                {/* put in link to modified search */}
                 <br />
                 <br />
                 <br />
                 <div>
-                {/*
-                <InfiniteScroll
-                    pageStart={0}
-                    loadMore={this.loadItems()}
-                    hasMore={this.state.hasMore}
-                    initialLoad={this.state.initialLoad}
-                    loader={<div>Loading ...</div>}
-                    useWindow={true}
-                    >
-                    {<div className="h-screen">{items}</div>}
-                </InfiniteScroll>
-                */}
                 {items}
                 </div>
                     <br />

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo.js';
-import Search from '../Search/Search.js'
+import Search from '../Search/Search.js';
 import { withRouter } from "react-router-dom";
-import GridItem from '../ListItem/GridItem'
-import InfiniteScroll from 'react-infinite-scroller'
+import GridItem from '../ListItem/GridItem';
+import InfiniteScroll from 'react-infinite-scroller';
+import './SearchResults.css';
+import { Link } from "react-router-dom";
 class SearchResults extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +14,8 @@ class SearchResults extends Component {
             hasMore: true,
             initialLoad: true,
             articles: [],
-            start: 0
+            start: 0,
+            spellCheck: "spell"
         };
     }
     /*
@@ -63,7 +66,7 @@ class SearchResults extends Component {
             }
         })
         .then(data => {
-            if (Array.isArray(data.response.docs) || data.response.docs.length) {
+            if (data.response.docs.length !== 0) {
                 data = data.response;
                 data.docs = this.state.articles.concat(data.docs);
                 if(data.numFound <= this.state.start + 10) this.setState({hasMore: false});
@@ -73,7 +76,8 @@ class SearchResults extends Component {
                 });
             } else {
                 this.setState({
-                    hasMore: false
+                    hasMore: false,
+                    spellCheck: data.spellcheck.suggestions[1].suggestion[0].word
                 });
             }
         });
@@ -90,6 +94,7 @@ class SearchResults extends Component {
             });
         } else {
             items.push(<h1 className="pt-0 text-green-lighter"> No Articles Found </h1>);
+            items.push(<div className="text-green-lighter"> Did you mean: <Link to={`/searchresults/+${this.state.spellCheck.split(" ").join("+")}`}>{this.state.spellCheck}</Link> </div>)
             console.log("hi");
         }
 

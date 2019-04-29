@@ -1,6 +1,3 @@
-//import React, {Component} from 'react';
-
-
 class Test extends Component {
   render () {
     var fakeData = require('../JsonTesting/fakedata.json');

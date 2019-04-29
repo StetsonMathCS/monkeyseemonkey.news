@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo.js';
-import Search from '../Search/Search.js'
+import Search from '../Search/Search.js';
 import { withRouter } from "react-router-dom";
-import GridItem from '../ListItem/GridItem'
+import GridItem from '../ListItem/GridItem';
+import './SearchResults.css';
+import { Link } from "react-router-dom";
 class SearchResults extends Component {
     constructor(props) {
         super(props);
@@ -10,20 +12,23 @@ class SearchResults extends Component {
             search: String(props.match.params.id).split("+").join(" ").replace(/ /, ""),
             hasMore: true,
             articles: [],
-            start: 0
+            start: 0,
+            spellCheck: ""
         };
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
         if (this.props.location.pathname !== prevProps.location.pathname) {
             this.setState ({
-            search: String(this.props.match.params.id).split("+").join(" ").replace(/ /, ""),
             hasMore: true,
             articles: [],
             start: 0
             });
+            // eslint-disable-next-line
+            this.state.search = this.props.match.params.id;
             this.loadItems();
         }
+        
     }
 
     componentDidMount() {
@@ -31,8 +36,9 @@ class SearchResults extends Component {
     }
 
     loadItems() {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
+        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + 0 + "&wt=json";
         let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
+        console.log(body);
         fetch(body, { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
@@ -50,16 +56,19 @@ class SearchResults extends Component {
             }
         })
         .then(data => {
-            if (Array.isArray(data.response.docs) || data.response.docs.length) {
+            if (data.response.docs.length !== 0) {
                 data = data.response;
-                if(data.numFound <= 10) this.setState({hasMore: false});
+                console.log(data.summaryid);
+                //data.docs = this.state.articles.concat(data.docs);
+                if(data.numFound <= this.state.start + 10) this.setState({hasMore: false});
                 this.setState({
-                    articles: this.state.articles.concat(data.docs),
-                    start: (this.state.start + 10)
+                    articles: data.docs,
+                    start: (this.state.start + 10),
                 });
             } else {
                 this.setState({
-                    hasMore: false
+                    hasMore: false,
+                    spellCheck: data.spellcheck.suggestions[1].suggestion[0].word
                 });
             }
         });
@@ -67,12 +76,17 @@ class SearchResults extends Component {
 
     render() {
         let items = [];
-        // eslint-disable-next-line
-        this.state.articles.map((article, i) => {
-            items.push(
-                <GridItem title={article.title[0]} summary={article.summary[0]} key={i}/>
-            );
-        });
+        if(this.state.articles.length) { // eslint-disable-next-line
+            this.state.articles.map((article, i) => {
+                items.push(
+                    <GridItem title={article.title[0]} summary={article.summary[0].split(".")[0].replace(/\+/, ".")} id={article.summaryid} key={i}/>
+                );
+            });
+        } else {
+            items.push(<h1 className="pt-0 text-green-lighter"> No Articles Found </h1>);
+            items.push(<div className="text-green-lighter"> Did you mean: <Link to={`/searchresults/+${this.state.spellCheck.split(" ").join("+")}`}>{this.state.spellCheck}</Link> </div>)
+            console.log("hi");
+        }
 
         return (
             <div className = "container mx-auto bg-blue-darkest" >
@@ -83,17 +97,6 @@ class SearchResults extends Component {
                 <br />
                 <br />
                 <div>
-                {/*}
-                <InfiniteScroll
-                    pageStart={0}
-                    loadMore={this.loadItems()}
-                    hasMore={false}
-                    initialLoad={true}
-                    loader={<div>Loading ...</div>}
-                    >
-                    <div>{this.state.items}</div>
-                </InfiniteScroll>
-                */}
                 {items}
                 </div>
                     <br />

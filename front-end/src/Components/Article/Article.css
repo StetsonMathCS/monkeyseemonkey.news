@@ -1,6 +1,8 @@
 .grid{
     display: grid;
     grid-template-columns: 1fr;
+    width: 75vw;
+    align-self: center;
 }
 
 .padding{

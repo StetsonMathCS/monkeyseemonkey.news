@@ -141,8 +141,10 @@ const Home = ({search, onSearchChange}) => {
                 </center> 
             </div>
       <MediaQuery query="(min-device-width: 1824px)">
+        <div></div>
       </MediaQuery>
       <MediaQuery query="(max-width: 1224px)">
+        <div></div>
       </MediaQuery>
     </MediaQuery>
     <MediaQuery query="(max-device-width: 1224px)">
@@ -269,10 +271,13 @@ const Home = ({search, onSearchChange}) => {
 
     </MediaQuery>
     <MediaQuery query="(orientation: portrait)">
+      <div></div>
     </MediaQuery>
     <MediaQuery query="(orientation: landscape)">
+      <div></div>
     </MediaQuery>
     <MediaQuery query="(min-resolution: 2dppx)">
+      <div></div>
     </MediaQuery>
   </div>
        

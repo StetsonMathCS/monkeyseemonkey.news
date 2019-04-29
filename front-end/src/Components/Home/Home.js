@@ -6,9 +6,9 @@ import './Home.css';
 import MediaQuery from 'react-responsive';
 import abc from '../Logo/abc.png';
 import cnn from '../Logo/cnn.png';
-import fox from '../Logo/fox.jpg';
-import nbc from '../Logo/nbc.png';
-import bbc from '../Logo/bbc.png';
+import fox from '../Logo/fox1.png';
+import nyt from '../Logo/nyt1.png';
+import BI from '../Logo/BI.png';
 
 const Home = ({search, onSearchChange}) => {
 
@@ -134,17 +134,17 @@ const Home = ({search, onSearchChange}) => {
                 <br />
                 <div className = "positionMe"><img src = {fox} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">2.7</h1></div>
                 <br />
-                <div className = "positionMe"><img src = {nbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">5.4</h1></div>
+                <div className = "positionMe"><img src = {nyt} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">5.4</h1></div>
                 <br />
-                <div className = "positionMe"><img src = {bbc} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">1.6</h1></div>
+                <div className = "positionMe"><img src = {BI} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">1.6</h1></div>
                 </div>
                 </center> 
             </div>
       <MediaQuery query="(min-device-width: 1824px)">
-        <div>You also have a huge screen</div>
+        <div></div>
       </MediaQuery>
       <MediaQuery query="(max-width: 1224px)">
-        <div>You are sized like a tablet or mobile phone though</div>
+        <div></div>
       </MediaQuery>
     </MediaQuery>
     <MediaQuery query="(max-device-width: 1224px)">
@@ -271,13 +271,13 @@ const Home = ({search, onSearchChange}) => {
 
     </MediaQuery>
     <MediaQuery query="(orientation: portrait)">
-      <div>You are portrait</div>
+      <div></div>
     </MediaQuery>
     <MediaQuery query="(orientation: landscape)">
-      <div>You are landscape</div>
+      <div></div>
     </MediaQuery>
     <MediaQuery query="(min-resolution: 2dppx)">
-      <div>You are retina</div>
+      <div></div>
     </MediaQuery>
   </div>
        

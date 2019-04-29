@@ -1,73 +1,102 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo.js';
-import Search from '../Search/Search.js'
-import InfiniteScroll from 'react-infinite-scroller'
-import GridItem from '../ListItem/GridItem'
+import Search from '../Search/Search.js';
+import { withRouter } from "react-router-dom";
+import GridItem from '../ListItem/GridItem';
+import '../SearchResults/SearchResults.css';
+import { Link } from "react-router-dom";
 class Publisher extends Component {
     constructor(props) {
         super(props);
         this.state = {
             search: String(props.match.params.id).split("+").join(" ").replace(/ /, ""),
+            hasMore: true,
+            articles: [],
+            start: 0,
+            spellCheck: ""
+        };
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.setState ({
+            hasMore: true,
             articles: [],
             start: 0
-        };
+            });
+            // eslint-disable-next-line
+            this.state.search = this.props.match.params.id;
+            this.loadItems();
+        }
+        
     }
 
     componentDidMount() {
         this.loadItems();
     }
-    
+
     loadItems() {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/select?q=publisher%3A" + encodeURIComponent(this.state.search) + "&start=" + this.state.start + "&wt=json";
+        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=publisher%3A" + encodeURIComponent(this.state.search) + "&start=" + 0 + "&wt=json";
+        let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
         console.log(body);
         fetch(body, { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
-                        "Authorization": "Basic" + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD)}, 
+                        "Authorization": authorization}, 
             method: "GET" 
         })
         .then(response => {
             if (response.ok) {
-                console.log(response);
+                return response.json();
             } else {
-                this.setState({ hasMore: false });
-                throw new Error('failed to fetch articles');
+                this.setState({
+                    hasMore: false
+                });
+                throw new Error('Failed to fetch articles from solr');
             }
         })
-        .then(response => response.json())
         .then(data => {
-            if(data.numFound <= 10) this.setState({hasMore: false});
-            this.setState({
-                articles:  data.docs,
-                start: (this.state.start + 10)
-            });
-        })
-    }
-    render() {
-
-        let items = 
-        this.state.articles.map((article, i) => {
-            return <GridItem title={article.title} summary={article.summary} key={i}/>
+            if (data.response.docs.length !== 0) {
+                data = data.response;
+                //data.docs = this.state.articles.concat(data.docs);
+                if(data.numFound <= this.state.start + 10) this.setState({hasMore: false});
+                this.setState({
+                    articles: data.docs,
+                    start: (this.state.start + 10)
+                });
+             } //else {
+            //     this.setState({
+            //         hasMore: false,
+            //         spellCheck: data.spellcheck.suggestions[1].suggestion[0].word
+            //     });
+            // }
         });
+    }    
+
+    render() {
+        let items = [];
+        if(this.state.articles.length) { // eslint-disable-next-line
+            this.state.articles.map((article, i) => {
+                items.push(
+                    <GridItem title={article.title[0]} summary={article.summary[0].split(".")[0].replace(/\+/, ".")} key={i}/>
+                );
+            });
+        } else {
+            items.push(<h1 className="pt-0 text-green-lighter"> No Articles Found </h1>);
+            items.push(<div className="text-green-lighter"> Did you mean: <Link to={`/searchresults/+${this.state.spellCheck.split(" ").join("+")}`}>{this.state.spellCheck}</Link> </div>)
+            console.log("hi");
+        }
 
         return (
             <div className = "container mx-auto bg-blue-darkest" >
                 <center>
                 <Logo />
-                <Search />
+                <Search search={this.props.search} onSearchChange={this.props.onSearchChange}/>
                 <br />
-                <h1 className = "pt-3 pb-5 text-green-lighter font-bold">Your Search Results!</h1>
                 <br />
                 <br />
                 <div>
-                <InfiniteScroll
-                    pageStart={0}
-                    loadMore={this.loadItems()}
-                    hasMore={this.state.hasMore}
-                    loader={<div>Loading ...</div>}
-                    >
-                    {items}
-                </InfiniteScroll>
+                {items}
                 </div>
                     <br />
                     <br />
@@ -76,4 +105,5 @@ class Publisher extends Component {
         );
     }
 }
-export default Publisher;
+
+export default withRouter(Publisher);

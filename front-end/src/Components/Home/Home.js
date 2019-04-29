@@ -122,7 +122,7 @@ const Home = ({search, onSearchChange}) => {
                             </div>
                     </div>
                     <br />
-                    <h1 className = "text-2xl text-green-lighter font-bold positioner">We also display up to date stats on our publishers!</h1>
+                    <h1 className = "text-2xl text-green-lighter font-bold positioner">Recent Article Scores from Popular Publishers</h1>
                     </center>
                     <br />
                 </div>

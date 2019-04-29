@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo.js';
+import { Link } from "react-router-dom";
 import './Article.css';
 import ShareThis from '../ShareThis/ShareThis';
+import GridItem from '../ListItem/GridItem.js'
 
 
 class Article extends Component {
@@ -9,6 +11,9 @@ class Article extends Component {
         super(props);
         this.state = {
           title: "Donald Trump Declares Border Problems a National Emergency",
+          id: "",
+          url: "",
+          publisher: "",
           bullets: [
               "President Trump has declared a nationial emergency regarding the funding of the border-wall between Mexico and the United States",
               "There are not statutes that explicitly declare what a 'National Emergency' is",
@@ -51,6 +56,9 @@ class Article extends Component {
                 data.summary.pop();
                 this.setState({
                     title:  data.title[0],
+                    id: data.id,
+                    url: data.url,
+                    publisher: data.publisher,
                     bullets: data.summary.map((bullet, index) => {
                         return (
                             <li key={`bullet${index}`} className="padding">
@@ -63,7 +71,7 @@ class Article extends Component {
     }
 
     render() { 
-        let {title, bullets} = this.state;
+        let {title, bullets,id, publisher, url} = this.state;
         return (
             <center>
                 <div className="grid bg-blue-darkest">
@@ -77,6 +85,13 @@ class Article extends Component {
                     <center>
                         <br />
                     </center>
+                    <Link to={`/publisher/+${encodeURIComponent(publisher)}`}>
+                        <div className="grid hover:border-blue bg-blue-darker border-r-2 border-b-2 border-l-2 border-t-2 border-blue-darker rounded">
+                        <h2 className="font-bold mb-2 text-center text-green-lighter pt-5">{'Click this to see other articles from this publisher!'}</h2>
+                        </div>
+                        <br />
+                        <br />
+                        </Link>
                     <ShareThis/>
                 </div>
             </center>

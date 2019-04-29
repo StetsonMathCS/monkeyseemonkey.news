@@ -9,6 +9,9 @@ import cnn from '../Logo/cnn.png';
 import fox from '../Logo/fox1.png';
 import nyt from '../Logo/nyt1.png';
 import BI from '../Logo/BI.png';
+import gizmodo from '../Logo/gizmodo.png';
+import typePad from '../Logo/typePad.png';
+
 
 
 class Home extends Component {
@@ -50,7 +53,7 @@ class Home extends Component {
             if (data.response.docs.length !== 0) {
                 data = data.response.docs;
                 for(const article of data) {
-                    if(article.publisher === "Columbia.edu" && this.state.abc === "") {
+                    if(article.publisher === "Typepad.com" && this.state.abc === "") {
                         this.setState({
                             abc: article.score
                         })
@@ -191,10 +194,9 @@ class Home extends Component {
                         <br />
                     </div>
                     <div className = "frontBias">
-                    <h1 className = "text-xl text-green-lighter font-bold positioner"><span className = "publisher">Publisher</span> <span className = "bias">Bias Score</span></h1>
-                    <div className = "positionMe"><img src = {fox} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.abc}</h1></div>
+                    <div className = "positionMe"><img src = {typePad} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.abc}</h1></div>
                     <br />
-                    <div className = "positionMe"><img src = {nyt} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.newYorkTimes}</h1></div>
+                    <div className = "positionMe"><img src = {gizmodo} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.newYorkTimes}</h1></div>
                     <br />
                     <div className = "positionMe"><img src = {BI} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.businessInsider}</h1></div>
                     </div>

@@ -4,10 +4,6 @@ import map from '../Logo/map.png'
 import Search from '../Search/Search.js'
 import './Home.css';
 import MediaQuery from 'react-responsive';
-import abc from '../Logo/abc.png';
-import cnn from '../Logo/cnn.png';
-import fox from '../Logo/fox1.png';
-import nyt from '../Logo/nyt1.png';
 import BI from '../Logo/BI.png';
 import gizmodo from '../Logo/gizmodo.png';
 import typePad from '../Logo/typePad.png';

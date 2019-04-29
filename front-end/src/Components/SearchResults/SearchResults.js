@@ -58,11 +58,12 @@ class SearchResults extends Component {
         .then(data => {
             if (data.response.docs.length !== 0) {
                 data = data.response;
+                console.log(data.summaryid);
                 //data.docs = this.state.articles.concat(data.docs);
                 if(data.numFound <= this.state.start + 10) this.setState({hasMore: false});
                 this.setState({
                     articles: data.docs,
-                    start: (this.state.start + 10)
+                    start: (this.state.start + 10),
                 });
             } else {
                 this.setState({
@@ -78,7 +79,7 @@ class SearchResults extends Component {
         if(this.state.articles.length) { // eslint-disable-next-line
             this.state.articles.map((article, i) => {
                 items.push(
-                    <GridItem title={article.title[0]} summary={article.summary[0].split(".")[0].replace(/\+/, ".")} key={i}/>
+                    <GridItem title={article.title[0]} summary={article.summary[0].split(".")[0].replace(/\+/, ".")} id={article.summaryid} key={i}/>
                 );
             });
         } else {

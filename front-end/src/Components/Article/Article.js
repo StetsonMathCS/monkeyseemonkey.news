@@ -29,8 +29,9 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=title%3A" + encodeURIComponent(String(this.props.match.params.id).split("+").join(" ").replace(/ /, "")) + "&wt=json";
+        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=summaryid%3A" + String(this.props.match.params.id).split("+").join(" ").replace(/ /, "") + "&wt=json";
         let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
+        console.log(body);
         fetch(body, { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
@@ -45,12 +46,7 @@ class Article extends Component {
             }
         })
         .then(data => {
-                for(const article of data.response.docs) {
-                    if(article.title[0].includes(String(this.props.match.params.id).split("+").join(" ").replace(/ /, ""))) {
-                        data = article;
-                        break;
-                    }
-                }
+                data = data.response.docs[0];
                 data.summary = data.summary[0].split(".");
                 data.summary.pop();
                 this.setState({

@@ -84,15 +84,11 @@ class Article extends Component {
                     <center>
                         <br />
                     </center>
-                    <a href={ogarticle} className="text-2xl">Visit the original article</a>
+                    <p className="text-base text-grey-dark text-2xl"> 
+                        <a href={ogarticle}>Original article</a> published by
+                        <Link to={`/publisher/+${encodeURIComponent(publisher)}`}> {publisher}</Link>
+                    </p>
                     <p className="text-base text-grey-darker mb-3"> Original article bias score (Lower is better): {ogscore} / 1 </p>
-                    <Link to={`/publisher/+${encodeURIComponent(publisher)}`}>
-                        <div className="grid hover:border-blue bg-blue-darker border-r-2 border-b-2 border-l-2 border-t-2 border-blue-darker rounded">
-                        <h2 className="font-bold mb-2 text-center text-green-lighter pt-5">{`Click this to see other articles from ${publisher}!`}</h2>
-                        </div>
-                        <br />
-                        <br />
-                        </Link>
                     <ShareThis/>
                 </div>
             </center>

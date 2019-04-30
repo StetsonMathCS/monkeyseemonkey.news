@@ -126,11 +126,11 @@ class Home extends Component {
                         <br />
                     </div>
                     <div className = "frontBias">
-                    <div className = "positionMe"><img src = {typePad} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.TypePad}</h1></div>
+                    <div className = "positionMe"><img src = {typePad} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{String(this.state.TypePad).slice(0,5)}</h1></div>
                     <br />
-                    <div className = "positionMe"><img src = {gizmodo} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.Gizmodo}</h1></div>
+                    <div className = "positionMe"><img src = {gizmodo} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{String(this.state.Gizmodo).slice(0,5)}</h1></div>
                     <br />
-                    <div className = "positionMe"><img src = {BI} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.businessInsider}</h1></div>
+                    <div className = "positionMe"><img src = {BI} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{String(this.state.businessInsider).slice(0,5)}</h1></div>
                     </div>
                     </center> 
                 </div>

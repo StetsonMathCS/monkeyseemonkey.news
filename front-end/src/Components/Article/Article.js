@@ -77,9 +77,9 @@ class Article extends Component {
                 <div className="grid bg-blue-darkest ">
                     <center>
                         <Logo/>
-                        <h1 className = "text-green-lighter font-bold pb-5">{title}</h1>
+                        <h1 className = "text-green-lighter text-2xl md:text-3xl font-bold pb-5">{title}</h1>
                     </center>
-                    <ul className = "text-white font-mono font-bold pb-5 text-xl">
+                    <ul className = "text-white font-mono font-bold pb-5 ml-0 md:mx-auto text-lg md:text-xl">
                         {bullets}
                     </ul>
                     <center>

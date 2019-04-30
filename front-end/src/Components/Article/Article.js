@@ -57,7 +57,7 @@ class Article extends Component {
                 this.setState({
                     title:  data.title[0],
                     ogarticle: data.url,
-                    ogscore: String(data.score).slice(0, 5),
+                    ogscore: String(data.score * 10).slice(0, 5),
                     publisher: data.publisher,
                     bullets: data.summary.map((bullet, index) => {
                         return (

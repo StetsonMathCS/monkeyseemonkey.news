@@ -15,9 +15,9 @@ class Home extends Component {
         super(props);
         this.state = {
             search: "",
-            TypePad: "",
-            Gizmodo: "",
-            businessInsider: ""
+            TypePad: "____",
+            Gizmodo: "____",
+            businessInsider: "____"
         }
     }
     
@@ -49,25 +49,26 @@ class Home extends Component {
             if (data.response.docs.length !== 0) {
                 data = data.response.docs;
                 for(const article of data) {
-                    if(article.publisher === "Typepad.com" && this.state.TypePad === "") {
+                    if(article.publisher === "Typepad.com" && this.state.TypePad === "____") {
                         this.setState({
                             TypePad: article.score
                         })
-                    }
+                    } 
                 }
                 for(const article of data) {
-                    if(article.publisher === "Gizmodo.com" && this.state.Gizmodo === "") {
+                    if(article.publisher === "Gizmodo.com" && this.state.Gizmodo === "____") {
                         this.setState({
                             Gizmodo: article.score
                         })
-                    }
+                    } 
+                    
                 }
                 for(const article of data) {
-                    if(article.publisher === "Business Insider" && this.state.businessInsider === "") {
+                    if(article.publisher === "Business Insider" && this.state.businessInsider === "____") {
                         this.setState({
                             businessInsider: article.score
                         })
-                    }
+                    } 
                 }
             }
         });

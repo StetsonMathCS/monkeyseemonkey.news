@@ -273,7 +273,7 @@ def getSummary(cleanedString, sentenceCount, sumNum ):
     for sentence in summarizer(parser.document, sentenceCount):
         # biasFreeSummary.write(str(sentence) + "\n" +"\n")
         # print(sentence)
-        summarizedString += (str(sentence))
+        summarizedString += "//" + (str(sentence))
     #print(summarizedString)
     return summarizedString
 

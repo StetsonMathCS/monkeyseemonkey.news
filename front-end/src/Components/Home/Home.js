@@ -17,7 +17,7 @@ const Home = ({search, onSearchChange}) => {
     <MediaQuery query="(min-device-width: 1224px)">
     <div className = "container mx-auto bg-blue-darkest" >
             <center>
-            <div className="homegrid h-screen">
+            <div className="homegrid h-screen bg-blue-darkest z-10">
                 <div/>
                 <div/>
                 <div/>
@@ -150,7 +150,7 @@ const Home = ({search, onSearchChange}) => {
     <MediaQuery query="(max-device-width: 1224px)">
     <div className = "container mx-auto bg-blue-darkest" >
             <center>
-            <div className="homegrid h-screen">
+            <div className="homegrid h-screen bg-blue-darkest z-10">
                 <div/>
                 <div/>
                 <div/>
@@ -191,11 +191,11 @@ const Home = ({search, onSearchChange}) => {
                     <br />
                     <img src = {map} height = "42" width = "30" alt = "arrow"></img>
                     <br />
-                    <p className = "blocktext text-sm text-white font-mono">Opinions, pathos and commentary is flagged and removed using our up-to-date AI</p>
+                    <p className = "blocktext text-sm text-white font-mono">Opinions, pathos and commentary is flagged and removed using our bias-detection AI</p>
                     <br />
                     <img src = {map} height = "42" width = "30" alt = "arrow"></img>
                     <br />
-                    <p className = "blocktext text-sm text-white font-mono">All flagged content is added to a database to train our AI for enhanced service</p>
+                    <p className = "blocktext text-sm text-white font-mono">All flagged content is then used to train our AI</p>
                     <br />
                     <img src = {map} height = "42" width = "30" alt = "arrow"></img>
                     <br />

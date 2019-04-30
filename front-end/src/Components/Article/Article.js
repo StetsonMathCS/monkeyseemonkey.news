@@ -9,6 +9,8 @@ class Article extends Component {
         super(props);
         this.state = {
           title: "Donald Trump Declares Border Problems a National Emergency",
+          ogarticle: "",
+          ogscore: "",
           bullets: [
               "President Trump has declared a nationial emergency regarding the funding of the border-wall between Mexico and the United States",
               "There are not statutes that explicitly declare what a 'National Emergency' is",
@@ -47,10 +49,11 @@ class Article extends Component {
         })
         .then(data => {
                 data = data.response.docs[0];
-                data.summary = data.summary[0].split(".");
-                data.summary.pop();
+                data.summary = data.summary[0].split("//");
                 this.setState({
                     title:  data.title[0],
+                    ogarticle: data.url,
+                    ogscore: String(data.score).slice(0, 5),
                     bullets: data.summary.map((bullet, index) => {
                         return (
                             <li key={`bullet${index}`} className="padding">
@@ -63,7 +66,7 @@ class Article extends Component {
     }
 
     render() { 
-        let {title, bullets} = this.state;
+        let {title, ogarticle, ogscore, bullets} = this.state;
         return (
             <center>
                 <div className="grid bg-blue-darkest">
@@ -77,6 +80,8 @@ class Article extends Component {
                     <center>
                         <br />
                     </center>
+                    <a href={ogarticle} className="text-2xl">Visit the original article</a>
+                    <p className="text-base text-grey-darker mb-3"> Original article bias score (Lower is better): {ogscore} / 1 </p>
                     <ShareThis/>
                 </div>
             </center>

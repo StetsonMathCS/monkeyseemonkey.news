@@ -53,6 +53,7 @@ class Article extends Component {
         .then(data => {
                 data = data.response.docs[0];
                 data.summary = data.summary[0].split("//");
+                data.summary.shift();
                 this.setState({
                     title:  data.title[0],
                     ogarticle: data.url,
@@ -73,7 +74,7 @@ class Article extends Component {
         let {title, ogarticle, ogscore, publisher, bullets} = this.state;
         return (
             <center>
-                <div className="grid bg-blue-darkest">
+                <div className="grid bg-blue-darkest ">
                     <center>
                         <Logo/>
                         <h1 className = "text-green-lighter font-bold pb-5">{title}</h1>

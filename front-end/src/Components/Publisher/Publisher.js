@@ -89,10 +89,10 @@ class Publisher extends Component {
         }
 
         return (
-            <div className = "container mx-auto bg-blue-darkest" >
+            <div className = "container mx-auto bg-blue-darkest mb-0 pb-0" >
                 <center>
                 <Logo />
-                <Search search={this.props.search} onSearchChange={this.props.onSearchChange}/>
+                <h1 className="text-green-lighter my-0 py-0"> Articles by {this.state.search} </h1>
                 <br />
                 <br />
                 <br />

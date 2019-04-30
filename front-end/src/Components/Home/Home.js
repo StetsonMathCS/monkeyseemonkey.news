@@ -15,8 +15,8 @@ class Home extends Component {
         super(props);
         this.state = {
             search: "",
-            abc: "",
-            newYorkTimes: "",
+            TypePad: "",
+            Gizmodo: "",
             businessInsider: ""
         }
     }
@@ -49,16 +49,16 @@ class Home extends Component {
             if (data.response.docs.length !== 0) {
                 data = data.response.docs;
                 for(const article of data) {
-                    if(article.publisher === "Typepad.com" && this.state.abc === "") {
+                    if(article.publisher === "Typepad.com" && this.state.TypePad === "") {
                         this.setState({
-                            abc: article.score
+                            TypePad: article.score
                         })
                     }
                 }
                 for(const article of data) {
-                    if(article.publisher === "Gizmodo.com" && this.state.newYorkTimes === "") {
+                    if(article.publisher === "Gizmodo.com" && this.state.Gizmodo === "") {
                         this.setState({
-                            newYorkTimes: article.score
+                            Gizmodo: article.score
                         })
                     }
                 }
@@ -107,10 +107,6 @@ class Home extends Component {
                         <br />
                         <h1 className = "text-green-lighter font-bold"><center>How does our service work?</center></h1>
                         <br />
-                        <p className = "text-xl text-white font-mono">User uses our search bar on the home page to search for a topic of interest</p>
-                        <br />
-                        <img src = {map} height = "42" width = "30" alt = "arrow"></img>
-                        <br />
                         <p className = "text-xl text-white font-mono">Our application crawls the web for all of the top articles on the user-specified subject</p>
                         <br />
                         <img src = {map} height = "42" width = "30" alt = "arrow"></img>
@@ -123,76 +119,16 @@ class Home extends Component {
                         <br />
                         <img src = {map} height = "42" width = "30" alt = "arrow"></img>
                         <br />
-                        <p className = "text-xl text-white font-mono">All objective content is compiled into an easy to read, user friendly news report</p>
-                        <br />
-                        <br />
-                        <h1 className = "text-xl text-green-lighter font-bold positioner"><center>What will the Compiled Report Include?</center></h1>
-                        </center>
-                        <br />
-                        <center>
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter"><b>Dates and Times</b></div>
-                                <p className="text-white text-base">
-                                    Our compilation will include all relevant dates and times to ensure news accuracy
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
-                        <br />
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter">Names of Relevant Individuals</div>
-                                <p className="text-white text-base">
-                                All names of relevant individuals will be kept and displayed appropriately
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
-                        <br />
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter">Direct Quotations</div>
-                                <p className="text-white text-base">
-                                    Direct quotatioins from individuals and organizations will be kept, as long as they are relevant and important.
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
-                        <br />
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter">Pictures</div>
-                                <p className="text-white text-base">
-                                Most pictures will be kept, however pictures containing bias will be detected and flagged.
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
-                        <br />
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter">Facts and Statistics</div>
-                                <p className="text-white text-base">
-                                    Of course, facts and statistics will be retained, allowing our articles to remain as objective as possible.
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
+                        <p className = "text-xl text-white font-mono">All objective content is compiled into an easy to read, user friendly news report</p>     
                         <br />
                         <h1 className = "text-2xl text-green-lighter font-bold positioner">Recent Article Scores from Popular Publishers</h1>
                         </center>
                         <br />
                     </div>
                     <div className = "frontBias">
-                    <div className = "positionMe"><img src = {typePad} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.abc}</h1></div>
+                    <div className = "positionMe"><img src = {typePad} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.TypePad}</h1></div>
                     <br />
-                    <div className = "positionMe"><img src = {gizmodo} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.newYorkTimes}</h1></div>
+                    <div className = "positionMe"><img src = {gizmodo} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.Gizmodo}</h1></div>
                     <br />
                     <div className = "positionMe"><img src = {BI} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.businessInsider}</h1></div>
                     </div>

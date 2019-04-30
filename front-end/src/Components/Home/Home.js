@@ -15,8 +15,8 @@ class Home extends Component {
         super(props);
         this.state = {
             search: "",
-            abc: "",
-            newYorkTimes: "",
+            TypePad: "",
+            Gizmodo: "",
             businessInsider: ""
         }
     }
@@ -49,16 +49,16 @@ class Home extends Component {
             if (data.response.docs.length !== 0) {
                 data = data.response.docs;
                 for(const article of data) {
-                    if(article.publisher === "Typepad.com" && this.state.abc === "") {
+                    if(article.publisher === "Typepad.com" && this.state.TypePad === "") {
                         this.setState({
-                            abc: article.score
+                            TypePad: article.score
                         })
                     }
                 }
                 for(const article of data) {
-                    if(article.publisher === "Gizmodo.com" && this.state.newYorkTimes === "") {
+                    if(article.publisher === "Gizmodo.com" && this.state.Gizmodo === "") {
                         this.setState({
-                            newYorkTimes: article.score
+                            Gizmodo: article.score
                         })
                     }
                 }
@@ -126,9 +126,9 @@ class Home extends Component {
                         <br />
                     </div>
                     <div className = "frontBias">
-                    <div className = "positionMe"><img src = {typePad} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.abc}</h1></div>
+                    <div className = "positionMe"><img src = {typePad} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.TypePad}</h1></div>
                     <br />
-                    <div className = "positionMe"><img src = {gizmodo} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.newYorkTimes}</h1></div>
+                    <div className = "positionMe"><img src = {gizmodo} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.Gizmodo}</h1></div>
                     <br />
                     <div className = "positionMe"><img src = {BI} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter">{this.state.businessInsider}</h1></div>
                     </div>

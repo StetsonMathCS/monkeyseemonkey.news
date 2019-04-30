@@ -107,10 +107,6 @@ class Home extends Component {
                         <br />
                         <h1 className = "text-green-lighter font-bold"><center>How does our service work?</center></h1>
                         <br />
-                        <p className = "text-xl text-white font-mono">User uses our search bar on the home page to search for a topic of interest</p>
-                        <br />
-                        <img src = {map} height = "42" width = "30" alt = "arrow"></img>
-                        <br />
                         <p className = "text-xl text-white font-mono">Our application crawls the web for all of the top articles on the user-specified subject</p>
                         <br />
                         <img src = {map} height = "42" width = "30" alt = "arrow"></img>
@@ -123,67 +119,7 @@ class Home extends Component {
                         <br />
                         <img src = {map} height = "42" width = "30" alt = "arrow"></img>
                         <br />
-                        <p className = "text-xl text-white font-mono">All objective content is compiled into an easy to read, user friendly news report</p>
-                        <br />
-                        <br />
-                        <h1 className = "text-xl text-green-lighter font-bold positioner"><center>What will the Compiled Report Include?</center></h1>
-                        </center>
-                        <br />
-                        <center>
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter"><b>Dates and Times</b></div>
-                                <p className="text-white text-base">
-                                    Our compilation will include all relevant dates and times to ensure news accuracy
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
-                        <br />
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter">Names of Relevant Individuals</div>
-                                <p className="text-white text-base">
-                                All names of relevant individuals will be kept and displayed appropriately
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
-                        <br />
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter">Direct Quotations</div>
-                                <p className="text-white text-base">
-                                    Direct quotatioins from individuals and organizations will be kept, as long as they are relevant and important.
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
-                        <br />
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter">Pictures</div>
-                                <p className="text-white text-base">
-                                Most pictures will be kept, however pictures containing bias will be detected and flagged.
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
-                        <br />
-                        <div className="max-w-sm rounded overflow-hidden shadow-lg bg-blue-darker">
-                            <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center text-green-lighter">Facts and Statistics</div>
-                                <p className="text-white text-base">
-                                    Of course, facts and statistics will be retained, allowing our articles to remain as objective as possible.
-                                </p>
-                            </div>
-                            <div className="flex flex-col flex-auto text-center px-6 py-4">
-                                </div>
-                        </div>
+                        <p className = "text-xl text-white font-mono">All objective content is compiled into an easy to read, user friendly news report</p>     
                         <br />
                         <h1 className = "text-2xl text-green-lighter font-bold positioner">Recent Article Scores from Popular Publishers</h1>
                         </center>

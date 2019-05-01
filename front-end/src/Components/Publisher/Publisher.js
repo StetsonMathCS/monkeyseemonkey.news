@@ -79,7 +79,7 @@ class Publisher extends Component {
         if(this.state.articles.length) { // eslint-disable-next-line
             this.state.articles.map((article, i) => {
                 items.push(
-                    <GridItem title={article.title[0]} summary={article.summary[0].split(".")[0].replace(/\+/, ".")} id={article.summaryid} key={i}/>
+                    <GridItem title={article.title[0]} summary={article.summary[0].replace(/\/\//g, ".")} id={article.summaryid} key={i}/>
                 );
             });
         } else {

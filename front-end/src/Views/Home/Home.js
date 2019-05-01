@@ -25,7 +25,7 @@ class Home extends Component {
     }
 
     loadItems() {
-        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=*%3A*&wt=json";
+        let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=*%3A*&wt=json&rows=1000";
         let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
         console.log(body);
         fetch(body, { 

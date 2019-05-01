@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Logo from '../../Components/Logo/Logo.js'
-import map from '../../Components/Images//map.png'
+import map from '../../Images/map.png'
 import Search from '../../Components/SearchBar/Search.js'
 import './Home.css';
-import BI from '../../Components/Images/BI.png';
-import gizmodo from '../../Components/Images/gizmodo.png';
-import NewYorkTimes from '../../Components/Images/nyt1.png';
+import BI from '../../Images/BI.png';
+import gizmodo from '../../Images/gizmodo.png';
+import NewYorkTimes from '../../Images/nyt1.png';
 
 
 

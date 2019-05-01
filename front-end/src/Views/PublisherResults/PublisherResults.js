@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Logo from '../../Components/Logo/Logo.js';
-import Search from '../../Components/SearchBar/Search.js';
 import { withRouter } from "react-router-dom";
-import GridItem from '../SearchResults/GridItem/GridItem';
+import GridItem from '../../Components/SearchResult/SearchResult';
 import '../../Views/SearchResults/SearchResults.css';
 import { Link } from "react-router-dom";
 class Publisher extends Component {

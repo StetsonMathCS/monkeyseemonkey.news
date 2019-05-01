@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import './GridItem.css';
+import './SearchResult.css';
 
 const GridItem = ({title, summary, id}) => {
     return (

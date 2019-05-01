@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import SearchResults from '../Views/SearchResults/SearchResults';
 import Article from '../Views/Article/Article';
 import Home from '../Views/Home/Home';
-import Publisher from '../Views/Publisher/Publisher';
+import Publisher from '../Views/PublisherResults/PublisherResults';
 import './App.css';
 class App extends Component {
 

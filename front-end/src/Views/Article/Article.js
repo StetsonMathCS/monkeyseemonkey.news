@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Logo from '../../Components/Logo/Logo.js';
 import { Link } from "react-router-dom";
 import './Article.css';
-import ShareThis from '../../Components/SocialMediaButtons/ShareThis';
-import GridItem from '../SearchResults/GridItem/GridItem.js'
+import ShareThis from '../../Components/SocialMediaButtons/SocialMediaButtons';
 
 
 class Article extends Component {

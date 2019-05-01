@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Logo from '../../Components/Logo/Logo.js'
 import map from '../../Images/map.png'
-import Search from '../../Components/SearchBar/Search.js'
+import Search from '../../Components/SearchBar/SearchBar.js'
 import './Home.css';
 import BI from '../../Images/BI.png';
 import gizmodo from '../../Images/gizmodo.png';

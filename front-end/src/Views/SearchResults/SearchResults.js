@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Logo from '../../Components/Logo/Logo.js';
-import Search from '../../Components/SearchBar/Search.js';
+import Search from '../../Components/SearchBar/SearchBar.js';
 import { withRouter } from "react-router-dom";
-import GridItem from './GridItem/GridItem';
+import GridItem from '../../Components/SearchResult/SearchResult';
 import './SearchResults.css';
 import { Link } from "react-router-dom";
 class SearchResults extends Component {

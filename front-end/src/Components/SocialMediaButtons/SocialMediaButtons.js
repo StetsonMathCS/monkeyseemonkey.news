@@ -1,5 +1,5 @@
 import React from 'react';
-import './ShareThis.css';
+import './SocialMediaButtons.css';
 //let currentURL = window.location.href;
 
 const Sources = () => {

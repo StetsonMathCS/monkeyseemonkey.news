@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Logo from '../Logo/Logo.js'
-import map from '../Logo/map.png'
-import Search from '../Search/Search.js'
+import Logo from '../../Components/Logo/Logo.js'
+import map from '../../Components/Images//map.png'
+import Search from '../../Components/SearchBar/Search.js'
 import './Home.css';
-import BI from '../Logo/BI.png';
-import gizmodo from '../Logo/gizmodo.png';
-import NewYorkTimes from '../Logo/nyt1.png';
+import BI from '../../Components/Images/BI.png';
+import gizmodo from '../../Components/Images/gizmodo.png';
+import NewYorkTimes from '../../Components/Images/nyt1.png';
 
 
 
@@ -106,10 +106,10 @@ class Home extends Component {
                 <br />
                 
                 <center>
-                    <p className = "text-xl text-white font-mono"><b><u>Here at MSM, we believe that everybody should have free and unlimited access to reliable<br />
+                    <p className = "text-xl text-white font-mono"><b>Here at MSM, we believe that everybody should have free and unlimited access to reliable<br />
                         and trustworthy news sources. As part of our application model, we deploy artificial intelligence to crawl <br />
                         the web and filter out any bias that is identified in recently published news articles. We stand firmly against prejudice, <br />
-                        and our goal is to provide our users with as much accuracy as possible when keeping up to date with the news.</u></b>
+                        and our goal is to provide our users with as much accuracy as possible when keeping up to date with the news.</b>
                     </p>
                     <br />
                     <br />
@@ -134,11 +134,11 @@ class Home extends Component {
                     <br />
                 </div>
                 <div className = "frontBias">
-                <div className = "positionMe"><img src = {NewYorkTimes} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter" id="sourceText">{String(this.state.NewYorkTimes * 10).slice(0,5)}</h1></div>
+                <div className = "positionMe"><img src = {NewYorkTimes} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-light" id="sourceText">{String(this.state.NewYorkTimes * 10).slice(0,5)}</h1></div>
                 <br />
-                <div className = "positionMe"><img src = {gizmodo} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter" id="sourceText">{String(this.state.Gizmodo * 10).slice(0,5)}</h1></div>
+                <div className = "positionMe"><img src = {gizmodo} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-light" id="sourceText">{String(this.state.Gizmodo * 10).slice(0,5)}</h1></div>
                 <br />
-                <div className = "positionMe"><img src = {BI} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-lighter" id="sourceText">{String(this.state.businessInsider * 10).slice(0,5)}</h1></div>
+                <div className = "positionMe"><img src = {BI} height = "42" width = "30" alt = "arrow" className = "logoStat"></img> <h1 className = "text text-blue-light" id="sourceText">{String(this.state.businessInsider * 10).slice(0,5)}</h1></div>
                 </div>
                 </center> 
             </div> 

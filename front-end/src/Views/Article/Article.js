@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Logo from '../Logo/Logo.js';
+import Logo from '../../Components/Logo/Logo.js';
 import { Link } from "react-router-dom";
 import './Article.css';
-import ShareThis from '../ShareThis/ShareThis';
-import GridItem from '../ListItem/GridItem.js'
+import ShareThis from '../../Components/SocialMediaButtons/ShareThis';
+import GridItem from '../SearchResults/GridItem/GridItem.js'
 
 
 class Article extends Component {

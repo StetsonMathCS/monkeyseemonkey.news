@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './index2.css';
-import App from './Components/App/App';
+import App from './Controller/App';
 import * as serviceWorker from './Configuration/serviceWorker';
 
 ReactDOM.render(<App className="bg-blue-darkest"/>, document.getElementById('root'));

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Logo from '../Logo/Logo.js';
-import Search from '../Search/Search.js';
+import Logo from '../../Components/Logo/Logo.js';
+import Search from '../../Components/SearchBar/Search.js';
 import { withRouter } from "react-router-dom";
-import GridItem from '../ListItem/GridItem';
-import '../SearchResults/SearchResults.css';
+import GridItem from '../SearchResults/GridItem/GridItem';
+import '../../Views/SearchResults/SearchResults.css';
 import { Link } from "react-router-dom";
 class Publisher extends Component {
     constructor(props) {

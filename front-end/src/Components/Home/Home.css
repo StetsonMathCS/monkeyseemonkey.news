@@ -25,13 +25,23 @@
 }
 .positionMe {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    position: relative;
-    right: 53px;
+    padding-right: 53px;
 }
 .text {
     margin-left: 0px;
 }
 .frontBias {
     margin-left: 100px;
+}
+
+@media only screen and (max-width: 575px) {
+    .positionMe {
+        padding-right: 20px;
+    }
+
+    #sourceText {
+        margin-right: 85px;
+    }
 }

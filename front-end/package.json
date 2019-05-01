@@ -3,24 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fullhuman/postcss-purgecss": "^1.2.0",
     "autoprefixer": "^9.4.7",
-    "browserify-fs": "^1.0.0",
-    "cssnano": "^4.1.10",
     "html-parser": "^0.11.0",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^6.1.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-html-parser": "^2.0.2",
     "react-infinite-scroller": "^1.2.4",
-    "react-native": "^0.59.2",
-    "react-native-responsive-screen": "^1.2.1",
-    "react-responsive": "^6.1.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.8",
-    "write": "^1.0.3",
-    "write-file-p": "^1.0.7"
+    "react-scripts": "^2.1.8"
   },
   "scripts": {
     "build:css": "postcss src/Configuration/tailwind.css -o src/index.css",

@@ -8,7 +8,7 @@ AND SCORES FROM EVERY ARTICLE
 IN THE DATABASE
 '''
 
-'''
+
 cnx = mysql.connector.connect(user='monkey', password='epJiphQuitmeoneykbet',
                               host='localhost',
                               database='monkey')
@@ -23,7 +23,7 @@ query = ("UDPATE articles SET score = NULL")
 cursor.execute(query)
 cnx.commit()
 
-
+'''
 Use this to delete specific entries in the database
 
 

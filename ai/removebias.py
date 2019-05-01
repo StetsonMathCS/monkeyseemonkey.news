@@ -250,10 +250,8 @@ def removeTheBias(article_to_parse):
                 articleSentencesCopy.remove(str(bias))
 
     cleanedString = ""
-    cleanFile = open("cleaned.txt", 'w')
     for cleaned in articleSentencesCopy:
-        cleanFile.write(cleaned + "\n")
-        cleanedString+=(cleaned + "\n")
+        cleanedString += (cleaned + "\n")
 
     return (cleanedString, rating / (totalSentences * 8) )
 
@@ -273,7 +271,7 @@ def getSummary(cleanedString, sentenceCount, sumNum ):
     for sentence in summarizer(parser.document, sentenceCount):
         # biasFreeSummary.write(str(sentence) + "\n" +"\n")
         # print(sentence)
-        summarizedString += "//" + (str(sentence))
+        summarizedString += (str(sentence))
     #print(summarizedString)
     return summarizedString
 
@@ -294,6 +292,18 @@ print("Articles Im about to remove bias from ", len(myresult) , " articles")
 for row in myresult:
     cleaned = removeTheBias(row[1])
     summary = getSummary(cleaned[0], 5, 2)
+
+    tempNLP = nlp(summary)
+    sents = list(tempNLP.sents)
+    if(len(sents) > 1):
+        summary = str(sents[0])
+        sents.remove(sents[0])
+        for s in sents:
+            summary += "//" + str(s)
+    elif(len(sents) == 1):
+        summary = str(sents[0])
+    else:
+        summary = ""
 
     # for debugging
     print(summary)

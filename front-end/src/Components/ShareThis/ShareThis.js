@@ -1,6 +1,6 @@
 import React from 'react';
 import './ShareThis.css';
-let currentURL = window.location.href;
+//let currentURL = window.location.href;
 
 const Sources = () => {
 

@@ -9,26 +9,11 @@ class Article extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          title: "Donald Trump Declares Border Problems a National Emergency",
+          title: "",
           ogarticle: "",
           ogscore: "",
           publisher: "",
-          bullets: [
-              "President Trump has declared a nationial emergency regarding the funding of the border-wall between Mexico and the United States",
-              "There are not statutes that explicitly declare what a 'National Emergency' is",
-              "To this date, there has been a total of 58 national emergencies declared since 1976",
-              "Donald Trump can now explicitly cite different pieces of the U.S Code to justify his decision to construct the wall",
-              "Currently, estimates predict that there is only $2,000,000,000 available to build the wall, however this number could be much higher",
-              "Trump can use a variety of different sources in the U.S. code to support his actions, including drug defense and national defense",
-              "As president, Trump can declare a National Emergency any time he wants, however there will almost definitely be some legal push back",
-              "Ultimately, Donald Trump will butt heads with Congress over the timing and financing of the wall"
-          ].map((bullet, index) => {
-            return (
-                <li key={`bullet${index}`} className="padding">
-                    {bullet}
-                </li>
-            );
-        })
+          bullets: []
         }
     }
 

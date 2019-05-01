@@ -38,7 +38,6 @@ class SearchResults extends Component {
     loadItems() {
         let body = process.env.REACT_APP_URL + "/solr/monkey/selectq=summary%3A" + encodeURIComponent(this.state.search) + "&start=" + 0 + "&wt=json";
         let authorization = "Basic " + window.btoa(process.env.REACT_APP_USERNAME + ":" + process.env.REACT_APP_PASSWORD);
-        console.log(body);
         fetch(body, { 
             mode: "cors",
             headers: { "Content-Type": "application/json",
@@ -58,7 +57,6 @@ class SearchResults extends Component {
         .then(data => {
             if (data.response.docs.length !== 0) {
                 data = data.response;
-                console.log(data.summaryid);
                 //data.docs = this.state.articles.concat(data.docs);
                 if(data.numFound <= this.state.start + 10) this.setState({hasMore: false});
                 this.setState({
@@ -66,10 +64,12 @@ class SearchResults extends Component {
                     start: (this.state.start + 10),
                 });
             } else {
-                this.setState({
-                    hasMore: false,
-                    spellCheck: data.spellcheck.suggestions[1].suggestion[0].word
-                });
+                if(data.spellcheck.suggestions[1]) {
+                    this.setState({
+                        hasMore: false,
+                        spellCheck: data.spellcheck.suggestions[1].suggestion[0].word
+                    });
+                }
             }
         });
     }    
@@ -83,9 +83,10 @@ class SearchResults extends Component {
                 );
             });
         } else {
-            items.push(<h1 className="pt-0 text-green-lighter"> No Articles Found </h1>);
-            items.push(<div className="text-green-lighter"> Did you mean: <Link to={`/searchresults/+${this.state.spellCheck.split(" ").join("+")}`}>{this.state.spellCheck}</Link> </div>)
-            console.log("hi");
+            items.push(<h1 className="pt-0 text-green-lighter" key="0"> No Articles Found </h1>);
+            if(this.state.spellcheck) {
+                items.push(<div className="text-green-lighter" key="1"> Did you mean: <Link to={`/searchresults/+${this.state.spellCheck.split(" ").join("+")}`}>{this.state.spellCheck}</Link> </div>);
+            }
         }
 
         return (

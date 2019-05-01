@@ -17,9 +17,11 @@ from collections import OrderedDict
 
 import mysql.connector
 
+nlp = spacy.load('en_core_web_sm')
+
 def removeTheBias(article_to_parse):
     rating = 0
-    nlp = spacy.load('en_core_web_sm')
+
     #op = open(article_to_parse, 'r').read()
     article = nlp(article_to_parse)
     totalSentences = len(list(article.sents))

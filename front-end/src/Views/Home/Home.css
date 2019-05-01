@@ -10,8 +10,9 @@
     line-height: 2;
 }
 .positioner {
-    position: relative;
-    right: 24px;
+    /* Makes stuff NOT aligned... */
+    /*position: relative;
+    right: 24px;*/
 }
 .logoStat {
     margin-right: 60px;

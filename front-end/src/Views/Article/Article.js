@@ -70,8 +70,7 @@ class Article extends Component {
                         <br />
                     </center>
                     <p className="text-base text-grey-dark text-2xl"> 
-                        <a href={ogarticle}>Original article</a> published by
-                        <Link to={`/publisher/+${encodeURIComponent(publisher)}`}> {publisher}</Link>
+                        <a href={ogarticle}>Original article</a> published by <Link to={`/publisher/+${encodeURIComponent(publisher)}`}>{publisher}</Link>
                     </p>
                     <p className="text-base text-grey-darker mb-3 px-2"> Original article bias score (Lower is better): {ogscore} / 8 </p>
                     <ShareThis/>

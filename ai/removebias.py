@@ -308,6 +308,7 @@ for row in myresult:
     # for debugging
     print(summary)
     print("Score : ", cleaned[1])
+    print("ID : " + str(row[0]))
     print("---------------------")
 
     # UN-comment following lines when you want this to save to the database for sure

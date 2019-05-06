@@ -1,0 +1,5 @@
+In the beginning of the semester we were starting to make the tables for our project and we've edit the tables more than 3 times for the entire project to have the perfect shape that AI group can use it for their sake. 
+Then we make python code for access the database and we've used mysqldump to backup the DB 
+Then we moved to Solr and we've installed it also we've edit the scheme to make it suitable for our project then we setup MLT and suggester features and.
+Then we've helped AI group so when they create the summary and save to thr DB we push it instantly to Solr, and we create python code that help us to delete summary from Solr easily
+and also We’ve done the suggester that help you to fund the articles, even though you write the words incorrectly. Also, we have done the command line that let you remove the articles from the solar and MySql.

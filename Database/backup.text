@@ -1,0 +1,3 @@
+curl -u solr:LiWofKemchOjEir "http://monkeyseemonkey.news/solr/monkey/replication?command=backup"
+
+
